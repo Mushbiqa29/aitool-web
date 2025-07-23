@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Plan | AI Nexus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    /* Pricing Hero */
+.pricing-hero {
+    background: linear-gradient(135deg, #1e103b, #0f172a);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/hero-pattern.svg') no-repeat center center;
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.pricing-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pricing-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.pricing-hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.pricing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--dark-tertiary);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.discount-badge {
+    background-color: var(--success);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+/* Pricing Plans */
+.pricing-plans {
+    padding: 60px 0;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.plan-card {
+    background-color: var(--dark-secondary);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    position: relative;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+}
+
+.plan-card.featured {
+    border: 2px solid var(--primary-color);
+    transform: translateY(-10px);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.plan-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--dark-tertiary);
+}
+
+.plan-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-light);
+}
+
+.price {
+    margin: 15px 0;
+}
+
+.price .amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.price .period {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.plan-features ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.plan-features li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.plan-features i {
+    color: var(--primary-light);
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.plan-cta {
+    text-align: center;
+}
+
+.plan-cta .btn {
+    width: 100%;
+}
+
+/* Feature Comparison Table */
+.comparison-section {
+    background-color: var(--dark-bg);
+    padding: 60px 0;
+}
+
+.feature-comparison {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.feature-comparison th, .feature-comparison td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--dark-tertiary);
+}
+
+.feature-comparison th {
+    background-color: var(--dark-secondary);
+    font-weight: 600;
+    color: var(--primary-light);
+}
+
+.feature-comparison tr:hover td {
+    background-color: rgba(123, 92, 246, 0.05);
+}
+
+.feature-comparison td:first-child {
+    font-weight: 500;
+}
+
+.feature-comparison i.fa-check {
+    color: var(--success);
+}
+
+.feature-comparison i.fa-times {
+    color: var(--danger);
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 60px 0;
+}
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--dark-secondary);
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.faq-question h3 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 20px 20px;
+    max-height: 500px;
+}
+
+/* Pricing CTA */
+.pricing-cta {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    padding: 60px 0;
+    text-align: center;
+    border-radius: var(--border-radius);
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.pricing-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.pricing-cta p {
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .plan-card.featured {
+        transform: none;
+    }
+    
+    .feature-comparison {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .pricing-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .pricing-hero .subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-toggle {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .plan-card {
+        padding: 20px;
+    }
+    
+    .price .amount {
+        font-size: 2rem;
+    }
+}
+</style>
+</head>
+<body>
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/logo.webp" alt="AI Nexus Logo" width="150">
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li ><a href="tools.html">Tools</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="comparison.html">Compare Tools</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            
+            <div class="mobile-menu-buttons">
+                <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+                <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+            </div>
+        </nav>
+        
+        <div class="header-actions">
+            <button class="search-toggle" aria-label="Toggle search">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+            <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+        </div>
+        
+        <div class="mobile-search">
+            <form class="search-form" role="search">
+                <input type="search" placeholder="Search AI tools..." aria-label="Search AI tools">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+</header>
+
+    <main id="main-content">
+        <!-- Pricing Hero Section -->
+        <section class="pricing-hero">
+            <div class="container">
+                <div class="pricing-hero-content">
+                    <h1>Choose Your Plan</h1>
+                    <p class="subtitle">Flexible pricing for individuals and businesses to get the most out of AI tools</p>
+                    
+                    <div class="pricing-toggle">
+                        <span>Monthly</span>
+                        <label class="switch">
+                            <input type="checkbox" id="billing-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                        <span>Yearly <span class="discount-badge">Save 20%</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Plans Grid -->
+        <section class="section pricing-plans">
+            <div class="container">
+                <div class="plans-grid">
+                    <!-- Free Plan -->
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Free</h3>
+                            <div class="price">
+                                <span class="amount">$0</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p>Perfect for exploring AI tools</p>
+                        </div>
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Browse all AI tools</li>
+                                <li><i class="fas fa-check"></i> Save favorite tools</li>
+                                <li><i class="fas fa-check"></i> Basic search functionality</li>
+                                <li><i class="fas fa-check"></i> Access to blog content</li>
+                                <li><i class="fas fa-check"></i> Email newsletter</li>
+                                <li><i class="fas fa-check"></i> Community support</li>
+                            </ul>
+                        </div>
+                        <div class="plan-cta">
+                            <a href="signup.html" class="btn btn-outline">Get Started</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Pro Plan -->
+                    <div class="plan-card featured">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="plan-header">
+                            <h3>Pro</h3>
+                            <div class="price">
+                                <span class="amount">$9</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p>For power users and creators</p>
+                        </div>
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Everything in Free</li>
+                                <li><i class="fas fa-check"></i> Personal dashboard</li>
+                                <li><i class="fas fa-check"></i> Submit your own tools</li>
+                                <li><i class="fas fa-check"></i> Advanced search filters</li>
+                                <li><i class="fas fa-check"></i> Comparison features</li>
+                                <li><i class="fas fa-check"></i> Priority email support</li>
+                            </ul>
+                        </div>
+                        <div class="plan-cta">
+                            <a href="signup.html" class="btn btn-primary">Subscribe Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Plan -->
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Business</h3>
+                            <div class="price">
+                                <span class="amount">$29</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p>For companies and agencies</p>
+                        </div>
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Everything in Pro</li>
+                                <li><i class="fas fa-check"></i> Featured tool listings</li>
+                                <li><i class="fas fa-check"></i> Team access (5 members)</li>
+                                <li><i class="fas fa-check"></i> Advanced analytics</li>
+                                <li><i class="fas fa-check"></i> 24/7 priority support</li>
+                                <li><i class="fas fa-check"></i> Early access to new features</li>
+                            </ul>
+                        </div>
+                        <div class="plan-cta">
+                            <a href="signup.html" class="btn btn-outline">Contact Sales</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Comparison Table -->
+        <section class="section comparison-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Plan Comparison</h2>
+                    <p>See how our plans stack up against each other</p>
+                </div>
+                
+                <div class="comparison-table-wrapper">
+                    <table class="feature-comparison">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Free</th>
+                                <th>Pro</th>
+                                <th>Business</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Browse AI Tools</td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Save Favorites</td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Personal Dashboard</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Submit Tools</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Advanced Search</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Tool Comparisons</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Featured Listings</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Team Access</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td>Up to 5 members</td>
+                            </tr>
+                            <tr>
+                                <td>Analytics Dashboard</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Support</td>
+                                <td>Community</td>
+                                <td>Priority Email</td>
+                                <td>24/7 Priority</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section faq-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Get answers to common questions about our pricing and plans</p>
+                </div>
+                
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I cancel anytime?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. When you cancel, you'll continue to have access to the paid features until the end of your current billing period.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do I need a subscription to submit tools?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, tool submission is a feature available to Pro and Business plan subscribers. This helps us maintain a high-quality directory by ensuring submissions come from committed members of our community.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What's included in the Business plan?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The Business plan includes all Pro features plus: featured listings for your tools, team access for up to 5 members, advanced analytics about how users interact with your listings, and 24/7 priority support. It's ideal for companies and agencies that want to maximize their visibility in our directory.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is there a free trial for paid plans?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer a 14-day free trial for both Pro and Business plans. You can explore all the premium features before committing to a paid subscription. No credit card is required to start the trial.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you offer discounts for non-profits or educational institutions?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer special pricing for qualified non-profit organizations and educational institutions. Please contact our sales team at <a href="mailto:sales@ainexus.com">sales@ainexus.com</a> with details about your organization to learn more about our discount programs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="pricing-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to grow your AI reach?</h2>
+                    <p>Pick a plan and start today with a 14-day free trial. No credit card required.</p>
+                    <a href="signup.html" class="btn btn-primary">Start Free Trial</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as other pages) -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>AI Nexus</h3>
+                    <p>The most comprehensive directory of AI tools for professionals and enthusiasts.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="submit-tool.html">Submit a Tool</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get updates on new AI tools.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Nexus. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Pricing toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('billing-toggle');
+            const monthlyPrices = document.querySelectorAll('.monthly-price');
+            const yearlyPrices = document.querySelectorAll('.yearly-price');
+            const periodTexts = document.querySelectorAll('.period');
+            
+            toggle.addEventListener('change', function() {
+                if(this.checked) {
+                    // Switch to yearly pricing
+                    document.querySelectorAll('.amount').forEach(el => {
+                        if(el.classList.contains('monthly')) {
+                            el.textContent = '$' + Math.floor(parseInt(el.textContent.replace('$', '')) * 12 * 0.80);
+                        }
+                    });
+                    document.querySelectorAll('.period').forEach(el => {
+                        el.textContent = '/year';
+                    });
+                } else {
+                    // Switch to monthly pricing
+                    document.querySelectorAll('.amount').forEach(el => {
+                        if(el.classList.contains('monthly')) {
+                            el.textContent = '$' + el.dataset.monthly;
+                        }
+                    });
+                    document.querySelectorAll('.period').forEach(el => {
+                        el.textContent = '/month';
+                    });
+                }
+            });
+            
+            // FAQ accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    item.classList.toggle('active');
+                    
+                    // Close other open items
+                    faqQuestions.forEach(q => {
+                        if(q !== this && q.parentElement.classList.contains('active')) {
+                            q.parentElement.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

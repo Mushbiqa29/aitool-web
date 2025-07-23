@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI Tools | AI Nexus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="AI Nexus Logo" width="150">
+                </a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="has-dropdown">
+                        <a href="categories.html">Categories <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="categories.html?category=generative-ai">Generative AI</a></li>
+                            <li><a href="categories.html?category=chatbots">Chatbots</a></li>
+                            <li><a href="categories.html?category=image-generation">Image Generation</a></li>
+                            <li><a href="categories.html?category=video-editing">Video Editing</a></li>
+                            <li><a href="categories.html?category=audio">Audio Tools</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="comparison.html">Compare Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-toggle" aria-label="Toggle search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+                <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Search Bar -->
+        <div class="mobile-search">
+            <form class="search-form" role="search">
+                <input type="search" placeholder="Search AI tools..." aria-label="Search AI tools">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Category Header -->
+        <section class="category-header">
+            <div class="container">
+                <div class="category-header-content">
+                    <div class="category-icon-large">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="category-title">
+                        <h1>Generative AI Tools</h1>
+                        <p>AI tools that generate text, images, code, and other content</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Content -->
+        <section class="section">
+            <div class="container">
+                <div class="category-page">
+                    <!-- Sidebar Filters -->
+                    <aside class="category-sidebar">
+                        <div class="filter-section">
+                            <h3>Filters <button type="button">Reset</button></h3>
+                            <div class="filter-options">
+                                <h4>Pricing</h4>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> Free
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> Freemium
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> Paid
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="filter-options">
+                                <h4>Tags</h4>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> Text Generation
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> Image Generation
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> Code Generation
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> Video Generation
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="filter-options">
+                                <h4>Rating</h4>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> 
+                                            <span class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> 
+                                            <span class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" checked> 
+                                            <span class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+                    
+                    <!-- Main Content -->
+                    <div class="category-main">
+                        <div class="sort-options">
+                            <label for="sort">Sort by:</label>
+                            <select id="sort">
+                                <option value="popular">Most Popular</option>
+                                <option value="newest">Newest</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="az">A-Z</option>
+                            </select>
+                        </div>
+                        
+                        <div class="tools-grid">
+                            <!-- Tool 1 -->
+<div class="tool-card" onclick="window.location.href='tool-detail.html?tool=chatgpt'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="images/tools/chatgpt.png" alt="ChatGPT">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>ChatGPT</h3>
+                                        <span class="tool-category">Text Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    Advanced AI chatbot capable of natural conversations and task assistance.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing">Freemium</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.8
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 2 -->
+<div class="tool-card" onclick="window.location.href='tool-detail.html?tool=midjourney'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="images/tools/midjourney.png" alt="Midjourney">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>Midjourney</h3>
+                                        <span class="tool-category">Image Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    AI-powered art generation tool that creates images from text prompts.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing">Paid</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.5
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 3 -->
+<div class="tool-card" onclick="window.location.href='tool-detail.html?tool=github-copilot'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="images/tools/github-copilot.png" alt="GitHub Copilot">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>GitHub Copilot</h3>
+                                        <span class="tool-category">Code Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    AI pair programmer that helps you write better code faster.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing">Paid</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.7
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 4 -->
+<div class="tool-card" onclick="window.location.href='tool-detail.html?tool=claude'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="images/tools/claude.png" alt="Claude">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>Claude AI</h3>
+                                        <span class="tool-category">Text Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    AI assistant focused on helpful, harmless, and honest conversations.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing">Freemium</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.6
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 5 -->
+<div class="tool-card" onclick="window.location.href='tool-detail.html?tool=runway'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="images/tools/runway.png" alt="Runway">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>Runway ML</h3>
+                                        <span class="tool-category">Video Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    Creative suite with AI tools for video, image, and more.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing">Paid</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.4
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 6 -->
+<div class="tool-card" onclick="window.location.href='tool-detail.html?tool=dalle'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="images/tools/dalle.png" alt="DALL-E">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>DALL-E</h3>
+                                        <span class="tool-category">Image Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    AI system that can create realistic images from text descriptions.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing">Freemium</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.3
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <a href="#" class="active">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">Next <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>AI Nexus</h3>
+                    <p>The most comprehensive directory of AI tools for professionals and enthusiasts.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="comparison.html">Tool Comparison</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="submit-tool.html">Submit a Tool</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get updates on new AI tools.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Nexus. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

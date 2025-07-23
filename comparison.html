@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare AI Tools | AI Nexus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/logo.webp" alt="AI Nexus Logo" width="150">
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li ><a href="tools.html">Tools</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="comparison.html">Compare Tools</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            
+            <div class="mobile-menu-buttons">
+                <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+                <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+            </div>
+        </nav>
+        
+        <div class="header-actions">
+            <button class="search-toggle" aria-label="Toggle search">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+            <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+        </div>
+        
+        <div class="mobile-search">
+            <form class="search-form" role="search">
+                <input type="search" placeholder="Search AI tools..." aria-label="Search AI tools">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+</header>
+
+    <main id="main-content">
+        <!-- Comparison Header -->
+        <section class="section">
+            <div class="container">
+                <div class="comparison-header">
+                    <h1>Compare AI Tools</h1>
+                    <p>Select up to 3 AI tools to compare their features, pricing, and more</p>
+                </div>
+                
+                <!-- Tool Selector -->
+                <div class="tool-selector">
+                    <div class="tool-select">
+                        <input type="text" placeholder="Search for first tool...">
+                        <div class="suggestions">
+                            <!-- Suggestions will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="tool-select">
+                        <input type="text" placeholder="Search for second tool...">
+                        <div class="suggestions">
+                            <!-- Suggestions will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="tool-select">
+                        <input type="text" placeholder="Search for third tool...">
+                        <div class="suggestions">
+                            <!-- Suggestions will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comparison Table -->
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>ChatGPT</th>
+                                <th>Midjourney</th>
+                                <th>Grammarly</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="feature-row">
+                                <td>Pricing</td>
+                                <td class="feature-value">Freemium ($20/month for Plus)</td>
+                                <td class="feature-value">Paid ($10-$60/month)</td>
+                                <td class="feature-value">Freemium ($12-$30/month)</td>
+                            </tr>
+                            <tr class="feature-row">
+                                <td>Rating</td>
+                                <td class="feature-value">4.8 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></td>
+                                <td class="feature-value">4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></td>
+                                <td class="feature-value">4.7 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></td>
+                            </tr>
+                            <tr class="feature-row">
+                                <td>Platforms</td>
+                                <td class="feature-value">Web, iOS, Android</td>
+                                <td class="feature-value">Discord</td>
+                                <td class="feature-value">Web, Desktop, Browser Ext.</td>
+                            </tr>
+                            <tr>
+                                <td>Key Features</td>
+                                <td>
+                                    <ul>
+                                        <li>Natural conversations</li>
+                                        <li>Task assistance</li>
+                                        <li>Multi-language support</li>
+                                        <li>Code generation</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>AI art generation</li>
+                                        <li>Multiple styles</li>
+                                        <li>High resolution</li>
+                                        <li>Creative options</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Grammar checking</li>
+                                        <li>Style suggestions</li>
+                                        <li>Plagiarism detection</li>
+                                        <li>Tone adjustments</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pros</td>
+                                <td>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Highly versatile</li>
+                                        <li><i class="fas fa-check"></i> Free tier available</li>
+                                        <li><i class="fas fa-check"></i> Easy to use</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High quality results</li>
+                                        <li><i class="fas fa-check"></i> Creative options</li>
+                                        <li><i class="fas fa-check"></i> Active community</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Accurate suggestions</li>
+                                        <li><i class="fas fa-check"></i> Multi-platform</li>
+                                        <li><i class="fas fa-check"></i> Free version useful</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cons</td>
+                                <td>
+                                    <ul>
+                                        <li><i class="fas fa-times"></i> Knowledge cutoff</li>
+                                        <li><i class="fas fa-times"></i> Can produce incorrect info</li>
+                                        <li><i class="fas fa-times"></i> Limited memory</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><i class="fas fa-times"></i> Requires Discord</li>
+                                        <li><i class="fas fa-times"></i> No free tier</li>
+                                        <li><i class="fas fa-times"></i> Steep learning curve</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><i class="fas fa-times"></i> Premium expensive</li>
+                                        <li><i class="fas fa-times"></i> Can be aggressive</li>
+                                        <li><i class="fas fa-times"></i> Limited creativity</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>AI Nexus</h3>
+                    <p>The most comprehensive directory of AI tools for professionals and enthusiasts.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="comparison.html">Tool Comparison</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="submit-tool.html">Submit a Tool</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get updates on new AI tools.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Nexus. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/comparison.js"></script>
+</body>
+</html>

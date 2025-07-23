@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About AI Nexus | The Premier AI Tools Directory</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Add this to your style.css file */
+.stat-card {
+    background: rgba(30, 41, 59, 0.5); /* Use your dark-secondary color with transparency */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    background: rgba(30, 41, 59, 0.7);
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-light);
+}
+
+.stat-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Update the stats-grid to have some spacing */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* If you want to add a subtle background to the stats section */
+.stats-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('images/pattern.svg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.05;
+    z-index: -1;
+}
+    </style>
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/logo.webp" alt="AI Nexus Logo" width="150">
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li ><a href="tools.html">Tools</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="comparison.html">Compare Tools</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            
+            <div class="mobile-menu-buttons">
+                <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+                <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+            </div>
+        </nav>
+        
+        <div class="header-actions">
+            <button class="search-toggle" aria-label="Toggle search">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+            <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+        </div>
+        
+        <div class="mobile-search">
+            <form class="search-form" role="search">
+                <input type="search" placeholder="Search AI tools..." aria-label="Search AI tools">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+</header>
+
+    <main id="main-content">
+        <!-- About Hero -->
+        <section class="about-hero">
+            <div class="container">
+                <h1>About AI Nexus</h1>
+                <p>The most comprehensive and trusted directory of AI tools for professionals, creators, and enthusiasts</p>
+            </div>
+        </section>
+
+        <!-- Our Mission -->
+        <section class="about-mission">
+            <div class="container">
+                <h2>Our Mission</h2>
+                <p>At AI Nexus, we believe that artificial intelligence has the potential to transform how we work, create, and solve problems. Our mission is to help people discover and understand the best AI tools available, so they can harness this transformative technology effectively and responsibly.</p>
+                <p>Founded in 2021, AI Nexus has grown from a small side project to the web's most comprehensive AI tools directory, featuring over 1,500 carefully vetted tools across dozens of categories.</p>
+            </div>
+        </section>
+
+        <!-- Our Team -->
+        <section class="section">
+            <div class="container">
+                <h2 class="team-section">Our Team</h2>
+                <div class="team-grid">
+                    <!-- Team Member 1 -->
+                    <div class="team-member">
+                        <div class="team-member-avatar">
+                            <img src="images/team/sarah-johnson.jpg" alt="Sarah Johnson">
+                        </div>
+                        <h3>Sarah Johnson</h3>
+                        <p class="position">Founder & CEO</p>
+                        <p class="bio">AI researcher and entrepreneur with 10+ years in the tech industry.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="team-member">
+                        <div class="team-member-avatar">
+                            <img src="images/team/michael-chen.jpg" alt="Michael Chen">
+                        </div>
+                        <h3>Michael Chen</h3>
+                        <p class="position">Head of Product</p>
+                        <p class="bio">Product leader passionate about making technology accessible.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="team-member">
+                        <div class="team-member-avatar">
+                            <img src="images/team/priya-patel.jpg" alt="Priya Patel">
+                        </div>
+                        <h3>Priya Patel</h3>
+                        <p class="position">Editor-in-Chief</p>
+                        <p class="bio">Tech journalist with a focus on AI and emerging technologies.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 4 -->
+                    <div class="team-member">
+                        <div class="team-member-avatar">
+                            <img src="images/team/david-kim.jpg" alt="David Kim">
+                        </div>
+                        <h3>David Kim</h3>
+                        <p class="position">Lead Developer</p>
+                        <p class="bio">Full-stack developer building the platform's technical foundation.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Process -->
+        <section class="process-section">
+            <div class="container">
+                <h2>Our Curation Process</h2>
+                
+                <!-- Process Step 1 -->
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Discovery</h3>
+                        <p>Our team scours the web, attends conferences, and monitors developer communities to identify promising new AI tools across all categories.</p>
+                    </div>
+                </div>
+                
+                <!-- Process Step 2 -->
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Evaluation</h3>
+                        <p>Each tool undergoes rigorous testing by our team of experts. We assess functionality, usability, performance, and innovation.</p>
+                    </div>
+                </div>
+                
+                <!-- Process Step 3 -->
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Verification</h3>
+                        <p>We verify claims made by tool developers, check for security and privacy concerns, and ensure ethical considerations are addressed.</p>
+                    </div>
+                </div>
+                
+                <!-- Process Step 4 -->
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Categorization</h3>
+                        <p>Tools are carefully categorized and tagged to help users find exactly what they need based on use case and functionality.</p>
+                    </div>
+                </div>
+                
+                <!-- Process Step 5 -->
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Ongoing Review</h3>
+                        <p>We continuously monitor tools for updates, changes in quality, and user feedback to keep our directory current and accurate.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Stats Section -->
+<section class="section stats-section">
+    <div class="container">
+        <h2 class="team-section">Our Impact</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>1,500+</h3>
+                <p>AI Tools Listed</p>
+            </div>
+            <div class="stat-card">
+                <h3>50+</h3>
+                <p>Categories</p>
+            </div>
+            <div class="stat-card">
+                <h3>250K+</h3>
+                <p>Monthly Visitors</p>
+            </div>
+            <div class="stat-card">
+                <h3>100+</h3>
+                <p>Countries</p>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- CTA Section -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-section">
+                    <div class="cta-content">
+                        <h2>Join Our Community</h2>
+                        <p>Subscribe to our newsletter for weekly updates on new AI tools, featured reviews, and industry insights.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>AI Nexus</h3>
+                    <p>The most comprehensive directory of AI tools for professionals and enthusiasts.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="comparison.html">Tool Comparison</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="submit-tool.html">Submit a Tool</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get updates on new AI tools.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Nexus. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

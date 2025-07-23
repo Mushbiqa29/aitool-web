@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | AI Nexus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/logo.webp" alt="AI Nexus Logo" width="150">
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li ><a href="tools.html">Tools</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="comparison.html">Compare Tools</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            
+            <div class="mobile-menu-buttons">
+                <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+                <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+            </div>
+        </nav>
+        
+        <div class="header-actions">
+            <button class="search-toggle" aria-label="Toggle search">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+            <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+        </div>
+        
+        <div class="mobile-search">
+            <form class="search-form" role="search">
+                <input type="search" placeholder="Search AI tools..." aria-label="Search AI tools">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+</header>
+
+    <main id="main-content">
+        <!-- Dashboard Content -->
+        <section class="section">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>My Dashboard</h1>
+                    <div class="dashboard-actions">
+                        <a href="submit-tool.html" class="btn btn-primary">Submit New Tool</a>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <!-- Dashboard Sidebar -->
+                    <aside class="dashboard-sidebar">
+                        <div class="dashboard-nav">
+                            <h3>Navigation</h3>
+                            <ul>
+                                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                                <li><a href="#"><i class="fas fa-bookmark"></i> Saved Tools</a></li>
+                                <li><a href="#"><i class="fas fa-upload"></i> Submitted Tools</a></li>
+                                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                    
+                    <!-- Dashboard Main Content -->
+                    <div class="dashboard-main">
+                        <!-- Saved Tools Section -->
+                        <div class="dashboard-section">
+                            <h2>Saved Tools <a href="#" class="btn btn-outline">View All</a></h2>
+                            <div class="saved-tools-grid">
+                                <!-- Saved Tool 1 -->
+                                <div class="tool-card">
+                                    <div class="tool-card-header">
+                                        <div class="tool-logo">
+                                            <img src="images/tools/chatgpt.png" alt="ChatGPT">
+                                        </div>
+                                        <div class="tool-info">
+                                            <h3>ChatGPT</h3>
+                                            <span class="tool-category">Chatbots</span>
+                                        </div>
+                                    </div>
+                                    <div class="tool-description">
+                                        Advanced AI chatbot capable of natural conversations and task assistance.
+                                    </div>
+                                    <div class="tool-meta">
+                                        <span class="tool-pricing">Freemium</span>
+                                        <span class="tool-rating">
+                                            <i class="fas fa-star"></i> 4.8
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Remove</button>
+                                </div>
+                                
+                                <!-- Saved Tool 2 -->
+                                <div class="tool-card">
+                                    <div class="tool-card-header">
+                                        <div class="tool-logo">
+                                            <img src="images/tools/midjourney.png" alt="Midjourney">
+                                        </div>
+                                        <div class="tool-info">
+                                            <h3>Midjourney</h3>
+                                            <span class="tool-category">Image Generation</span>
+                                        </div>
+                                    </div>
+                                    <div class="tool-description">
+                                        AI-powered art generation tool that creates images from text prompts.
+                                    </div>
+                                    <div class="tool-meta">
+                                        <span class="tool-pricing">Paid</span>
+                                        <span class="tool-rating">
+                                            <i class="fas fa-star"></i> 4.5
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Remove</button>
+                                </div>
+                                
+                                <!-- Saved Tool 3 -->
+                                <div class="tool-card">
+                                    <div class="tool-card-header">
+                                        <div class="tool-logo">
+                                            <img src="images/tools/grammarly.png" alt="Grammarly">
+                                        </div>
+                                        <div class="tool-info">
+                                            <h3>Grammarly</h3>
+                                            <span class="tool-category">Writing</span>
+                                        </div>
+                                    </div>
+                                    <div class="tool-description">
+                                        AI writing assistant that checks grammar, spelling, and style.
+                                    </div>
+                                    <div class="tool-meta">
+                                        <span class="tool-pricing">Freemium</span>
+                                        <span class="tool-rating">
+                                            <i class="fas fa-star"></i> 4.7
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-secondary" style="width: 100%; margin-top: 15px;">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Submitted Tools Section -->
+                        <div class="dashboard-section" style="display: none;">
+                            <h2>Submitted Tools</h2>
+                            <div class="table-responsive">
+                                <table class="submitted-tools-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Views</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>AI Tool X</td>
+                                            <td>Productivity</td>
+                                            <td>2023-05-15</td>
+                                            <td><span class="status-approved">Approved</span></td>
+                                            <td>1,245</td>
+                                            <td>
+                                                <button class="action-btn btn-primary">Edit</button>
+                                                <button class="action-btn btn-secondary">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>AI Tool Y</td>
+                                            <td>Video Editing</td>
+                                            <td>2023-06-22</td>
+                                            <td><span class="status-pending">Pending</span></td>
+                                            <td>0</td>
+                                            <td>
+                                                <button class="action-btn btn-primary">Edit</button>
+                                                <button class="action-btn btn-secondary">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>AI Tool Z</td>
+                                            <td>Data Analysis</td>
+                                            <td>2023-04-10</td>
+                                            <td><span class="status-rejected">Rejected</span></td>
+                                            <td>0</td>
+                                            <td>
+                                                <button class="action-btn btn-primary">Edit</button>
+                                                <button class="action-btn btn-secondary">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Profile Section -->
+                        <div class="dashboard-section" style="display: none;">
+                            <h2>Profile Settings</h2>
+                            <form class="profile-form">
+                                <div class="profile-avatar">
+                                    <div class="profile-avatar-img">
+                                        <img src="images/users/user1.jpg" alt="User Avatar">
+                                    </div>
+                                    <div class="profile-avatar-upload">
+                                        <button type="button" class="btn btn-outline">Change Avatar</button>
+                                        <input type="file" accept="image/*">
+                                        <p class="help-text">JPG or PNG, max 2MB</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-name">Full Name</label>
+                                    <input type="text" id="profile-name" value="John Doe" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-email">Email Address</label>
+                                    <input type="email" id="profile-email" value="john.doe@example.com" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-bio">Bio</label>
+                                    <textarea id="profile-bio">AI enthusiast and developer</textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-company">Company</label>
+                                    <input type="text" id="profile-company" value="Tech Solutions Inc.">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profile-website">Website</label>
+                                    <input type="url" id="profile-website" value="https://johndoe.dev">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                            </form>
+                            
+                            <h3 style="margin-top: 40px;">Change Password</h3>
+                            <form class="profile-form">
+                                <div class="form-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input type="password" id="current-password" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="new-password">New Password</label>
+                                    <input type="password" id="new-password" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm New Password</label>
+                                    <input type="password" id="confirm-password" required>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Change Password</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>AI Nexus</h3>
+                    <p>The most comprehensive directory of AI tools for professionals and enthusiasts.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="comparison.html">Tool Comparison</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="submit-tool.html">Submit a Tool</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get updates on new AI tools.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Nexus. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
