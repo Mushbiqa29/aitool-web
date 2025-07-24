@@ -320,7 +320,7 @@ function loadToolData(toolId) {
     const tools = {
 'chatgpt': {
     name: 'ChatGPT',
-    logo: 'assets/img/tools/chatgpt.png',
+    logo: 'assets/img/chat.webp',
     category: 'Chatbots, Text Generation',
     tagline: 'Advanced AI chatbot capable of natural conversations and task assistance',
     platforms: ['Web', 'iOS', 'Android'],
@@ -357,18 +357,18 @@ function loadToolData(toolId) {
     ],
     screenshots: [
         {
-            main: 'images/screenshots/chatgpt1.jpg',
-            thumb: 'assets/img/screenshots/chatgpt1-thumb.jpg',
+            main: 'assets/img/chat1.webp',
+            thumb: 'assets/img/chat1.webp',
             alt: 'ChatGPT Interface'
         },
         {
-            main: 'assets/img/screenshots/chatgpt2.jpg',
-            thumb: 'assets/img/screenshots/chatgpt2-thumb.jpg',
+            main: 'assets/img/chat2.webp',
+            thumb: 'assets/img/chat2.webp',
             alt: 'ChatGPT Mobile'
         },
         {
-            main: 'assets/img/screenshots/chatgpt3.jpg',
-            thumb: 'assets/img/screenshots/chatgpt3-thumb.jpg',
+            main: 'assets/img/chat3.webp',
+            thumb: 'assets/img/chat3.webp',
             alt: 'ChatGPT Examples'
         }
     ],
@@ -446,7 +446,7 @@ function loadToolData(toolId) {
 },
 'midjourney': {
     name: 'Midjourney',
-    logo: 'images/tools/midjourney.png',
+    logo: 'assets/img/mid.webp',
     category: 'Image Generation',
     tagline: 'AI-powered art generation tool that creates images from text prompts.',
     platforms: ['Web'],
@@ -464,7 +464,23 @@ function loadToolData(toolId) {
         { title: 'Style Variations', description: 'Create art in various styles and moods', icon: 'fas fa-palette' },
         { title: 'Community Showcase', description: 'Explore and remix public artwork', icon: 'fas fa-users' }
     ],
-    screenshots: [],
+     screenshots: [
+        {
+            main: 'assets/img/mid1.webp',
+            thumb: 'assets/img/mid1.webp',
+            alt: 'Midjourney Interface'
+        },
+        {
+            main: 'assets/img/mid2.webp',
+            thumb: 'assets/img/mid2.webp',
+            alt: 'Midjourney Mobile'
+        },
+        {
+            main: 'assets/img/mid3.webp',
+            thumb: 'assets/img/mid3.webp',
+            alt: 'Midjourney Examples'
+        }
+    ],
     pros: ['High-quality outputs', 'Flexible creativity', 'Active community'],
     cons: ['No free tier', 'Requires Discord', 'Limited customization'],
     pricing: [
@@ -482,7 +498,7 @@ function loadToolData(toolId) {
 },
 'github-copilot': {
     name: 'GitHub Copilot',
-    logo: 'images/tools/github-copilot.png',
+    logo: 'assets/img/git3.webp',
     category: 'Code Generation',
     tagline: 'AI pair programmer that helps you write better code faster.',
     platforms: ['VS Code', 'JetBrains', 'Neovim'],
@@ -500,7 +516,23 @@ function loadToolData(toolId) {
         { title: 'Multi-language Support', description: 'Works with Python, JavaScript, TypeScript, and more', icon: 'fas fa-globe' },
         { title: 'Inline Suggestions', description: 'Integrates into your code editor', icon: 'fas fa-terminal' }
     ],
-    screenshots: [],
+     screenshots: [
+        {
+            main: 'assets/img/git.webp',
+            thumb: 'assets/img/git.webp',
+            alt: 'Copilot Interface'
+        },
+        {
+            main: 'assets/img/git1.webp',
+            thumb: 'assets/img/git1.webp',
+            alt: 'Copilot Mobile'
+        },
+        {
+            main: 'assets/img/git2.webp',
+            thumb: 'assets/img/git2.webp',
+            alt: 'Copilot Examples'
+        }
+    ],
     pros: ['Increases coding speed', 'Learns from context', 'Reduces boilerplate code'],
     cons: ['May generate incorrect code', 'Requires internet connection', 'Paid after trial'],
     pricing: [
@@ -518,7 +550,7 @@ function loadToolData(toolId) {
 },
 'claude': {
     name: 'Claude AI',
-    logo: 'images/tools/claude.png',
+    logo: 'assets/img/claude.webp',
     category: 'Text Generation',
     tagline: 'AI assistant focused on helpful, harmless, and honest conversations.',
     platforms: ['Web'],
@@ -535,7 +567,23 @@ function loadToolData(toolId) {
         { title: 'Natural Language Chat', description: 'Handles a wide range of queries', icon: 'fas fa-comments' },
         { title: 'Developer Friendly', description: 'Available through APIs and platforms', icon: 'fas fa-plug' }
     ],
-    screenshots: [],
+     screenshots: [
+        {
+            main: 'assets/img/claude1.webp',
+            thumb: 'assets/img/claude1.webp',
+            alt: 'Claude Interface'
+        },
+        {
+            main: 'assets/img/claude2.webp',
+            thumb: 'assets/img/claude2.webp',
+            alt: 'Claude Mobile'
+        },
+        {
+            main: 'assets/img/claude3.webp',
+            thumb: 'assets/img/claude3.webp',
+            alt: 'Claude Examples'
+        }
+    ],
     pros: ['Safe and aligned responses', 'Strong on reasoning tasks', 'User-centered approach'],
     cons: ['Fewer integrations', 'Still evolving', 'Not always deeply creative'],
     pricing: [
@@ -553,7 +601,7 @@ function loadToolData(toolId) {
 },
 'runway': {
     name: 'Runway ML',
-    logo: 'images/tools/runway.png',
+    logo: 'assets/img/run.webp',
     category: 'Video Generation',
     tagline: 'Creative suite with AI tools for video, image, and more.',
     platforms: ['Web'],
@@ -570,7 +618,23 @@ function loadToolData(toolId) {
         { title: 'Text-to-Video', description: 'Generate short videos from text input', icon: 'fas fa-file-video' },
         { title: 'Real-Time Collaboration', description: 'Work on projects with others live', icon: 'fas fa-users' }
     ],
-    screenshots: [],
+     screenshots: [
+        {
+            main: 'assets/img/run1.webp',
+            thumb: 'assets/img/run1-thumb.webp',
+            alt: 'Runway Interface'
+        },
+        {
+            main: 'assets/img/run2.webp',
+            thumb: 'assets/img/run2-thumb.webp',
+            alt: 'Runway Mobile'
+        },
+        {
+            main: 'assets/img/run3.webp',
+            thumb: 'assets/img/run3-thumb.webp',
+            alt: 'Runway Examples'
+        }
+    ],
     pros: ['Versatile creative tools', 'Easy to use', 'Expanding AI capabilities'],
     cons: ['Heavy processing needs', 'Paid tiers needed for full features', 'Export limitations'],
     pricing: [
@@ -588,7 +652,7 @@ function loadToolData(toolId) {
 },
 'dalle': {
     name: 'DALL-E',
-    logo: 'images/tools/dalle.png',
+    logo: 'assets/img/dall.webp',
     category: 'Image Generation',
     tagline: 'AI system that can create realistic images from text descriptions.',
     platforms: ['Web'],
@@ -605,7 +669,23 @@ function loadToolData(toolId) {
         { title: 'Inpainting', description: 'Edit parts of existing images', icon: 'fas fa-magic' },
         { title: 'Creative Compositions', description: 'Visualize imaginative concepts', icon: 'fas fa-brain' }
     ],
-    screenshots: [],
+    screenshots: [
+        {
+            main: 'assets/img/dall1.webp',
+            thumb: 'assets/img/dall1-thumb.webp',
+            alt: 'DALL-E Interface'
+        },
+        {
+            main: 'assets/img/dall2.webp',
+            thumb: 'assets/img/dall2-thumb.webp',
+            alt: 'DALL-E Mobile'
+        },
+        {
+            main: 'assets/img/dall3.webp',
+            thumb: 'assets/img/dall3-thumb.webp',
+            alt: 'DALL-E Examples'
+        }
+    ],
     pros: ['Strong realism', 'Creative flexibility', 'Popular integration in ChatGPT'],
     cons: ['Limited credits for free users', 'May misinterpret vague prompts', 'Ethical considerations'],
     pricing: [
@@ -628,32 +708,111 @@ function loadToolData(toolId) {
         // Update the page title
         document.title = `${tool.name} - AI Nexus`;
         
-        // Update the page with the tool data
+        // Update header section
         document.querySelector('.tool-header-info h1').textContent = tool.name;
+        document.querySelector('.tool-tagline').textContent = tool.tagline;
         document.querySelector('.tool-logo-large img').src = tool.logo;
         document.querySelector('.tool-logo-large img').alt = tool.name;
-        // Update other elements as needed
+        document.querySelector('.tool-category').textContent = tool.category;
+        document.querySelector('.tool-platforms').textContent = tool.platforms.join(', ');
+        document.querySelector('.tool-rating').innerHTML = `<i class="fas fa-star"></i> ${tool.rating.score} (${tool.rating.reviews} reviews)`;
+        
+        // Update overview section
+        const overviewContainer = document.querySelector('.tool-overview');
+        overviewContainer.innerHTML = tool.overview.map(para => `<p>${para}</p>`).join('');
+        
+        // Update features section
+        const featuresContainer = document.querySelector('.tool-features');
+        featuresContainer.innerHTML = tool.features.map(feature => `
+            <div class="feature-item">
+                <i class="${feature.icon}"></i>
+                <div>
+                    <h3>${feature.title}</h3>
+                    <p>${feature.description}</p>
+                </div>
+            </div>
+        `).join('');
+        
+        // Update screenshots
+        if (tool.screenshots && tool.screenshots.length > 0) {
+            const screenshotMain = document.querySelector('.screenshot-main');
+            const thumbnailsContainer = document.querySelector('.screenshot-thumbnails');
+            
+            // Set main screenshot
+            screenshotMain.innerHTML = `<img src="${tool.screenshots[0].main}" alt="${tool.screenshots[0].alt}">`;
+            
+            // Create thumbnails
+            thumbnailsContainer.innerHTML = tool.screenshots.map((screenshot, index) => `
+                <a href="#" class="screenshot-thumb ${index === 0 ? 'active' : ''}" data-index="${index}">
+                    <img src="${screenshot.thumb}" alt="${screenshot.alt}">
+                </a>
+            `).join('');
+        } else {
+            document.querySelector('.tool-screenshots-section').style.display = 'none';
+        }
+        
+        // Update pros & cons
+        const prosList = document.querySelector('.pros-items');
+        const consList = document.querySelector('.cons-items');
+        prosList.innerHTML = tool.pros.map(pro => `<li>${pro}</li>`).join('');
+        consList.innerHTML = tool.cons.map(con => `<li>${con}</li>`).join('');
+        
+        // Update sidebar
+        document.querySelector('.tool-website').href = tool.website;
+        
+        // Update pricing
+        const pricingContainer = document.querySelector('.pricing-section');
+        pricingContainer.innerHTML = `
+            <h3>Pricing</h3>
+            ${tool.pricing.map(plan => `
+                <div class="pricing-plan">
+                    <h4>${plan.plan} <span>${plan.price}</span></h4>
+                    <ul>
+                        ${plan.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('')}
+        `;
+        
+        // Update platforms
+        const platformsList = document.querySelector('.platforms-list');
+        platformsList.innerHTML = tool.platforms.map(platform => `
+            <li><i class="fas fa-check"></i> ${platform}</li>
+        `).join('');
+        
+        // Update developer info
+        const developerSection = document.querySelector('.developer-section');
+        developerSection.querySelector('.developer-logo').src = tool.developer.logo;
+        developerSection.querySelector('.developer-logo').alt = tool.developer.name;
+        developerSection.querySelector('.developer-name').textContent = tool.developer.name;
+        developerSection.querySelector('.developer-description').textContent = tool.developer.description;
+        developerSection.querySelector('.developer-profile').href = tool.developer.profileUrl;
+        
+        // Update related tools
+        if (tool.relatedTools && tool.relatedTools.length > 0) {
+            const relatedToolsContainer = document.querySelector('.related-tools-grid');
+            relatedToolsContainer.innerHTML = tool.relatedTools.map(relatedTool => `
+                <div class="tool-card" onclick="window.location.href='tool-detail.html?tool=${relatedTool.id}'">
+                    <div class="tool-card-header">
+                        <div class="tool-logo">
+                            <img src="${relatedTool.logo}" alt="${relatedTool.name}">
+                        </div>
+                        <div class="tool-info">
+                            <h3>${relatedTool.name}</h3>
+                            <span class="tool-category">${relatedTool.category}</span>
+                        </div>
+                    </div>
+                    <div class="tool-description">${relatedTool.description}</div>
+                    <div class="tool-meta">
+                        <span class="tool-pricing">${relatedTool.pricing}</span>
+                        <span class="tool-rating">
+                            <i class="fas fa-star"></i> ${relatedTool.rating}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            document.querySelector('.related-tools-section').style.display = 'none';
+        }
     }
 }
-
-// For tool cards on other pages (like categories.html or index.html)
-document.addEventListener('DOMContentLoaded', function() {
-    // Add click event to all tool cards
-    document.querySelectorAll('.tool-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            // Prevent default if it's a link
-            if (e.target.tagName === 'A') return;
-            
-            const toolName = this.querySelector('.tool-info h3').textContent;
-            document.title = `${toolName} - AI Nexus`;
-        });
-    });
-    
-    // Get tool parameter from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const toolId = urlParams.get('tool');
-    
-    if (toolId) {
-        loadToolData(toolId);
-    }
-});

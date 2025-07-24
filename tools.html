@@ -553,6 +553,7 @@
                 <li ><a href="tools.html">Tools</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="comparison.html">Compare Tools</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
             
@@ -709,16 +710,16 @@
                     </aside>
                     <!-- Mobile Filters -->
 <div class="mobile-filters-container">
+    <!-- Category Filter (Fixed - no duplicate wrapper) -->
     <div class="filter-dropdown-box" data-filter-type="category">
-        <div class="filter-dropdown-box" data-filter-type="category">
-            <button class="filter-dropdown-toggle" data-target="category-dropdown-mobile">
-                <div class="filter-header">
-                    <i class="fas fa-tags"></i>
-                    <span class="filter-title">Category</span>
-                </div>
-                <div class="filter-selection"></div>
-            </button>
-            <ul id="category-dropdown-mobile" class="filter-dropdown-menu">
+        <button class="filter-dropdown-toggle" data-target="category-dropdown-mobile">
+            <div class="filter-header">
+                <i class="fas fa-tags"></i>
+                <span class="filter-title">Category</span>
+            </div>
+            <div class="filter-selection"></div>
+        </button>
+        <ul id="category-dropdown-mobile" class="filter-dropdown-menu">
             <li class="filter-dropdown-item">
                 <label>
                     <input type="checkbox" data-category="generative-ai"> Generative AI
@@ -746,16 +747,17 @@
             </li>
         </ul>
     </div>
-    
-        <div class="filter-dropdown-box" data-filter-type="pricing">
-            <button class="filter-dropdown-toggle" data-target="pricing-dropdown-mobile">
-                <div class="filter-header">
-                    <i class="fas fa-tags"></i>
-                    <span class="filter-title">Pricing</span>
-                </div>
-                <div class="filter-selection"></div>
-            </button>
-            <ul id="pricing-dropdown-mobile" class="filter-dropdown-menu">
+
+    <!-- Pricing Filter -->
+    <div class="filter-dropdown-box" data-filter-type="pricing">
+        <button class="filter-dropdown-toggle" data-target="pricing-dropdown-mobile">
+            <div class="filter-header">
+                <i class="fas fa-tag"></i> <!-- Changed icon to be distinct from category -->
+                <span class="filter-title">Pricing</span>
+            </div>
+            <div class="filter-selection"></div>
+        </button>
+        <ul id="pricing-dropdown-mobile" class="filter-dropdown-menu">
             <li class="filter-dropdown-item">
                 <label>
                     <input type="checkbox" data-pricing="free"> Free
@@ -773,16 +775,17 @@
             </li>
         </ul>
     </div>
-    
-        <div class="filter-dropdown-box" data-filter-type="rating">
-            <button class="filter-dropdown-toggle" data-target="rating-dropdown-mobile">
-                <div class="filter-header">
-                    <i class="fas fa-star"></i>
-                    <span class="filter-title">Rating</span>
-                </div>
-                <div class="filter-selection"></div>
-            </button>
-            <ul id="rating-dropdown-mobile" class="filter-dropdown-menu">
+
+    <!-- Rating Filter -->
+    <div class="filter-dropdown-box" data-filter-type="rating">
+        <button class="filter-dropdown-toggle" data-target="rating-dropdown-mobile">
+            <div class="filter-header">
+                <i class="fas fa-star"></i>
+                <span class="filter-title">Rating</span>
+            </div>
+            <div class="filter-selection"></div>
+        </button>
+        <ul id="rating-dropdown-mobile" class="filter-dropdown-menu">
             <li class="filter-dropdown-item">
                 <label>
                     <input type="checkbox" data-rating="5"> 
@@ -821,12 +824,11 @@
             </li>
         </ul>
     </div>
-    
+
     <button type="button" class="reset-filters-mobile">
         <i class="fas fa-sync-alt"></i> Reset Filters
     </button>
-</div>
-                    <!-- Main Content -->
+</div>                    <!-- Main Content -->
                     <div class="category-main">
                         <div class="sort-options">
                             <label for="sort">Sort by:</label>
@@ -839,140 +841,168 @@
                         </div>
                         
                         <div class="tools-grid">
-                            <!-- Tool cards will be populated here -->
-                            <!-- Tool 1 -->
-                            <div class="tool-card" data-categories="chatbots,generative-ai" data-pricing="freemium" data-rating="4.8" onclick="window.location.href='tool-detail.html?tool=chatgpt'">
-                                <div class="tool-card-header">
-                                    <div class="tool-logo">
-                                        <img src="assets/img/chat.webp" alt="ChatGPT">
-                                    </div>
-                                    <div class="tool-info">
-                                        <h3>ChatGPT</h3>
-                                        <span class="tool-category">Text Generation</span>
-                                    </div>
-                                </div>
-                                <div class="tool-description">
-                                    Advanced AI chatbot capable of natural conversations and task assistance.
-                                </div>
-                                <div class="tool-meta">
-                                    <span class="tool-pricing">Freemium</span>
-                                    <span class="tool-rating">
-                                        <i class="fas fa-star"></i> 4.8
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <!-- Tool 2 -->
-                            <div class="tool-card" data-categories="image-generation" data-pricing="paid" data-rating="4.5" onclick="window.location.href='tool-detail.html?tool=midjourney'">
-                                <div class="tool-card-header">
-                                    <div class="tool-logo">
-                                        <img src="assets/img/mid.webp" alt="Midjourney">
-                                    </div>
-                                    <div class="tool-info">
-                                        <h3>Midjourney</h3>
-                                        <span class="tool-category">Image Generation</span>
-                                    </div>
-                                </div>
-                                <div class="tool-description">
-                                    AI-powered art generation tool that creates images from text prompts.
-                                </div>
-                                <div class="tool-meta">
-                                    <span class="tool-pricing">Paid</span>
-                                    <span class="tool-rating">
-                                        <i class="fas fa-star"></i> 4.5
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <!-- Tool 3 -->
-                            <div class="tool-card" data-categories="generative-ai" data-pricing="paid" data-rating="4.7" onclick="window.location.href='tool-detail.html?tool=github-copilot'">
-                                <div class="tool-card-header">
-                                    <div class="tool-logo">
-                                        <img src="assets/img/git3.webp" alt="GitHub Copilot">
-                                    </div>
-                                    <div class="tool-info">
-                                        <h3>GitHub Copilot</h3>
-                                        <span class="tool-category">Code Generation</span>
-                                    </div>
-                                </div>
-                                <div class="tool-description">
-                                    AI pair programmer that helps you write better code faster.
-                                </div>
-                                <div class="tool-meta">
-                                    <span class="tool-pricing">Paid</span>
-                                    <span class="tool-rating">
-                                        <i class="fas fa-star"></i> 4.7
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <!-- Tool 4 -->
-                            <div class="tool-card" data-categories="chatbots,generative-ai" data-pricing="freemium" data-rating="4.6" onclick="window.location.href='tool-detail.html?tool=claude'">
-                                <div class="tool-card-header">
-                                    <div class="tool-logo">
-                                        <img src="assets/img/claude.webp" alt="Claude">
-                                    </div>
-                                    <div class="tool-info">
-                                        <h3>Claude AI</h3>
-                                        <span class="tool-category">Text Generation</span>
-                                    </div>
-                                </div>
-                                <div class="tool-description">
-                                    AI assistant focused on helpful, harmless, and honest conversations.
-                                </div>
-                                <div class="tool-meta">
-                                    <span class="tool-pricing">Freemium</span>
-                                    <span class="tool-rating">
-                                        <i class="fas fa-star"></i> 4.6
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <!-- Tool 5 -->
-                            <div class="tool-card" data-categories="video-editing" data-pricing="paid" data-rating="4.4" onclick="window.location.href='tool-detail.html?tool=runway'">
-                                <div class="tool-card-header">
-                                    <div class="tool-logo">
-                                        <img src="assets/img/run.webp" alt="Runway">
-                                    </div>
-                                    <div class="tool-info">
-                                        <h3>Runway ML</h3>
-                                        <span class="tool-category">Video Generation</span>
-                                    </div>
-                                </div>
-                                <div class="tool-description">
-                                    Creative suite with AI tools for video, image, and more.
-                                </div>
-                                <div class="tool-meta">
-                                    <span class="tool-pricing">Paid</span>
-                                    <span class="tool-rating">
-                                        <i class="fas fa-star"></i> 4.4
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <!-- Tool 6 -->
-                            <div class="tool-card" data-categories="image-generation" data-pricing="freemium" data-rating="4.3" onclick="window.location.href='tool-detail.html?tool=dalle'">
-                                <div class="tool-card-header">
-                                    <div class="tool-logo">
-                                        <img src="assets/img/dall.webp" alt="DALL-E">
-                                    </div>
-                                    <div class="tool-info">
-                                        <h3>DALL-E</h3>
-                                        <span class="tool-category">Image Generation</span>
-                                    </div>
-                                </div>
-                                <div class="tool-description">
-                                    AI system that can create realistic images from text descriptions.
-                                </div>
-                                <div class="tool-meta">
-                                    <span class="tool-pricing">Freemium</span>
-                                    <span class="tool-rating">
-                                        <i class="fas fa-star"></i> 4.3
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        
+    <!-- Tool 1 - ChatGPT -->
+    <div class="tool-card" 
+         data-categories="chatbots,text-generation" 
+         data-pricing="freemium" 
+         data-rating="4.8"
+         data-date="20221130" 
+         onclick="window.location.href='tool-detail.html?tool=chatgpt'">
+        <div class="tool-card-header">
+            <div class="tool-logo">
+                <img src="assets/img/chat.webp" alt="ChatGPT" loading="lazy">
+            </div>
+            <div class="tool-info">
+                <h3>ChatGPT</h3>
+                <span class="tool-category">Text Generation</span>
+            </div>
+        </div>
+        <div class="tool-description">
+            Advanced AI chatbot capable of natural conversations and task assistance.
+        </div>
+        <div class="tool-meta">
+            <span class="tool-pricing">Freemium</span>
+            <span class="tool-rating">
+                <i class="fas fa-star"></i> <span class="rating-value">4.8</span>
+            </span>
+        </div>
+    </div>
+    
+    <!-- Tool 2 - Midjourney -->
+    <div class="tool-card" 
+         data-categories="image-generation,art" 
+         data-pricing="paid" 
+         data-rating="4.5"
+         data-date="20220715"
+         onclick="window.location.href='tool-detail.html?tool=midjourney'">
+        <div class="tool-card-header">
+            <div class="tool-logo">
+                <img src="assets/img/mid.webp" alt="Midjourney" loading="lazy">
+            </div>
+            <div class="tool-info">
+                <h3>Midjourney</h3>
+                <span class="tool-category">Image Generation</span>
+            </div>
+        </div>
+        <div class="tool-description">
+            AI-powered art generation tool that creates images from text prompts.
+        </div>
+        <div class="tool-meta">
+            <span class="tool-pricing">Paid</span>
+            <span class="tool-rating">
+                <i class="fas fa-star"></i> <span class="rating-value">4.5</span>
+            </span>
+        </div>
+    </div>
+    
+    <!-- Tool 3 - GitHub Copilot -->
+    <div class="tool-card" 
+         data-categories="code-generation,developer-tools" 
+         data-pricing="paid" 
+         data-rating="4.7"
+         data-date="20210629"
+         onclick="window.location.href='tool-detail.html?tool=github-copilot'">
+        <div class="tool-card-header">
+            <div class="tool-logo">
+                <img src="assets/img/git3.webp" alt="GitHub Copilot" loading="lazy">
+            </div>
+            <div class="tool-info">
+                <h3>GitHub Copilot</h3>
+                <span class="tool-category">Code Generation</span>
+            </div>
+        </div>
+        <div class="tool-description">
+            AI pair programmer that helps you write better code faster.
+        </div>
+        <div class="tool-meta">
+            <span class="tool-pricing">Paid</span>
+            <span class="tool-rating">
+                <i class="fas fa-star"></i> <span class="rating-value">4.7</span>
+            </span>
+        </div>
+    </div>
+    
+    <!-- Tool 4 - Claude AI -->
+    <div class="tool-card" 
+         data-categories="chatbots,text-generation" 
+         data-pricing="freemium" 
+         data-rating="4.6"
+         data-date="20230315"
+         onclick="window.location.href='tool-detail.html?tool=claude'">
+        <div class="tool-card-header">
+            <div class="tool-logo">
+                <img src="assets/img/claude.webp" alt="Claude" loading="lazy">
+            </div>
+            <div class="tool-info">
+                <h3>Claude AI</h3>
+                <span class="tool-category">Text Generation</span>
+            </div>
+        </div>
+        <div class="tool-description">
+            AI assistant focused on helpful, harmless, and honest conversations.
+        </div>
+        <div class="tool-meta">
+            <span class="tool-pricing">Freemium</span>
+            <span class="tool-rating">
+                <i class="fas fa-star"></i> <span class="rating-value">4.6</span>
+            </span>
+        </div>
+    </div>
+    
+    <!-- Tool 5 - Runway ML -->
+    <div class="tool-card" 
+         data-categories="video-editing,multimedia" 
+         data-pricing="paid" 
+         data-rating="4.4"
+         data-date="20220120"
+         onclick="window.location.href='tool-detail.html?tool=runway'">
+        <div class="tool-card-header">
+            <div class="tool-logo">
+                <img src="assets/img/run.webp" alt="Runway" loading="lazy">
+            </div>
+            <div class="tool-info">
+                <h3>Runway ML</h3>
+                <span class="tool-category">Video Generation</span>
+            </div>
+        </div>
+        <div class="tool-description">
+            Creative suite with AI tools for video, image, and more.
+        </div>
+        <div class="tool-meta">
+            <span class="tool-pricing">Paid</span>
+            <span class="tool-rating">
+                <i class="fas fa-star"></i> <span class="rating-value">4.4</span>
+            </span>
+        </div>
+    </div>
+    
+    <!-- Tool 6 - DALL-E -->
+    <div class="tool-card" 
+         data-categories="image-generation,art" 
+         data-pricing="freemium" 
+         data-rating="4.3"
+         data-date="20220105"
+         onclick="window.location.href='tool-detail.html?tool=dalle'">
+        <div class="tool-card-header">
+            <div class="tool-logo">
+                <img src="assets/img/dall.webp" alt="DALL-E" loading="lazy">
+            </div>
+            <div class="tool-info">
+                <h3>DALL-E</h3>
+                <span class="tool-category">Image Generation</span>
+            </div>
+        </div>
+        <div class="tool-description">
+            AI system that can create realistic images from text descriptions.
+        </div>
+        <div class="tool-meta">
+            <span class="tool-pricing">Freemium</span>
+            <span class="tool-rating">
+                <i class="fas fa-star"></i> <span class="rating-value">4.3</span>
+            </span>
+        </div>
+    </div>
+</div>
                         <!-- Pagination -->
                         <div class="pagination">
                             <a href="#" class="active">1</a>
@@ -1047,9 +1077,7 @@
     <script src="assets/js/main.js"></script>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // =============================================
     // 1. DOM Elements
-    // =============================================
     const elements = {
         desktop: {
             filterSection: document.querySelector('.filter-section'),
@@ -1069,9 +1097,7 @@ document.addEventListener('DOMContentLoaded', function() {
         toolsGrid: document.querySelector('.tools-grid')
     };
 
-    // =============================================
     // 2. State Management
-    // =============================================
     const state = {
         activeFilters: {
             category: [],
@@ -1081,14 +1107,22 @@ document.addEventListener('DOMContentLoaded', function() {
         sortMethod: 'popular'
     };
 
-    // =============================================
     // 3. Initialization
-    // =============================================
     function init() {
+        showAllTools();
         setupEventListeners();
         setDefaultFilters();
         updateFilterSelections();
         applyFilters();
+        
+        // Debug initial state
+        console.log("Initialized filters", state);
+    }
+
+    function showAllTools() {
+        elements.toolCards.forEach(card => {
+            card.style.display = 'block';
+        });
     }
 
     function setDefaultFilters() {
@@ -1103,13 +1137,14 @@ document.addEventListener('DOMContentLoaded', function() {
             elements.desktop.sortSelect.value = state.sortMethod;
         }
         
+        // Uncheck all filter checkboxes
         document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
-            .forEach(checkbox => { checkbox.checked = false; });
+            .forEach(checkbox => { 
+                checkbox.checked = false; 
+            });
     }
 
-    // =============================================
-    // 4. Event Listeners Setup
-    // =============================================
+    // 4. Event Listeners
     function setupEventListeners() {
         // Desktop Events
         if (elements.desktop.categoryToggle) {
@@ -1141,46 +1176,53 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('resize', debounce(handleWindowResize, 250));
     }
 
-    // =============================================
     // 5. Core Filter Functions
-    // =============================================
     function applyFilters() {
-        updateActiveFilters();
-        
+        console.log("Applying filters:", state.activeFilters);
         let visibleCount = 0;
+        
         elements.toolCards.forEach(card => {
             const cardData = {
-                categories: card.dataset.categories?.split(',') || [],
+                categories: card.dataset.categories?.split(',').map(c => c.trim()) || [],
                 pricing: card.dataset.pricing || '',
-                rating: parseFloat(card.dataset.rating) || 0
+                rating: parseFloat(card.dataset.rating) || 0,
+                name: card.querySelector('h3').textContent.toLowerCase(),
+                date: parseInt(card.dataset.date) || 0
             };
-            
+
             const shouldShow = matchesFilters(cardData);
             card.style.display = shouldShow ? 'block' : 'none';
             if (shouldShow) visibleCount++;
+            
+            console.log(`Card: ${cardData.name}`, 
+                       `Visible: ${shouldShow}`, 
+                       `Categories: ${cardData.categories}`,
+                       `Rating: ${cardData.rating}`);
         });
-        
+
         updateVisibleCount(visibleCount);
         showNoResultsMessage(visibleCount === 0);
         sortTools();
-        updateFilterSelections();
+        
+        console.log(`Visible tools: ${visibleCount}/${elements.toolCards.length}`);
     }
 
     function matchesFilters(cardData) {
         const { category, pricing, rating } = state.activeFilters;
         
-        // Category match
+        // Category match (check if any selected category exists in card's categories)
         const categoryMatch = category.length === 0 || 
-            cardData.categories.some(cat => category.includes(cat));
+            category.some(selectedCat => cardData.categories.includes(selectedCat));
         
-        // Pricing match
+        // Pricing match (exact match)
         const pricingMatch = pricing.length === 0 || 
             pricing.includes(cardData.pricing);
             
-        // Rating match - check if card rating is >= any selected rating
-        const ratingMatch = rating.length === 0 || 
-            rating.some(r => cardData.rating >= parseInt(r));
+        // Rating match (card rating >= selected rating)
+        const ratingMatch = rating.length === 0 ||
+            rating.some(r => Math.round(cardData.rating) >= parseInt(r));
         
+        console.log(`Matching:`, {categoryMatch, pricingMatch, ratingMatch});
         return categoryMatch && pricingMatch && ratingMatch;
     }
 
@@ -1190,15 +1232,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const visibleCards = Array.from(document.querySelectorAll('.tool-card[style*="display: block"], .tool-card:not([style])'));
         
         visibleCards.sort((a, b) => {
-            const aVal = getSortValue(a, state.sortMethod);
-            const bVal = getSortValue(b, state.sortMethod);
-            
-            if (state.sortMethod === 'az') {
-                return aVal.localeCompare(bVal);
-            } else if (state.sortMethod === 'newest') {
-                return bVal - aVal; // Newest first
-            } else {
-                return bVal - aVal; // Higher ratings/popularity first
+            const aData = {
+                rating: parseFloat(a.dataset.rating) || 0,
+                date: parseInt(a.dataset.date) || 0,
+                name: a.querySelector('h3').textContent.toLowerCase()
+            };
+            const bData = {
+                rating: parseFloat(b.dataset.rating) || 0,
+                date: parseInt(b.dataset.date) || 0,
+                name: b.querySelector('h3').textContent.toLowerCase()
+            };
+
+            switch(state.sortMethod) {
+                case 'rating': return bData.rating - aData.rating;
+                case 'newest': return bData.date - aData.date;
+                case 'az': return aData.name.localeCompare(bData.name);
+                default: return bData.rating - aData.rating; // popular
             }
         });
         
@@ -1206,9 +1255,7 @@ document.addEventListener('DOMContentLoaded', function() {
         visibleCards.forEach(card => elements.toolsGrid.appendChild(card));
     }
 
-    // =============================================
-    // 6. Selection Display Functions
-    // =============================================
+    // 6. Selection Display
     function updateFilterSelections() {
         document.querySelectorAll('.filter-dropdown-box').forEach(filterBox => {
             const filterType = filterBox.getAttribute('data-filter-type');
@@ -1243,87 +1290,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 filterBox.classList.remove('has-selection');
                 selectionContainer.textContent = 'All';
             }
-            
-            // Add tooltip if content overflows
-            if (selectionContainer.scrollHeight > selectionContainer.clientHeight) {
-                const selections = Array.from(checkedBoxes).map(cb => {
-                    return filterType === 'rating' 
-                        ? `${cb.dataset.rating} stars` 
-                        : cb.parentElement.textContent.trim();
-                });
-                filterBox.setAttribute('title', selections.join(', '));
-            } else {
-                filterBox.removeAttribute('title');
-            }
         });
     }
 
-    // =============================================
-    // 7. Helper Functions
-    // =============================================
-    function updateActiveFilters() {
-        state.activeFilters = {
-            category: getSelectedValues('[data-category]'),
-            pricing: getSelectedValues('[data-pricing]'),
-            rating: getSelectedValues('[data-rating]')
-        };
-    }
-
-    function getSelectedValues(selector) {
-        const checked = document.querySelectorAll(`input${selector}:checked`);
-        return Array.from(checked).map(el => el.dataset[selector.replace(/[\[\]]/g, '')]);
-    }
-
-    function getSortValue(card, sortType) {
-        switch(sortType) {
-            case 'az': 
-                return card.querySelector('h3').textContent.toLowerCase();
-            case 'rating': 
-                return parseFloat(card.dataset.rating) || 0;
-            case 'newest': 
-                return parseInt(card.dataset.date) || 0;
-            default: 
-                return parseFloat(card.dataset.rating) || 0; // popularity
-        }
-    }
-
-    function updateVisibleCount(visible) {
-        let countElement = document.querySelector('.filtered-count');
-        if (!countElement) {
-            countElement = document.createElement('div');
-            countElement.className = 'filtered-count';
-            document.querySelector('.sort-options')?.prepend(countElement);
-        }
-        countElement.textContent = `Showing ${visible} of ${elements.toolCards.length} tools`;
-    }
-
-    function showNoResultsMessage(show) {
-        let message = document.querySelector('.no-results-message');
-        
-        if (show) {
-            if (!message) {
-                message = document.createElement('div');
-                message.className = 'no-results-message show';
-                message.innerHTML = `
-                    <i class="fas fa-search"></i>
-                    <p>No tools match your filters</p>
-                    <button class="btn-text" onclick="resetFilters()">
-                        Reset filters
-                    </button>
-                `;
-                elements.toolsGrid.appendChild(message);
-            } else {
-                message.classList.add('show');
-            }
-        } else if (message) {
-            message.classList.remove('show');
-        }
-    }
-
-    // =============================================
-    // 8. Event Handlers
-    // =============================================
+    // 7. Event Handlers
     function toggleCategoryDropdown(e) {
+        if (!elements.desktop.categoryToggle || !elements.desktop.categoryDropdown) return;
+        
         e.preventDefault();
         e.stopPropagation();
         const isExpanded = elements.desktop.categoryToggle.getAttribute('aria-expanded') === 'true';
@@ -1371,11 +1344,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        showAllTools();
         applyFilters();
     }
 
     function handleFilterChange(e) {
         if (e.target.matches('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')) {
+            const filterType = e.target.dataset.category ? 'category' : 
+                             e.target.dataset.pricing ? 'pricing' : 
+                             e.target.dataset.rating ? 'rating' : null;
+            
+            if (!filterType) return;
+            
+            const filterValue = e.target.dataset[filterType];
+            
+            if (e.target.checked) {
+                state.activeFilters[filterType].push(filterValue);
+            } else {
+                state.activeFilters[filterType] = state.activeFilters[filterType].filter(
+                    val => val !== filterValue
+                );
+            }
+            
             syncFilters(e.target);
             applyFilters();
         }
@@ -1384,8 +1374,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function syncFilters(sourceElement) {
         const isMobile = sourceElement.closest('.mobile-filters-container');
         const filterType = sourceElement.dataset.category ? 'category' : 
-                          sourceElement.dataset.pricing ? 'pricing' : 
-                          sourceElement.dataset.rating ? 'rating' : null;
+                         sourceElement.dataset.pricing ? 'pricing' : 
+                         sourceElement.dataset.rating ? 'rating' : null;
         
         if (!filterType) return;
         
@@ -1399,6 +1389,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll(otherVersionSelector).forEach(el => {
             el.checked = isChecked;
         });
+        
+        updateFilterSelections();
     }
 
     function handleSortChange(e) {
@@ -1444,9 +1436,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // =============================================
-    // 9. Utility Functions
-    // =============================================
+    // 8. Helper Functions
+    function updateVisibleCount(visible) {
+        let countElement = document.querySelector('.filtered-count');
+        if (!countElement) {
+            countElement = document.createElement('div');
+            countElement.className = 'filtered-count';
+            document.querySelector('.sort-options')?.prepend(countElement);
+        }
+        countElement.textContent = `Showing ${visible} of ${elements.toolCards.length} tools`;
+    }
+
+    function showNoResultsMessage(show) {
+        if (!elements.toolsGrid) return;
+        
+        let message = document.querySelector('.no-results-message');
+        
+        if (show) {
+            if (!message) {
+                message = document.createElement('div');
+                message.className = 'no-results-message show';
+                message.innerHTML = `
+                    <i class="fas fa-search"></i>
+                    <p>No tools match your filters</p>
+                    <button class="btn-text" onclick="resetFilters()">
+                        Reset filters
+                    </button>
+                `;
+                elements.toolsGrid.appendChild(message);
+            } else {
+                message.classList.add('show');
+            }
+        } else if (message) {
+            message.classList.remove('show');
+        }
+    }
+
     function debounce(func, wait) {
         let timeout;
         return function() {
@@ -1458,12 +1483,8 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // =============================================
-    // 10. Initialize the Application
-    // =============================================
-    if (document.querySelector('.filter-section') || document.querySelector('.mobile-filters-container')) {
-        init();
-    }
+    // Initialize the application
+    init();
 });
 
 // Global reset function
