@@ -7,581 +7,770 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Tools Page Specific Styles */
-.category-header {
-    background-color: var(--dark-secondary);
-    padding: 40px 0;
-    margin-bottom: 40px;
-    border-radius: var(--border-radius);
-}
-
-.category-header-content {
-    display: flex;
-    align-items: center;
-}
-
-.category-icon-large {
-    width: 80px;
-    height: 80px;
-    background-color: var(--dark-tertiary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 25px;
-    font-size: 2rem;
-    color: var(--primary-light);
-}
-
-.category-title h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.category-title p {
-    color: var(--text-muted);
-}
-
-.category-page {
-    display: flex;
-    gap: 30px;
-}
-
-.category-sidebar {
-    flex: 0 0 250px;
-}
-
-.category-main {
-    flex: 1;
-}
-
-.sort-options {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-    align-items: center;
-}
-
-.sort-options label {
-    margin-right: 10px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.sort-options select {
-    padding: 8px 15px;
-    background-color: var(--dark-secondary);
-    color: var(--text-primary);
-    border: 1px solid var(--dark-tertiary);
-    border-radius: var(--border-radius);
-}
-
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-}
-
-.tool-card {
-    position: relative;
-    background-color: var(--dark-secondary);
-    border-radius: var(--border-radius);
-    padding: 20px;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.tool-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.tool-card-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.tool-logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--dark-tertiary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    overflow: hidden;
-}
-
-.tool-logo img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-}
-
-.tool-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-}
-
-.tool-info .tool-category {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.tool-description {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 15px;
-    display: -webkit-box;
-    --webkit-line-clamp: 3;
-    --webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.tool-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-}
-
-.tool-pricing {
-    background-color: var(--primary-dark);
-    color: white;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 500;
-}
-
-.tool-rating {
-    color: var(--warning);
-}
-
-/* Filter System Styles */
-.filter-section {
-    background-color: var(--dark-secondary);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    box-shadow: var(--box-shadow);
-}
-
-.filter-section h3 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.25rem;
-    font-size: 1.125rem;
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-.filter-options {
-    margin-bottom: 1.5rem;
-}
-
-.filter-options:last-child {
-    margin-bottom: 0;
-}
-
-.filter-options h4 {
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-}
-
-.filter-options h4 i {
-    margin-right: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--primary-light);
-}
-
-.filter-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.filter-list li {
-    margin-bottom: 0.5rem;
-}
-
-.filter-label {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: 4px;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.filter-label:hover {
-    background-color: var(--dark-tertiary);
-}
-
-.filter-label input[type="checkbox"] {
-    width: 1.1rem;
-    height: 1.1rem;
-    margin-right: 0.75rem;
-    accent-color: var(--primary-color);
-    cursor: pointer;
-}
-
-.filter-label span {
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-    transition: color 0.2s ease;
-}
-
-.filter-label:hover span {
-    color: var(--text-primary);
-}
-
-/* Category Dropdown */
-.category-filter-dropdown {
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-.dropdown-toggle {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background-color: var(--dark-tertiary);
-    border: 1px solid var(--dark-tertiary);
-    border-radius: var(--border-radius);
-    color: var(--text-primary);
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.dropdown-toggle:hover {
-    border-color: var(--primary-light);
-}
-
-.dropdown-toggle i {
-    transition: transform 0.2s ease;
-    font-size: 0.8rem;
-}
-
-.dropdown-toggle[aria-expanded="true"] i {
-    transform: rotate(180deg);
-}
-
-.dropdown-menu {
-    position: absolute;
-    width: 100%;
-    background-color: var(--dark-secondary);
-    border: 1px solid var(--dark-tertiary);
-    border-radius: var(--border-radius);
-    padding: 0.5rem 0;
-    margin-top: 0.5rem;
-    z-index: 50;
-    box-shadow: var(--box-shadow);
-    display: none;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.dropdown-menu li {
-    padding: 0.5rem 1rem;
-    transition: background-color 0.2s ease;
-}
-
-.dropdown-menu li:hover {
-    background-color: var(--dark-tertiary);
-}
-
-/* Reset Button */
-.reset-filters {
-    background: none;
-    border: none;
-    color: var(--primary-light);
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition: var(--transition);
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-weight: 500;
-}
-
-.reset-filters:hover {
-    color: var(--primary-color);
-    background-color: rgba(124, 58, 237, 0.1);
-}
-
-/* Mobile Filters */
-.mobile-filters-container {
-    display: none;
-    gap: 1rem;
-    flex-direction: column;
-}
-
-.filter-dropdown-box {
-    position: relative;
-    flex: 1 1 100%;
-    min-width: 140px;
-}
-
-.filter-dropdown-toggle {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background-color: var(--dark-tertiary);
-    border: 1px solid var(--dark-tertiary);
-    border-radius: var(--border-radius);
-    color: var(--text-primary);
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-size: 0.875rem;
-    transition: var(--transition);
-}
-
-.filter-dropdown-toggle:hover {
-    border-color: var(--primary-light);
-}
-
-.filter-dropdown-toggle i {
-    transition: transform 0.2s ease;
-    font-size: 0.75rem;
-}
-
-.filter-dropdown-toggle.active i {
-    transform: rotate(180deg);
-}
-
-.filter-dropdown-menu {
-    position: absolute;
-    width: 100%;
-    background-color: var(--dark-secondary);
-    border: 1px solid var(--dark-tertiary);
-    border-radius: var(--border-radius);
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    z-index: 100;
-    box-shadow: var(--box-shadow);
-    display: none;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.filter-dropdown-menu.active {
-    display: block;
-    animation: fadeIn 0.2s ease-out;
-}
-
-.filter-dropdown-item {
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-}
-
-.filter-dropdown-item:hover {
-    background-color: var(--dark-tertiary);
-}
-
-.filter-dropdown-item label {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    cursor: pointer;
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-}
-
-.filter-dropdown-item input {
-    margin-right: 0.75rem;
-    accent-color: var(--primary-color);
-}
-
-/* Mobile Reset Button */
-.reset-filters-mobile {
-    flex: 1 1 100%;
-    padding: 0.75rem;
-    background-color: var(--primary-dark);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: var(--transition);
-}
-
-.reset-filters-mobile:hover {
-    background-color: var(--primary-color);
-}
-
-.reset-filters-mobile i {
-    font-size: 0.8rem;
-}
-
-/* Filter Selection Display */
-.filter-selection {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-primary);
-    display: -webkit-box;
-    --webkit-line-clamp: 2;
-    --webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.3;
-    max-height: 2.6em;
-    margin-top: 2px;
-}
-
-/* Active state for filters with selections */
-.filter-dropdown-box.has-selection .filter-dropdown-toggle {
-    background-color: rgba(123, 92, 246, 0.15);
-    border-color: var(--primary-light);
-}
-
-.filter-dropdown-box.has-selection .filter-selection {
-    color: var(--primary-light);
-}
-
-/* Badge style for individual selections */
-.selection-badge {
-    display: inline-block;
-    background-color: var(--primary-dark);
-    color: white;
-    padding: 2px 6px;
-    border-radius: 10px;
-    font-size: 11px;
-    margin-right: 4px;
-    margin-bottom: 2px;
-    white-space: nowrap;
-}
-
-/* No Results Message */
-.no-results-message {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-muted);
-    background-color: var(--dark-secondary);
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-}
-
-.filtered-count {
-    margin-right: 15px;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    white-space: nowrap;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .category-page {
-        flex-direction: column;
-    }
-    
-    .category-sidebar {
-        display: none;
-    }
-    
-    .mobile-filters-container {
-        display: flex;
-    }
-    
-    .tools-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-}
-
-@media (min-width: 769px) {
-    .mobile-filters-container {
-        display: none !important;
-    }
-    
-    .category-sidebar {
-        display: block;
-    }
-}
-@media (min-width: 769px) {
-    .tools-grid {
-        display: grid;
-    }
-    
-    .tool-card {
-        display: block;
-    }
-}
+        :root {
+            --primary-color: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --dark-primary: #1e293b;
+            --dark-secondary: #334155;
+            --dark-tertiary: #475569;
+            --text-primary: #f8fafc;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --border-radius: 8px;
+            --transition: all 0.2s ease;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background-color: var(--dark-secondary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--box-shadow);
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Navigation */
+        .main-nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Active Navigation Item */
+        .main-nav li.active a {
+            position: relative;
+            color: var(--primary-light);
+        }
+
+        .main-nav li.active a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+            transform-origin: left;
+            animation: scaleIn 0.3s ease-out forwards;
+        }
+
+        /* Category Header */
+        .category-header {
+            background-color: var(--dark-secondary);
+            padding: 40px 0;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius);
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .category-header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .category-icon-large {
+            width: 80px;
+            height: 80px;
+            background-color: var(--dark-tertiary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            font-size: 2rem;
+            color: var(--primary-light);
+        }
+
+        .category-title h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .category-title p {
+            color: var(--text-muted);
+        }
+
+        /* Layout */
+        .category-page {
+            display: flex;
+            gap: 30px;
+        }
+
+        .category-sidebar {
+            flex: 0 0 280px;
+        }
+
+        .category-main {
+            flex: 1;
+        }
+
+        /* Sort Options */
+        .sort-options {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .sort-options label {
+            margin-right: 10px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .sort-options select {
+            padding: 8px 15px;
+            background-color: var(--dark-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--dark-tertiary);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .sort-options select:hover {
+            border-color: var(--primary-light);
+        }
+
+        /* Tool Cards */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            perspective: 1000px;
+        }
+
+        .tool-card {
+            background-color: var(--dark-secondary);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: all 0.3s ease-in-out, box-shadow 0.2s ease-out;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            will-change: transform;
+            animation: cardEntrance 0.5s ease-out both;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .tool-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .tool-logo {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            background-color: var(--dark-tertiary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .tool-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .tool-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .tool-category {
+            display: inline-block;
+            font-size: 0.75rem;
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .tool-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .tool-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .tool-pricing {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .tool-pricing[data-pricing="freemium"] {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .tool-pricing[data-pricing="paid"] {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .tool-pricing[data-pricing="free"] {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .tool-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: var(--warning);
+        }
+
+        /* Filter System Styles */
+        .filter-section {
+            background-color: var(--dark-secondary);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-section::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--primary-gradient);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .filter-section:hover::before {
+            transform: scaleY(1);
+        }
+
+        .filter-section h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .filter-options {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-options:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-options h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-options h4 i {
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+        }
+
+        .filter-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .filter-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Custom Checkboxes */
+        .filter-label {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .filter-label:hover {
+            background-color: var(--dark-tertiary);
+        }
+
+        .filter-label input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            border: 2px solid var(--dark-tertiary);
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .filter-label input[type="checkbox"]:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .filter-label input[type="checkbox"]:checked::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .filter-label input[type="checkbox"]:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .filter-label input[type="checkbox"]:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+
+        .filter-label span {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            transition: color 0.2s ease;
+        }
+
+        .filter-label:hover span {
+            color: var(--text-primary);
+        }
+
+        /* Reset Button - Desktop */
+        .reset-filters {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary-light);
+            color: var(--primary-light);
+            font-size: 0.875rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+
+        .reset-filters:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+        }
+
+        .reset-filters:active {
+            transform: translateY(0);
+        }
+
+        /* Mobile Filters Container */
+        .mobile-filters-container {
+            display: none;
+            gap: 1rem;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+            background: var(--dark-secondary);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Filter Dropdown Toggle */
+        .filter-dropdown-toggle {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--dark-tertiary);
+            border: 1px solid var(--dark-tertiary);
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-dropdown-toggle:hover {
+            border-color: var(--primary-light);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+
+        .filter-dropdown-toggle.active {
+            border-color: var(--primary-color);
+            background-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .filter-dropdown-toggle .filter-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-dropdown-toggle .filter-selection {
+            color: var(--primary-light);
+            font-weight: 500;
+            max-width: 50%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Filter Dropdown Menu */
+        .filter-dropdown-menu {
+            position: relative;
+            width: 100%;
+            background-color: var(--dark-secondary);
+            border: 1px solid var(--dark-tertiary);
+            border-radius: var(--border-radius);
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            z-index: 10;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            list-style: none;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .filter-dropdown-menu.active {
+            display: block;
+        }
+
+        .filter-dropdown-item {
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .filter-dropdown-item:hover {
+            background-color: var(--dark-tertiary);
+        }
+
+        .filter-dropdown-item label {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            gap: 0.75rem;
+        }
+
+        .filter-dropdown-item:hover label {
+            color: var(--text-primary);
+        }
+
+        .filter-dropdown-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-color);
+        }
+
+        /* Reset Button - Mobile */
+        .reset-filters-mobile {
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .reset-filters-mobile:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .reset-filters-mobile:active {
+            transform: translateY(0);
+        }
+
+        .reset-filters i, .reset-filters-mobile i {
+            transition: transform 0.5s ease;
+        }
+
+        .reset-filters:hover i, .reset-filters-mobile:hover i {
+            transform: rotate(360deg);
+        }
+
+        /* No Results Message */
+        .no-results-message {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            background-color: var(--dark-secondary);
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .no-results-message.show {
+            display: flex;
+        }
+
+        .no-results-message i {
+            font-size: 2rem;
+            color: var(--primary-light);
+        }
+
+        .no-results-message .btn-text {
+            background: none;
+            border: none;
+            color: var(--primary-light);
+            text-decoration: underline;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .no-results-message .btn-text:hover {
+            color: var(--primary-color);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--dark-secondary);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .pagination a:hover {
+            background-color: var(--dark-tertiary);
+        }
+
+        .pagination a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(20px) rotateX(10deg); }
+            to { opacity: 1; transform: translateY(0) rotateX(0); }
+        }
+
+        /* Card Stagger Animation */
+        .tool-card:nth-child(1) { animation-delay: 0.1s; }
+        .tool-card:nth-child(2) { animation-delay: 0.2s; }
+        .tool-card:nth-child(3) { animation-delay: 0.3s; }
+        .tool-card:nth-child(4) { animation-delay: 0.4s; }
+        .tool-card:nth-child(5) { animation-delay: 0.5s; }
+        .tool-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .category-page {
+                flex-direction: column;
+            }
+            
+            .category-sidebar {
+                display: none;
+            }
+            
+            .mobile-filters-container {
+                display: flex;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .category-header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .category-icon-large {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-filters-container {
+                display: none !important;
+            }
+            
+            .category-sidebar {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
-<header class="main-header">
-    <div class="container">
-        <div class="logo">
-            <a href="index.html">
-                <img src="assets/img/logo.webp" alt="AI Nexus Logo" width="150">
-            </a>
-        </div>
-        
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li ><a href="tools.html">Tools</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="comparison.html">Compare Tools</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/img/logo.webp" alt="AI Nexus Logo">
+                </a>
+            </div>
             
-            <div class="mobile-menu-buttons">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="tools.html">Tools</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="comparison.html">Compare Tools</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                
+                <div class="mobile-menu-buttons">
+                    <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
+                    <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+                </div>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-toggle" aria-label="Toggle search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
                 <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
             </div>
-        </nav>
-        
-        <div class="header-actions">
-            <button class="search-toggle" aria-label="Toggle search">
-                <i class="fas fa-search"></i>
-            </button>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <a href="submit-tool.html" class="btn btn-primary">Submit Tool</a>
-            <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+            
+            <div class="mobile-search">
+                <form class="search-form" role="search">
+                    <input type="search" placeholder="Search AI tools..." aria-label="Search AI tools">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
         </div>
-        
-        <div class="mobile-search">
-            <form class="search-form" role="search">
-                <input type="search" placeholder="Search AI tools..." aria-label="Search AI tools">
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-    </div>
-</header>
+    </header>
 
     <main id="main-content">
         <!-- Tools Header -->
@@ -606,231 +795,205 @@
                     <!-- Sidebar Filters -->
                     <aside class="category-sidebar">
                         <div class="filter-section">
-                            <h3>Filters <button type="button" class="reset-filters">Reset</button></h3>
+                            <h3>Filters <button type="button" class="reset-filters">
+                                <i class="fas fa-sync-alt"></i> Reset
+                            </button></h3>
                             
                             <div class="filter-options">
-                                <h4>Category</h4>
-                                <div class="category-filter-dropdown">
-                                    <button class="dropdown-toggle" aria-expanded="false" aria-controls="category-dropdown">
-                                        Select Categories <i class="fas fa-chevron-down"></i>
-                                    </button>
-                                    <ul id="category-dropdown" class="dropdown-menu">
-                                        <li>
-                                            <label>
-                                                <input type="checkbox"  data-category="generative-ai"> Generative AI
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="checkbox"  data-category="chatbots"> Chatbots
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="checkbox"  data-category="image-generation"> Image Generation
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="checkbox"  data-category="video-editing"> Video Editing
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="checkbox"  data-category="audio"> Audio Tools
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="filter-options">
-                                <h4>Pricing</h4>
-                                <ul>
+                                <h4><i class="fas fa-tags"></i> Category</h4>
+                                <ul class="filter-list">
                                     <li>
-                                        <label>
-                                            <input type="checkbox"  data-pricing="free"> Free
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-category="generative-ai">
+                                            <span>Generative AI</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox"  data-pricing="freemium"> Freemium
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-category="chatbots">
+                                            <span>Chatbots</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox"  data-pricing="paid"> Paid
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-category="image-generation">
+                                            <span>Image Generation</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-category="video-editing">
+                                            <span>Video Editing</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-category="audio">
+                                            <span>Audio Tools</span>
                                         </label>
                                     </li>
                                 </ul>
                             </div>
                             
                             <div class="filter-options">
-                                <h4>Rating</h4>
-                                <ul>
+                                <h4><i class="fas fa-tag"></i> Pricing</h4>
+                                <ul class="filter-list">
                                     <li>
-                                        <label>
-                                            <input type="checkbox"  data-rating="5"> 
-                                            <span class="stars">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </span>
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-pricing="free">
+                                            <span>Free</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox"  data-rating="4"> 
-                                            <span class="stars">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </span>
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-pricing="freemium">
+                                            <span>Freemium</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox"  data-rating="3"> 
-                                            <span class="stars">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </span>
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-pricing="paid">
+                                            <span>Paid</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="filter-options">
+                                <h4><i class="fas fa-star"></i> Rating</h4>
+                                <ul class="filter-list">
+                                    <li>
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-rating="5">
+                                            <span>★★★★★</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-rating="4">
+                                            <span>★★★★☆</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="filter-label">
+                                            <input type="checkbox" data-rating="3">
+                                            <span>★★★☆☆</span>
                                         </label>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </aside>
+                    
                     <!-- Mobile Filters -->
-<div class="mobile-filters-container">
-    <!-- Category Filter (Fixed - no duplicate wrapper) -->
-    <div class="filter-dropdown-box" data-filter-type="category">
-        <button class="filter-dropdown-toggle" data-target="category-dropdown-mobile">
-            <div class="filter-header">
-                <i class="fas fa-tags"></i>
-                <span class="filter-title">Category</span>
-            </div>
-            <div class="filter-selection"></div>
-        </button>
-        <ul id="category-dropdown-mobile" class="filter-dropdown-menu">
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-category="generative-ai"> Generative AI
-                </label>
-            </li>
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-category="chatbots"> Chatbots
-                </label>
-            </li>
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-category="image-generation"> Image Generation
-                </label>
-            </li>
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-category="video-editing"> Video Editing
-                </label>
-            </li>
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-category="audio"> Audio Tools
-                </label>
-            </li>
-        </ul>
-    </div>
+                    <div class="mobile-filters-container">
+                        <!-- Category Filter -->
+                        <div class="filter-dropdown-box" data-filter-type="category">
+                            <button class="filter-dropdown-toggle" data-target="category-dropdown-mobile">
+                                <div class="filter-header">
+                                    <i class="fas fa-tags"></i>
+                                    <span class="filter-title">Category</span>
+                                </div>
+                                <div class="filter-selection">All</div>
+                            </button>
+                            <ul id="category-dropdown-mobile" class="filter-dropdown-menu">
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-category="generative-ai"> Generative AI
+                                    </label>
+                                </li>
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-category="chatbots"> Chatbots
+                                    </label>
+                                </li>
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-category="image-generation"> Image Generation
+                                    </label>
+                                </li>
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-category="video-editing"> Video Editing
+                                    </label>
+                                </li>
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-category="audio"> Audio Tools
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
 
-    <!-- Pricing Filter -->
-    <div class="filter-dropdown-box" data-filter-type="pricing">
-        <button class="filter-dropdown-toggle" data-target="pricing-dropdown-mobile">
-            <div class="filter-header">
-                <i class="fas fa-tag"></i> <!-- Changed icon to be distinct from category -->
-                <span class="filter-title">Pricing</span>
-            </div>
-            <div class="filter-selection"></div>
-        </button>
-        <ul id="pricing-dropdown-mobile" class="filter-dropdown-menu">
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-pricing="free"> Free
-                </label>
-            </li>
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-pricing="freemium"> Freemium
-                </label>
-            </li>
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-pricing="paid"> Paid
-                </label>
-            </li>
-        </ul>
-    </div>
+                        <!-- Pricing Filter -->
+                        <div class="filter-dropdown-box" data-filter-type="pricing">
+                            <button class="filter-dropdown-toggle" data-target="pricing-dropdown-mobile">
+                                <div class="filter-header">
+                                    <i class="fas fa-tag"></i>
+                                    <span class="filter-title">Pricing</span>
+                                </div>
+                                <div class="filter-selection">All</div>
+                            </button>
+                            <ul id="pricing-dropdown-mobile" class="filter-dropdown-menu">
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-pricing="free"> Free
+                                    </label>
+                                </li>
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-pricing="freemium"> Freemium
+                                    </label>
+                                </li>
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-pricing="paid"> Paid
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
 
-    <!-- Rating Filter -->
-    <div class="filter-dropdown-box" data-filter-type="rating">
-        <button class="filter-dropdown-toggle" data-target="rating-dropdown-mobile">
-            <div class="filter-header">
-                <i class="fas fa-star"></i>
-                <span class="filter-title">Rating</span>
-            </div>
-            <div class="filter-selection"></div>
-        </button>
-        <ul id="rating-dropdown-mobile" class="filter-dropdown-menu">
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-rating="5"> 
-                    <span class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </span>
-                </label>
-            </li>
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-rating="4"> 
-                    <span class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </span>
-                </label>
-            </li>
-            <li class="filter-dropdown-item">
-                <label>
-                    <input type="checkbox" data-rating="3"> 
-                    <span class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </span>
-                </label>
-            </li>
-        </ul>
-    </div>
+                        <!-- Rating Filter -->
+                        <div class="filter-dropdown-box" data-filter-type="rating">
+                            <button class="filter-dropdown-toggle" data-target="rating-dropdown-mobile">
+                                <div class="filter-header">
+                                    <i class="fas fa-star"></i>
+                                    <span class="filter-title">Rating</span>
+                                </div>
+                                <div class="filter-selection">All</div>
+                            </button>
+                            <ul id="rating-dropdown-mobile" class="filter-dropdown-menu">
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-rating="5"> 
+                                        <span class="stars">★★★★★</span>
+                                    </label>
+                                </li>
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-rating="4"> 
+                                        <span class="stars">★★★★☆</span>
+                                    </label>
+                                </li>
+                                <li class="filter-dropdown-item">
+                                    <label>
+                                        <input type="checkbox" data-rating="3"> 
+                                        <span class="stars">★★★☆☆</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
 
-    <button type="button" class="reset-filters-mobile">
-        <i class="fas fa-sync-alt"></i> Reset Filters
-    </button>
-</div>                    <!-- Main Content -->
+                        <button type="button" class="reset-filters-mobile">
+                            <i class="fas fa-sync-alt"></i>
+                            Reset Filters
+                        </button>
+                    </div>
+                    
+                    <!-- Main Content -->
                     <div class="category-main">
                         <div class="sort-options">
+                            <span class="filtered-count">Showing 6 of 6 tools</span>
                             <label for="sort">Sort by:</label>
                             <select id="sort">
                                 <option value="popular">Most Popular</option>
@@ -841,168 +1004,169 @@
                         </div>
                         
                         <div class="tools-grid">
-    <!-- Tool 1 - ChatGPT -->
-    <div class="tool-card" 
-         data-categories="chatbots,text-generation" 
-         data-pricing="freemium" 
-         data-rating="4.8"
-         data-date="20221130" 
-         onclick="window.location.href='tool-detail.html?tool=chatgpt'">
-        <div class="tool-card-header">
-            <div class="tool-logo">
-                <img src="assets/img/chat.webp" alt="ChatGPT" loading="lazy">
-            </div>
-            <div class="tool-info">
-                <h3>ChatGPT</h3>
-                <span class="tool-category">Text Generation</span>
-            </div>
-        </div>
-        <div class="tool-description">
-            Advanced AI chatbot capable of natural conversations and task assistance.
-        </div>
-        <div class="tool-meta">
-            <span class="tool-pricing">Freemium</span>
-            <span class="tool-rating">
-                <i class="fas fa-star"></i> <span class="rating-value">4.8</span>
-            </span>
-        </div>
-    </div>
-    
-    <!-- Tool 2 - Midjourney -->
-    <div class="tool-card" 
-         data-categories="image-generation,art" 
-         data-pricing="paid" 
-         data-rating="4.5"
-         data-date="20220715"
-         onclick="window.location.href='tool-detail.html?tool=midjourney'">
-        <div class="tool-card-header">
-            <div class="tool-logo">
-                <img src="assets/img/mid.webp" alt="Midjourney" loading="lazy">
-            </div>
-            <div class="tool-info">
-                <h3>Midjourney</h3>
-                <span class="tool-category">Image Generation</span>
-            </div>
-        </div>
-        <div class="tool-description">
-            AI-powered art generation tool that creates images from text prompts.
-        </div>
-        <div class="tool-meta">
-            <span class="tool-pricing">Paid</span>
-            <span class="tool-rating">
-                <i class="fas fa-star"></i> <span class="rating-value">4.5</span>
-            </span>
-        </div>
-    </div>
-    
-    <!-- Tool 3 - GitHub Copilot -->
-    <div class="tool-card" 
-         data-categories="code-generation,developer-tools" 
-         data-pricing="paid" 
-         data-rating="4.7"
-         data-date="20210629"
-         onclick="window.location.href='tool-detail.html?tool=github-copilot'">
-        <div class="tool-card-header">
-            <div class="tool-logo">
-                <img src="assets/img/git3.webp" alt="GitHub Copilot" loading="lazy">
-            </div>
-            <div class="tool-info">
-                <h3>GitHub Copilot</h3>
-                <span class="tool-category">Code Generation</span>
-            </div>
-        </div>
-        <div class="tool-description">
-            AI pair programmer that helps you write better code faster.
-        </div>
-        <div class="tool-meta">
-            <span class="tool-pricing">Paid</span>
-            <span class="tool-rating">
-                <i class="fas fa-star"></i> <span class="rating-value">4.7</span>
-            </span>
-        </div>
-    </div>
-    
-    <!-- Tool 4 - Claude AI -->
-    <div class="tool-card" 
-         data-categories="chatbots,text-generation" 
-         data-pricing="freemium" 
-         data-rating="4.6"
-         data-date="20230315"
-         onclick="window.location.href='tool-detail.html?tool=claude'">
-        <div class="tool-card-header">
-            <div class="tool-logo">
-                <img src="assets/img/claude.webp" alt="Claude" loading="lazy">
-            </div>
-            <div class="tool-info">
-                <h3>Claude AI</h3>
-                <span class="tool-category">Text Generation</span>
-            </div>
-        </div>
-        <div class="tool-description">
-            AI assistant focused on helpful, harmless, and honest conversations.
-        </div>
-        <div class="tool-meta">
-            <span class="tool-pricing">Freemium</span>
-            <span class="tool-rating">
-                <i class="fas fa-star"></i> <span class="rating-value">4.6</span>
-            </span>
-        </div>
-    </div>
-    
-    <!-- Tool 5 - Runway ML -->
-    <div class="tool-card" 
-         data-categories="video-editing,multimedia" 
-         data-pricing="paid" 
-         data-rating="4.4"
-         data-date="20220120"
-         onclick="window.location.href='tool-detail.html?tool=runway'">
-        <div class="tool-card-header">
-            <div class="tool-logo">
-                <img src="assets/img/run.webp" alt="Runway" loading="lazy">
-            </div>
-            <div class="tool-info">
-                <h3>Runway ML</h3>
-                <span class="tool-category">Video Generation</span>
-            </div>
-        </div>
-        <div class="tool-description">
-            Creative suite with AI tools for video, image, and more.
-        </div>
-        <div class="tool-meta">
-            <span class="tool-pricing">Paid</span>
-            <span class="tool-rating">
-                <i class="fas fa-star"></i> <span class="rating-value">4.4</span>
-            </span>
-        </div>
-    </div>
-    
-    <!-- Tool 6 - DALL-E -->
-    <div class="tool-card" 
-         data-categories="image-generation,art" 
-         data-pricing="freemium" 
-         data-rating="4.3"
-         data-date="20220105"
-         onclick="window.location.href='tool-detail.html?tool=dalle'">
-        <div class="tool-card-header">
-            <div class="tool-logo">
-                <img src="assets/img/dall.webp" alt="DALL-E" loading="lazy">
-            </div>
-            <div class="tool-info">
-                <h3>DALL-E</h3>
-                <span class="tool-category">Image Generation</span>
-            </div>
-        </div>
-        <div class="tool-description">
-            AI system that can create realistic images from text descriptions.
-        </div>
-        <div class="tool-meta">
-            <span class="tool-pricing">Freemium</span>
-            <span class="tool-rating">
-                <i class="fas fa-star"></i> <span class="rating-value">4.3</span>
-            </span>
-        </div>
-    </div>
-</div>
+                            <!-- Tool 1 - ChatGPT -->
+                            <div class="tool-card" 
+                                 data-categories="chatbots,text-generation" 
+                                 data-pricing="freemium" 
+                                 data-rating="4.8"
+                                 data-date="20221130" 
+                                 onclick="window.location.href='tool-detail.html?tool=chatgpt'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="assets/img/chat.webp" alt="ChatGPT" loading="lazy">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>ChatGPT</h3>
+                                        <span class="tool-category">Text Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    Advanced AI chatbot capable of natural conversations and task assistance with human-like responses.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.8
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 2 - Midjourney -->
+                            <div class="tool-card" 
+                                 data-categories="image-generation,art" 
+                                 data-pricing="paid" 
+                                 data-rating="4.5"
+                                 data-date="20220715"
+                                 onclick="window.location.href='tool-detail.html?tool=midjourney'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="assets/img/mid.webp" alt="Midjourney" loading="lazy">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>Midjourney</h3>
+                                        <span class="tool-category">Image Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    AI-powered art generation tool that creates stunning images from text prompts with artistic flair.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing" data-pricing="paid">Paid</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.5
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 3 - GitHub Copilot -->
+                            <div class="tool-card" 
+                                 data-categories="code-generation,developer-tools" 
+                                 data-pricing="paid" 
+                                 data-rating="4.7"
+                                 data-date="20210629"
+                                 onclick="window.location.href='tool-detail.html?tool=github-copilot'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="assets/img/git3.webp" alt="GitHub Copilot" loading="lazy">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>GitHub Copilot</h3>
+                                        <span class="tool-category">Code Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    AI pair programmer that helps you write better code faster with intelligent suggestions.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing" data-pricing="paid">Paid</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.7
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 4 - Claude AI -->
+                            <div class="tool-card" 
+                                 data-categories="chatbots,text-generation" 
+                                 data-pricing="freemium" 
+                                 data-rating="4.6"
+                                 data-date="20230315"
+                                 onclick="window.location.href='tool-detail.html?tool=claude'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="assets/img/claude.webp" alt="Claude" loading="lazy">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>Claude AI</h3>
+                                        <span class="tool-category">Text Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    AI assistant focused on helpful, harmless, and honest conversations with strong ethics.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.6
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 5 - Runway ML -->
+                            <div class="tool-card" 
+                                 data-categories="video-editing,multimedia" 
+                                 data-pricing="paid" 
+                                 data-rating="4.4"
+                                 data-date="20220120"
+                                 onclick="window.location.href='tool-detail.html?tool=runway'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="assets/img/run.webp" alt="Runway" loading="lazy">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>Runway ML</h3>
+                                        <span class="tool-category">Video Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    Creative suite with powerful AI tools for video, image, and multimedia content creation.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing" data-pricing="paid">Paid</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.4
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tool 6 - DALL-E -->
+                            <div class="tool-card" 
+                                 data-categories="image-generation,art" 
+                                 data-pricing="freemium" 
+                                 data-rating="4.3"
+                                 data-date="20220105"
+                                 onclick="window.location.href='tool-detail.html?tool=dalle'">
+                                <div class="tool-card-header">
+                                    <div class="tool-logo">
+                                        <img src="assets/img/dall.webp" alt="DALL-E" loading="lazy">
+                                    </div>
+                                    <div class="tool-info">
+                                        <h3>DALL-E</h3>
+                                        <span class="tool-category">Image Generation</span>
+                                    </div>
+                                </div>
+                                <div class="tool-description">
+                                    AI system that can create realistic and creative images from text descriptions.
+                                </div>
+                                <div class="tool-meta">
+                                    <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+                                    <span class="tool-rating">
+                                        <i class="fas fa-star"></i> 4.3
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <!-- Pagination -->
                         <div class="pagination">
                             <a href="#" class="active">1</a>
@@ -1076,422 +1240,380 @@
 
     <script src="assets/js/main.js"></script>
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. DOM Elements
-    const elements = {
-        desktop: {
-            filterSection: document.querySelector('.filter-section'),
-            resetButton: document.querySelector('.reset-filters'),
-            categoryToggle: document.querySelector('.dropdown-toggle'),
-            categoryDropdown: document.getElementById('category-dropdown'),
-            filterCheckboxes: document.querySelectorAll('.filter-section input[type="checkbox"]'),
-            sortSelect: document.getElementById('sort')
-        },
-        mobile: {
-            container: document.querySelector('.mobile-filters-container'),
-            dropdownToggles: document.querySelectorAll('.filter-dropdown-toggle'),
-            resetButton: document.querySelector('.reset-filters-mobile'),
-            filterCheckboxes: document.querySelectorAll('.filter-dropdown-menu input[type="checkbox"]')
-        },
-        toolCards: document.querySelectorAll('.tool-card'),
-        toolsGrid: document.querySelector('.tools-grid')
-    };
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. DOM Elements
+            const elements = {
+                desktop: {
+                    filterSection: document.querySelector('.filter-section'),
+                    resetButton: document.querySelector('.reset-filters'),
+                    filterCheckboxes: document.querySelectorAll('.filter-section input[type="checkbox"]'),
+                    sortSelect: document.getElementById('sort')
+                },
+                mobile: {
+                    container: document.querySelector('.mobile-filters-container'),
+                    dropdownToggles: document.querySelectorAll('.filter-dropdown-toggle'),
+                    resetButton: document.querySelector('.reset-filters-mobile'),
+                    filterCheckboxes: document.querySelectorAll('.filter-dropdown-menu input[type="checkbox"]')
+                },
+                toolCards: document.querySelectorAll('.tool-card'),
+                toolsGrid: document.querySelector('.tools-grid')
+            };
 
-    // 2. State Management
-    const state = {
-        activeFilters: {
-            category: [],
-            pricing: [],
-            rating: []
-        },
-        sortMethod: 'popular'
-    };
+            // 2. State Management
+            const state = {
+                activeFilters: {
+                    category: [],
+                    pricing: [],
+                    rating: []
+                },
+                sortMethod: 'popular'
+            };
 
-    // 3. Initialization
-    function init() {
-        showAllTools();
-        setupEventListeners();
-        setDefaultFilters();
-        updateFilterSelections();
-        applyFilters();
-        
-        // Debug initial state
-        console.log("Initialized filters", state);
-    }
-
-    function showAllTools() {
-        elements.toolCards.forEach(card => {
-            card.style.display = 'block';
-        });
-    }
-
-    function setDefaultFilters() {
-        state.activeFilters = {
-            category: [],
-            pricing: [],
-            rating: []
-        };
-        state.sortMethod = 'popular';
-        
-        if (elements.desktop.sortSelect) {
-            elements.desktop.sortSelect.value = state.sortMethod;
-        }
-        
-        // Uncheck all filter checkboxes
-        document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
-            .forEach(checkbox => { 
-                checkbox.checked = false; 
-            });
-    }
-
-    // 4. Event Listeners
-    function setupEventListeners() {
-        // Desktop Events
-        if (elements.desktop.categoryToggle) {
-            elements.desktop.categoryToggle.addEventListener('click', toggleCategoryDropdown);
-        }
-        
-        if (elements.desktop.resetButton) {
-            elements.desktop.resetButton.addEventListener('click', resetFilters);
-        }
-        
-        if (elements.desktop.sortSelect) {
-            elements.desktop.sortSelect.addEventListener('change', handleSortChange);
-        }
-
-        // Mobile Events
-        if (elements.mobile.container) {
-            elements.mobile.dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', handleMobileDropdownToggle);
-            });
-            
-            if (elements.mobile.resetButton) {
-                elements.mobile.resetButton.addEventListener('click', resetFilters);
+            // 3. Initialization
+            function init() {
+                showAllTools();
+                setupEventListeners();
+                setDefaultFilters();
+                updateFilterSelections();
+                applyFilters();
             }
-        }
 
-        // Shared Events
-        document.addEventListener('click', handleOutsideClick);
-        document.addEventListener('change', handleFilterChange);
-        window.addEventListener('resize', debounce(handleWindowResize, 250));
-    }
-
-    // 5. Core Filter Functions
-    function applyFilters() {
-        console.log("Applying filters:", state.activeFilters);
-        let visibleCount = 0;
-        
-        elements.toolCards.forEach(card => {
-            const cardData = {
-                categories: card.dataset.categories?.split(',').map(c => c.trim()) || [],
-                pricing: card.dataset.pricing || '',
-                rating: parseFloat(card.dataset.rating) || 0,
-                name: card.querySelector('h3').textContent.toLowerCase(),
-                date: parseInt(card.dataset.date) || 0
-            };
-
-            const shouldShow = matchesFilters(cardData);
-            card.style.display = shouldShow ? 'block' : 'none';
-            if (shouldShow) visibleCount++;
-            
-            console.log(`Card: ${cardData.name}`, 
-                       `Visible: ${shouldShow}`, 
-                       `Categories: ${cardData.categories}`,
-                       `Rating: ${cardData.rating}`);
-        });
-
-        updateVisibleCount(visibleCount);
-        showNoResultsMessage(visibleCount === 0);
-        sortTools();
-        
-        console.log(`Visible tools: ${visibleCount}/${elements.toolCards.length}`);
-    }
-
-    function matchesFilters(cardData) {
-        const { category, pricing, rating } = state.activeFilters;
-        
-        // Category match (check if any selected category exists in card's categories)
-        const categoryMatch = category.length === 0 || 
-            category.some(selectedCat => cardData.categories.includes(selectedCat));
-        
-        // Pricing match (exact match)
-        const pricingMatch = pricing.length === 0 || 
-            pricing.includes(cardData.pricing);
-            
-        // Rating match (card rating >= selected rating)
-        const ratingMatch = rating.length === 0 ||
-            rating.some(r => Math.round(cardData.rating) >= parseInt(r));
-        
-        console.log(`Matching:`, {categoryMatch, pricingMatch, ratingMatch});
-        return categoryMatch && pricingMatch && ratingMatch;
-    }
-
-    function sortTools() {
-        if (!elements.toolsGrid) return;
-        
-        const visibleCards = Array.from(document.querySelectorAll('.tool-card[style*="display: block"], .tool-card:not([style])'));
-        
-        visibleCards.sort((a, b) => {
-            const aData = {
-                rating: parseFloat(a.dataset.rating) || 0,
-                date: parseInt(a.dataset.date) || 0,
-                name: a.querySelector('h3').textContent.toLowerCase()
-            };
-            const bData = {
-                rating: parseFloat(b.dataset.rating) || 0,
-                date: parseInt(b.dataset.date) || 0,
-                name: b.querySelector('h3').textContent.toLowerCase()
-            };
-
-            switch(state.sortMethod) {
-                case 'rating': return bData.rating - aData.rating;
-                case 'newest': return bData.date - aData.date;
-                case 'az': return aData.name.localeCompare(bData.name);
-                default: return bData.rating - aData.rating; // popular
+            function showAllTools() {
+                elements.toolCards.forEach(card => {
+                    card.style.display = 'block';
+                });
             }
-        });
-        
-        // Re-append cards in sorted order
-        visibleCards.forEach(card => elements.toolsGrid.appendChild(card));
-    }
 
-    // 6. Selection Display
-    function updateFilterSelections() {
-        document.querySelectorAll('.filter-dropdown-box').forEach(filterBox => {
-            const filterType = filterBox.getAttribute('data-filter-type');
-            const selectionContainer = filterBox.querySelector('.filter-selection');
-            const checkedBoxes = filterBox.querySelectorAll(`input[type="checkbox"][data-${filterType}]:checked`);
-            
-            selectionContainer.innerHTML = '';
-            
-            if (checkedBoxes.length > 0) {
-                filterBox.classList.add('has-selection');
+            function setDefaultFilters() {
+                state.activeFilters = {
+                    category: [],
+                    pricing: [],
+                    rating: []
+                };
+                state.sortMethod = 'popular';
                 
-                checkedBoxes.forEach((checkbox, index) => {
-                    const badge = document.createElement('span');
-                    badge.className = 'selection-badge';
+                if (elements.desktop.sortSelect) {
+                    elements.desktop.sortSelect.value = state.sortMethod;
+                }
+                
+                // Uncheck all filter checkboxes
+                document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
+                    .forEach(checkbox => { 
+                        checkbox.checked = false; 
+                    });
+            }
+
+            // 4. Event Listeners
+            function setupEventListeners() {
+                // Desktop Events
+                if (elements.desktop.resetButton) {
+                    elements.desktop.resetButton.addEventListener('click', resetFilters);
+                }
+                
+                if (elements.desktop.sortSelect) {
+                    elements.desktop.sortSelect.addEventListener('change', handleSortChange);
+                }
+
+                // Mobile Events
+                if (elements.mobile.container) {
+                    elements.mobile.dropdownToggles.forEach(toggle => {
+                        toggle.addEventListener('click', handleMobileDropdownToggle);
+                    });
                     
-                    if (filterType === 'rating') {
-                        const rating = checkbox.dataset.rating;
-                        badge.innerHTML = `${'★'.repeat(rating)}${'☆'.repeat(5-rating)}`;
-                    } else {
-                        badge.textContent = checkbox.parentElement.textContent.trim();
+                    if (elements.mobile.resetButton) {
+                        elements.mobile.resetButton.addEventListener('click', resetFilters);
                     }
+                }
+
+                // Shared Events
+                document.addEventListener('click', handleOutsideClick);
+                document.addEventListener('change', handleFilterChange);
+                window.addEventListener('resize', debounce(handleWindowResize, 250));
+            }
+
+            // 5. Core Filter Functions
+            function applyFilters() {
+                let visibleCount = 0;
+                
+                elements.toolCards.forEach(card => {
+                    const cardData = {
+                        categories: card.dataset.categories?.split(',').map(c => c.trim()) || [],
+                        pricing: card.dataset.pricing || '',
+                        rating: parseFloat(card.dataset.rating) || 0,
+                        name: card.querySelector('h3').textContent.toLowerCase(),
+                        date: parseInt(card.dataset.date) || 0
+                    };
+
+                    const shouldShow = matchesFilters(cardData);
+                    card.style.display = shouldShow ? 'block' : 'none';
+                    if (shouldShow) visibleCount++;
+                });
+
+                updateVisibleCount(visibleCount);
+                showNoResultsMessage(visibleCount === 0);
+                sortTools();
+            }
+
+            function matchesFilters(cardData) {
+                const { category, pricing, rating } = state.activeFilters;
+                
+                // Category match (check if any selected category exists in card's categories)
+                const categoryMatch = category.length === 0 || 
+                    category.some(selectedCat => cardData.categories.includes(selectedCat));
+                
+                // Pricing match (exact match)
+                const pricingMatch = pricing.length === 0 || 
+                    pricing.includes(cardData.pricing);
                     
-                    if (index < checkedBoxes.length - 1) {
-                        const comma = document.createTextNode(', ');
-                        selectionContainer.appendChild(badge);
-                        selectionContainer.appendChild(comma);
-                    } else {
-                        selectionContainer.appendChild(badge);
+                // Rating match (card rating >= selected rating)
+                const ratingMatch = rating.length === 0 ||
+                    rating.some(r => Math.round(cardData.rating) >= parseInt(r));
+                
+                return categoryMatch && pricingMatch && ratingMatch;
+            }
+
+            function sortTools() {
+                if (!elements.toolsGrid) return;
+                
+                const visibleCards = Array.from(document.querySelectorAll('.tool-card[style*="display: block"], .tool-card:not([style])'));
+                
+                visibleCards.sort((a, b) => {
+                    const aData = {
+                        rating: parseFloat(a.dataset.rating) || 0,
+                        date: parseInt(a.dataset.date) || 0,
+                        name: a.querySelector('h3').textContent.toLowerCase()
+                    };
+                    const bData = {
+                        rating: parseFloat(b.dataset.rating) || 0,
+                        date: parseInt(b.dataset.date) || 0,
+                        name: b.querySelector('h3').textContent.toLowerCase()
+                    };
+
+                    switch(state.sortMethod) {
+                        case 'rating': return bData.rating - aData.rating;
+                        case 'newest': return bData.date - aData.date;
+                        case 'az': return aData.name.localeCompare(bData.name);
+                        default: return bData.rating - aData.rating; // popular
                     }
                 });
-            } else {
-                filterBox.classList.remove('has-selection');
-                selectionContainer.textContent = 'All';
+                
+                // Re-append cards in sorted order
+                visibleCards.forEach(card => elements.toolsGrid.appendChild(card));
             }
+
+            // 6. Selection Display
+            function updateFilterSelections() {
+                document.querySelectorAll('.filter-dropdown-box').forEach(filterBox => {
+                    const filterType = filterBox.getAttribute('data-filter-type');
+                    const selectionContainer = filterBox.querySelector('.filter-selection');
+                    const checkedBoxes = filterBox.querySelectorAll(`input[type="checkbox"][data-${filterType}]:checked`);
+                    
+                    selectionContainer.innerHTML = '';
+                    
+                    if (checkedBoxes.length > 0) {
+                        filterBox.classList.add('has-selection');
+                        
+                        checkedBoxes.forEach((checkbox, index) => {
+                            const badge = document.createElement('span');
+                            badge.className = 'selection-badge';
+                            
+                            if (filterType === 'rating') {
+                                const rating = checkbox.dataset.rating;
+                                badge.innerHTML = `${'★'.repeat(rating)}${'☆'.repeat(5-rating)}`;
+                            } else {
+                                badge.textContent = checkbox.parentElement.textContent.trim();
+                            }
+                            
+                            if (index < checkedBoxes.length - 1) {
+                                const comma = document.createTextNode(', ');
+                                selectionContainer.appendChild(badge);
+                                selectionContainer.appendChild(comma);
+                            } else {
+                                selectionContainer.appendChild(badge);
+                            }
+                        });
+                    } else {
+                        filterBox.classList.remove('has-selection');
+                        selectionContainer.textContent = 'All';
+                    }
+                });
+            }
+
+            function handleMobileDropdownToggle(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const targetId = this.getAttribute('data-target');
+                const dropdown = document.getElementById(targetId);
+                
+                document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
+                    if (menu.id !== targetId) {
+                        menu.classList.remove('active');
+                        const otherToggle = document.querySelector(`[data-target="${menu.id}"]`);
+                        if (otherToggle) otherToggle.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('active');
+                this.classList.toggle('active');
+            }
+
+            function resetFilters(e) {
+                if (e) e.preventDefault();
+                
+                document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
+                    .forEach(checkbox => { checkbox.checked = false; });
+                
+                setDefaultFilters();
+                
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
+                        menu.classList.remove('active');
+                    });
+                    document.querySelectorAll('.filter-dropdown-toggle').forEach(toggle => {
+                        toggle.classList.remove('active');
+                    });
+                }
+                
+                showAllTools();
+                applyFilters();
+                updateFilterSelections();
+            }
+
+            function handleFilterChange(e) {
+                if (e.target.matches('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')) {
+                    const filterType = e.target.dataset.category ? 'category' : 
+                                     e.target.dataset.pricing ? 'pricing' : 
+                                     e.target.dataset.rating ? 'rating' : null;
+                    
+                    if (!filterType) return;
+                    
+                    const filterValue = e.target.dataset[filterType];
+                    
+                    if (e.target.checked) {
+                        state.activeFilters[filterType].push(filterValue);
+                    } else {
+                        state.activeFilters[filterType] = state.activeFilters[filterType].filter(
+                            val => val !== filterValue
+                        );
+                    }
+                    
+                    syncFilters(e.target);
+                    applyFilters();
+                    updateFilterSelections();
+                }
+            }
+
+            function syncFilters(sourceElement) {
+                const isMobile = sourceElement.closest('.mobile-filters-container');
+                const filterType = sourceElement.dataset.category ? 'category' : 
+                                 sourceElement.dataset.pricing ? 'pricing' : 
+                                 sourceElement.dataset.rating ? 'rating' : null;
+                
+                if (!filterType) return;
+                
+                const filterValue = sourceElement.dataset[filterType];
+                const isChecked = sourceElement.checked;
+                
+                const otherVersionSelector = isMobile ? 
+                    `.category-sidebar input[data-${filterType}="${filterValue}"]` : 
+                    `.mobile-filters-container input[data-${filterType}="${filterValue}"]`;
+                    
+                document.querySelectorAll(otherVersionSelector).forEach(el => {
+                    el.checked = isChecked;
+                });
+            }
+
+            function handleSortChange(e) {
+                state.sortMethod = e.target.value;
+                applyFilters();
+            }
+
+            function handleOutsideClick(e) {
+                if (window.innerWidth <= 768 && 
+                    !e.target.closest('.filter-dropdown-box') &&
+                    !e.target.closest('.mobile-filters-container')) {
+                    document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
+                        menu.classList.remove('active');
+                    });
+                    document.querySelectorAll('.filter-dropdown-toggle').forEach(toggle => {
+                        toggle.classList.remove('active');
+                    });
+                }
+            }
+
+            function handleWindowResize() {
+                if (window.innerWidth > 768) {
+                    if (elements.mobile.container) {
+                        elements.mobile.container.style.display = 'none';
+                    }
+                    if (elements.desktop.filterSection) {
+                        elements.desktop.filterSection.style.display = 'block';
+                    }
+                } else {
+                    if (elements.desktop.filterSection) {
+                        elements.desktop.filterSection.style.display = 'none';
+                    }
+                    if (elements.mobile.container) {
+                        elements.mobile.container.style.display = 'flex';
+                    }
+                }
+            }
+
+            // 8. Helper Functions
+            function updateVisibleCount(visible) {
+                let countElement = document.querySelector('.filtered-count');
+                if (!countElement) {
+                    countElement = document.createElement('div');
+                    countElement.className = 'filtered-count';
+                    document.querySelector('.sort-options')?.prepend(countElement);
+                }
+                countElement.textContent = `Showing ${visible} of ${elements.toolCards.length} tools`;
+            }
+
+            function showNoResultsMessage(show) {
+                if (!elements.toolsGrid) return;
+                
+                let message = document.querySelector('.no-results-message');
+                
+                if (show) {
+                    if (!message) {
+                        message = document.createElement('div');
+                        message.className = 'no-results-message';
+                        message.innerHTML = `
+                            <i class="fas fa-search"></i>
+                            <p>No tools match your filters</p>
+                            <button class="btn-text" onclick="resetFilters()">
+                                Reset filters
+                            </button>
+                        `;
+                        elements.toolsGrid.appendChild(message);
+                    }
+                    message.classList.add('show');
+                } else if (message) {
+                    message.classList.remove('show');
+                }
+            }
+
+            function debounce(func, wait) {
+                let timeout;
+                return function() {
+                    const context = this, args = arguments;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => {
+                        func.apply(context, args);
+                    }, wait);
+                };
+            }
+
+            // Initialize the application
+            init();
         });
-    }
 
-    // 7. Event Handlers
-    function toggleCategoryDropdown(e) {
-        if (!elements.desktop.categoryToggle || !elements.desktop.categoryDropdown) return;
-        
-        e.preventDefault();
-        e.stopPropagation();
-        const isExpanded = elements.desktop.categoryToggle.getAttribute('aria-expanded') === 'true';
-        elements.desktop.categoryToggle.setAttribute('aria-expanded', !isExpanded);
-        elements.desktop.categoryDropdown.style.display = isExpanded ? 'none' : 'block';
-    }
-
-    function handleMobileDropdownToggle(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const targetId = this.getAttribute('data-target');
-        const dropdown = document.getElementById(targetId);
-        
-        document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
-            if (menu.id !== targetId) {
-                menu.classList.remove('active');
-                const otherToggle = document.querySelector(`[data-target="${menu.id}"]`);
-                if (otherToggle) otherToggle.classList.remove('active');
-            }
-        });
-        
-        dropdown.classList.toggle('active');
-        this.classList.toggle('active');
-    }
-
-    function resetFilters(e) {
-        if (e) e.preventDefault();
-        
-        document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
-            .forEach(checkbox => { checkbox.checked = false; });
-        
-        setDefaultFilters();
-        
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
-                menu.classList.remove('active');
-            });
-            document.querySelectorAll('.filter-dropdown-toggle').forEach(toggle => {
-                toggle.classList.remove('active');
-            });
-        } else {
-            if (elements.desktop.categoryDropdown) {
-                elements.desktop.categoryDropdown.style.display = 'none';
-                elements.desktop.categoryToggle.setAttribute('aria-expanded', 'false');
-            }
+        // Global reset function
+        function resetFilters() {
+            const event = new Event('click');
+            document.querySelector('.reset-filters, .reset-filters-mobile')?.dispatchEvent(event);
         }
-        
-        showAllTools();
-        applyFilters();
-    }
-
-    function handleFilterChange(e) {
-        if (e.target.matches('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')) {
-            const filterType = e.target.dataset.category ? 'category' : 
-                             e.target.dataset.pricing ? 'pricing' : 
-                             e.target.dataset.rating ? 'rating' : null;
-            
-            if (!filterType) return;
-            
-            const filterValue = e.target.dataset[filterType];
-            
-            if (e.target.checked) {
-                state.activeFilters[filterType].push(filterValue);
-            } else {
-                state.activeFilters[filterType] = state.activeFilters[filterType].filter(
-                    val => val !== filterValue
-                );
-            }
-            
-            syncFilters(e.target);
-            applyFilters();
-        }
-    }
-
-    function syncFilters(sourceElement) {
-        const isMobile = sourceElement.closest('.mobile-filters-container');
-        const filterType = sourceElement.dataset.category ? 'category' : 
-                         sourceElement.dataset.pricing ? 'pricing' : 
-                         sourceElement.dataset.rating ? 'rating' : null;
-        
-        if (!filterType) return;
-        
-        const filterValue = sourceElement.dataset[filterType];
-        const isChecked = sourceElement.checked;
-        
-        const otherVersionSelector = isMobile ? 
-            `.category-sidebar input[data-${filterType}="${filterValue}"]` : 
-            `.mobile-filters-container input[data-${filterType}="${filterValue}"]`;
-            
-        document.querySelectorAll(otherVersionSelector).forEach(el => {
-            el.checked = isChecked;
-        });
-        
-        updateFilterSelections();
-    }
-
-    function handleSortChange(e) {
-        state.sortMethod = e.target.value;
-        applyFilters();
-    }
-
-    function handleOutsideClick(e) {
-        if (elements.desktop.categoryDropdown && 
-            !e.target.closest('.category-filter-dropdown') &&
-            !e.target.closest('.filter-section h3')) {
-            elements.desktop.categoryDropdown.style.display = 'none';
-            elements.desktop.categoryToggle.setAttribute('aria-expanded', 'false');
-        }
-        
-        if (window.innerWidth <= 768 && 
-            !e.target.closest('.filter-dropdown-box') &&
-            !e.target.closest('.mobile-filters-container')) {
-            document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
-                menu.classList.remove('active');
-            });
-            document.querySelectorAll('.filter-dropdown-toggle').forEach(toggle => {
-                toggle.classList.remove('active');
-            });
-        }
-    }
-
-    function handleWindowResize() {
-        if (window.innerWidth > 768) {
-            if (elements.mobile.container) {
-                elements.mobile.container.style.display = 'none';
-            }
-            if (elements.desktop.filterSection) {
-                elements.desktop.filterSection.style.display = 'block';
-            }
-        } else {
-            if (elements.desktop.filterSection) {
-                elements.desktop.filterSection.style.display = 'none';
-            }
-            if (elements.mobile.container) {
-                elements.mobile.container.style.display = 'flex';
-            }
-        }
-    }
-
-    // 8. Helper Functions
-    function updateVisibleCount(visible) {
-        let countElement = document.querySelector('.filtered-count');
-        if (!countElement) {
-            countElement = document.createElement('div');
-            countElement.className = 'filtered-count';
-            document.querySelector('.sort-options')?.prepend(countElement);
-        }
-        countElement.textContent = `Showing ${visible} of ${elements.toolCards.length} tools`;
-    }
-
-    function showNoResultsMessage(show) {
-        if (!elements.toolsGrid) return;
-        
-        let message = document.querySelector('.no-results-message');
-        
-        if (show) {
-            if (!message) {
-                message = document.createElement('div');
-                message.className = 'no-results-message show';
-                message.innerHTML = `
-                    <i class="fas fa-search"></i>
-                    <p>No tools match your filters</p>
-                    <button class="btn-text" onclick="resetFilters()">
-                        Reset filters
-                    </button>
-                `;
-                elements.toolsGrid.appendChild(message);
-            } else {
-                message.classList.add('show');
-            }
-        } else if (message) {
-            message.classList.remove('show');
-        }
-    }
-
-    function debounce(func, wait) {
-        let timeout;
-        return function() {
-            const context = this, args = arguments;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                func.apply(context, args);
-            }, wait);
-        };
-    }
-
-    // Initialize the application
-    init();
-});
-
-// Global reset function
-function resetFilters() {
-    const event = new Event('click');
-    document.querySelector('.reset-filters, .reset-filters-mobile')?.dispatchEvent(event);
-}
     </script>
 </body>
 </html>
