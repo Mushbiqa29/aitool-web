@@ -380,10 +380,6 @@ img {
     background-color: var(--primary-dark);
 }
 
-.section {
-    padding: 60px 0;
-}
-
 .section-title {
     text-align: center;
     margin-bottom: 40px;
@@ -2083,4 +2079,186 @@ img {
         width: 45px;
         height: 45px;
     }
+}
+/* ======================
+   THEME SYSTEM
+   ====================== */
+/* Light Theme */
+body.light-theme {
+  --dark-bg: #ffffff;
+  --dark-secondary: #f8f9fa;
+  --dark-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --text-muted: #6c757d;
+  
+  /* Keep accent colors same */
+  --primary-color: #7c3aed;
+  --primary-dark: #5b21b6;
+  --primary-light: #8b5cf6;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+/* Base Styles - Theme Aware */
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+}
+
+/* Text Elements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+/* Links */
+a {
+  color: var(--primary-light);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+/* UI Components */
+.btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Header */
+.main-header {
+  background-color: var(--dark-secondary);
+  border-bottom: 1px solid var(--dark-tertiary);
+}
+
+/* Cards */
+.tool-card,
+.category-card,
+.blog-card,
+.team-member {
+  background-color: var(--dark-secondary);
+  border: 1px solid var(--dark-tertiary);
+}
+
+/* Forms */
+input, textarea, select {
+  background-color: var(--dark-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--dark-tertiary);
+}
+
+/* Footer */
+.main-footer {
+  background-color: var(--dark-secondary);
+  border-top: 1px solid var(--dark-tertiary);
+}
+
+.footer-col h3, 
+.footer-col h4 {
+  color: var(--text-primary);
+}
+
+.footer-col p,
+.footer-col a {
+  color: var(--text-secondary);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 45px;
+    height: 45px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* ======================
+   PAGE-SPECIFIC THEME STYLES
+   ====================== */
+
+/* Homepage Hero */
+.hero {
+  background: linear-gradient(135deg, var(--dark-secondary), var(--dark-bg));
+}
+
+body.light-theme .hero {
+  background: linear-gradient(135deg, var(--dark-secondary), var(--dark-bg));
+}
+
+/* Tool Cards */
+.tool-card {
+  background-color: var(--dark-secondary);
+  color: var(--text-primary);
+}
+
+/* Category Cards */
+.category-card {
+  background-color: var(--dark-secondary);
+  color: var(--text-primary);
+}
+
+/* Blog Cards */
+.blog-card {
+  background-color: var(--dark-secondary);
+  color: var(--text-primary);
+}
+
+/* Team Members */
+.team-member {
+  background-color: var(--dark-secondary);
+  color: var(--text-primary);
+}
+
+/* Forms */
+.search-form input {
+  background-color: var(--dark-secondary);
+  color: var(--text-primary);
+}
+
+/* Mobile Search */
+.mobile-search {
+  background-color: var(--dark-secondary);
 }

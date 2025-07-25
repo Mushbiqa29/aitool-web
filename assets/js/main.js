@@ -816,3 +816,54 @@ function loadToolData(toolId) {
         }
     }
 }
+// Dark/Light Theme Toggle (updated version)
+const themeToggle = document.createElement('button');
+themeToggle.className = 'theme-toggle';
+themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+themeToggle.style.position = 'fixed';
+themeToggle.style.bottom = '20px';
+themeToggle.style.right = '20px';
+themeToggle.style.zIndex = '1000';
+themeToggle.style.width = '50px';
+themeToggle.style.height = '50px';
+themeToggle.style.borderRadius = '50%';
+themeToggle.style.backgroundColor = 'var(--primary-color)';
+themeToggle.style.color = 'white';
+themeToggle.style.border = 'none';
+themeToggle.style.cursor = 'pointer';
+themeToggle.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+themeToggle.setAttribute('aria-label', 'Toggle dark/light mode');
+
+document.body.appendChild(themeToggle);
+
+// Apply theme based on localStorage or preference
+function applyTheme() {
+    if (localStorage.getItem('theme') === 'light' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.body.classList.add('light-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        document.body.classList.remove('light-theme');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+}
+
+// Initial theme application
+applyTheme();
+
+// Toggle theme on button click
+themeToggle.addEventListener('click', function() {
+    if (document.body.classList.contains('light-theme')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+    applyTheme();
+});
+
+// Watch for system theme changes
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) {
+        applyTheme();
+    }
+});

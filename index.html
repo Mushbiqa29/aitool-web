@@ -8,23 +8,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            /* Color Variables - Dark Theme Default */
             --primary-color: #7b5cf6;
             --primary-light: #8b6bf7;
             --primary-dark: #6a4ce0;
+            --dark-bg: #0f172a;
             --dark-primary: #1e293b;
             --dark-secondary: #334155;
+            --dark-tertiary: #475569;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
             --border-radius: 8px;
             --transition: all 0.3s ease;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Light Theme Overrides */
+        body.light-theme {
+            --dark-bg: #ffffff;
+            --dark-secondary: #f8f9fa;
+            --dark-tertiary: #e9ecef;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
         }
 
         /* Base Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: white;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            line-height: 1.6;
+            transition: var(--transition);
         }
 
         .container {
@@ -43,6 +65,12 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        body.light-theme .main-header {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         /* Hero Section */
@@ -55,6 +83,11 @@
             align-items: center;
             justify-content: center;
             background: radial-gradient(ellipse at bottom, #0f0c29 0%, #302b63 40%, #24243e 100%);
+            transition: var(--transition);
+        }
+
+        body.light-theme .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
         }
 
         .stars-container {
@@ -75,6 +108,11 @@
             opacity: 0;
             box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.2);
             z-index: 2;
+        }
+
+        body.light-theme .star {
+            background-color: var(--primary-light);
+            box-shadow: 0 0 10px 2px rgba(123, 92, 246, 0.3);
         }
 
         .star.small { width: 1px; height: 1px; }
@@ -107,6 +145,13 @@
             z-index: 1;
         }
 
+        body.light-theme .shooting-star {
+            background: linear-gradient(to right, 
+                rgba(123,92,246,0) 0%, 
+                rgba(123,92,246,0.8) 50%, 
+                rgba(123,92,246,0) 100%);
+        }
+
         @keyframes shoot {
             0% { transform: translateX(-1000px) translateY(-1000px) rotate(215deg); opacity: 1; }
             70% { opacity: 1; }
@@ -123,18 +168,28 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             margin-bottom: 20px;
             line-height: 1.2;
-            color: #fff;
+            color: white;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
+        body.light-theme .hero h1 {
+            color: var(--text-primary);
+            text-shadow: none;
+        }
+
         .hero p {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 30px;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        body.light-theme .hero p {
+            color: var(--text-secondary);
+            text-shadow: none;
         }
 
         .hero-search {
@@ -153,6 +208,27 @@
             color: white;
             font-size: 1rem;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        body.light-theme .hero-search input {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--text-primary);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-search input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        body.light-theme .hero-search input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .hero-search input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-light), 0 0 20px rgba(123, 92, 246, 0.3);
         }
 
         /* Cosmic Elements */
@@ -209,32 +285,44 @@
         /* Section Styles */
         .section {
             position: relative;
-            padding: 100px 0;
+            padding: 20px 0;
             overflow: hidden;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
             margin-bottom: 15px;
+            color: var(--text-primary);
         }
 
-        /* ===== TOOL CARDS WITH STARRY HOVER EFFECT ===== */
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Tool Cards */
         .tool-card {
             position: relative;
             background: rgba(30, 41, 59, 0.6);
             border-radius: 16px;
             padding: 20px;
             transition: all 0.5s ease;
-            overflow: hidden;
+            overflow: visible;
             z-index: 1;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--box-shadow);
+        }
+
+        body.light-theme .tool-card {
+            background: rgba(248, 249, 250, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         /* Starry hover effect */
@@ -261,85 +349,136 @@
             opacity: 0;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 0.8; transform: scale(1); }
+        body.light-theme .tool-card .starry-hover .star {
+            background-color: var(--primary-light);
         }
 
-        /* ===== FEATURED TOOLS CAROUSEL ===== */
+        .tool-card-header {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .tool-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        body.light-theme .tool-logo {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-logo img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .tool-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        body.light-theme .tool-info h3 {
+            color: var(--text-primary);
+        }
+
+        .tool-category {
+            display: inline-block;
+            font-size: 0.75rem;
+            background: var(--primary-dark);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        body.light-theme .tool-category {
+            color: white;
+        }
+
+        .tool-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        body.light-theme .tool-description {
+            color: var(--text-secondary);
+        }
+
+        .tool-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tool-pricing {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .tool-pricing.freemium {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .tool-pricing.paid {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .tool-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #f59e0b;
+        }
+
+        /* Featured Tools Carousel */
         .featured-tools-container {
             position: relative;
             overflow: hidden;
             padding: 20px 0;
+            width: 100%;
         }
 
         .tools-scroll {
             display: flex;
-            transition: transform 0.5s ease;
             gap: 25px;
             padding: 10px 0;
+            width: max-content;
         }
 
         .featured-tools-container .tool-card {
-            flex: 0 0 calc(25% - 20px);
-            min-width: 280px;
+            flex: 0 0 280px;
         }
 
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            z-index: 2;
-            pointer-events: none;
+        /* Hide scrollbar */
+        .featured-tools-container::-webkit-scrollbar {
+            display: none;
         }
 
-        .carousel-nav button {
-            background: rgba(123, 92, 246, 0.7);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            pointer-events: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+        .featured-tools-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
-        .carousel-nav button:hover {
-            background: rgba(123, 92, 246, 1);
-            transform: scale(1.1);
+        /* Pause animation on hover */
+        .featured-tools-container:hover .tools-scroll {
+            animation-play-state: paused;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .featured-tools-container .tool-card {
-                flex: 0 0 calc(33.33% - 20px);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .featured-tools-container .tool-card {
-                flex: 0 0 calc(50% - 20px);
-            }
-            .carousel-nav {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .featured-tools-container .tool-card {
-                flex: 0 0 100%;
-            }
-        }
-
-        /* CATEGORY CARDS - UPDATED TO PAUSE ANIMATION ON HOVER */
+        /* Category Cards */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -357,6 +496,11 @@
             text-align: center;
             color: white;
             text-decoration: none;
+        }
+
+        body.light-theme .category-card {
+            background: var(--dark-secondary);
+            color: var(--text-primary);
         }
 
         .category-card:hover {
@@ -413,6 +557,10 @@
             margin: 0;
         }
 
+        body.light-theme .category-card p {
+            color: var(--text-secondary);
+        }
+
         @keyframes borderTrace {
             0% { background-position: 300% 0; }
             100% { background-position: 0 0; }
@@ -438,93 +586,61 @@
             25%, 100% { opacity: 0; }
         }
 
-        /* Common Tool Card Styles */
-        .tool-card {
-            position: relative;
-            background: rgba(30, 41, 59, 0.6);
-            border-radius: 16px;
-            padding: 20px;
-            transition: all 0.5s ease;
-            overflow: visible;
-            z-index: 1;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        /* CTA Section */
+.cta-section {
+    display: flex;
+    align-items: center;
+    min-height: 400px;
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+        body.light-theme .cta-section {
+            background: var(--dark-secondary);
         }
 
-        .tool-card-header {
-            display: flex;
-            gap: 15px;
+        .cta-content h2 {
+            font-size: 2rem;
             margin-bottom: 15px;
         }
 
-        .tool-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
+        .cta-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
             display: flex;
-            align-items: center;
+            gap: 15px;
             justify-content: center;
-            flex-shrink: 0;
-            overflow: hidden;
         }
 
-        .tool-logo img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
-        }
-
-        .tool-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: white;
-        }
-
-        .tool-category {
+        /* Buttons */
+        .btn {
             display: inline-block;
-            font-size: 0.75rem;
-            background: var(--primary-dark);
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            background-color: var(--primary-color);
             color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-        }
-
-        .tool-description {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .tool-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .tool-pricing {
-            font-size: 0.85rem;
-            padding: 4px 10px;
-            border-radius: 4px;
+            text-decoration: none;
             font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
 
-        .tool-pricing.freemium {
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
-        .tool-pricing.paid {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
+        .btn-primary {
+            background-color: var(--primary-color);
         }
 
-        .tool-rating {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: #f59e0b;
+        .btn-secondary {
+            background-color: var(--dark-tertiary);
         }
 
         /* Footer Styles */
@@ -532,6 +648,10 @@
             background-color: var(--dark-primary);
             padding: 60px 0 30px;
             position: relative;
+        }
+
+        body.light-theme .main-footer {
+            background-color: var(--dark-secondary);
         }
 
         .footer-grid {
@@ -546,9 +666,18 @@
             margin-bottom: 20px;
         }
 
+        body.light-theme .footer-col h3,
+        body.light-theme .footer-col h4 {
+            color: var(--text-primary);
+        }
+
         .footer-col p {
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
+        }
+
+        body.light-theme .footer-col p {
+            color: var(--text-secondary);
         }
 
         .social-links {
@@ -561,6 +690,10 @@
             color: rgba(255, 255, 255, 0.7);
             font-size: 1.2rem;
             transition: var(--transition);
+        }
+
+        body.light-theme .social-links a {
+            color: var(--text-secondary);
         }
 
         .social-links a:hover {
@@ -583,6 +716,10 @@
             transition: var(--transition);
         }
 
+        body.light-theme .footer-col ul li a {
+            color: var(--text-secondary);
+        }
+
         .footer-col ul li a:hover {
             color: var(--primary-color);
             padding-left: 5px;
@@ -598,12 +735,22 @@
             margin-bottom: 10px;
         }
 
+        body.light-theme .newsletter-form input {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-primary);
+        }
+
         .footer-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-theme .footer-bottom {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .footer-links {
@@ -615,6 +762,10 @@
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 0.9rem;
+        }
+
+        body.light-theme .footer-links a {
+            color: var(--text-secondary);
         }
 
         /* Gradient Shadows */
@@ -653,6 +804,238 @@
             animation-name: float-blue;
         }
 
+        /* Trending Tools Section */
+.trending-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.trending-tool-card {
+    position: relative;
+    background: var(--dark-primary);
+    border-radius: 16px;
+    padding: 25px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+body.light-theme .trending-tool-card {
+    background: var(--dark-secondary);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.trending-tool-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, var(--primary-light), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.trending-tool-card:hover .trending-tool-glow {
+    opacity: 0.15;
+}
+
+.trending-tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(123, 92, 246, 0.3);
+}
+
+.trending-tool-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.trending-tool-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .trending-tool-logo {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.trending-tool-logo img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.trending-tool-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 2px 10px rgba(123, 92, 246, 0.3);
+}
+
+.trending-tool-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.trending-tool-category {
+    display: inline-block;
+    font-size: 0.8rem;
+    background: rgba(123, 92, 246, 0.1);
+    color: var(--primary-light);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.trending-tool-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.trending-tool-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .trending-tool-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.trending-tool-stats {
+    display: flex;
+    gap: 15px;
+}
+
+.trending-tool-users,
+.trending-tool-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.trending-tool-rating {
+    color: var(--warning);
+}
+
+.trending-tool-arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(123, 92, 246, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.trending-tool-card:hover .trending-tool-arrow {
+    background: var(--primary-color);
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Floating animation */
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.trending-tool-card {
+    animation: floating 6s ease-in-out infinite;
+}
+
+.trending-tool-card:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.trending-tool-card:nth-child(3) {
+    animation-delay: 2s;
+}
+
+/* Pulse animation for badges */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.trending-tool-badge {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.trending-tool-card:nth-child(2) .trending-tool-badge {
+    animation-delay: 0.5s;
+}
+
+.trending-tool-card:nth-child(3) .trending-tool-badge {
+    animation-delay: 1s;
+}
+/* Ripple effect */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Hover gradient effect */
+.trending-tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(123, 92, 246, 0.1),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.trending-tool-card:hover::before {
+    opacity: 1;
+}
+
         @keyframes float-purple {
             0%, 100% { transform: translate(-30%, -20%) scale(1); }
             25% { transform: translate(20%, 10%) scale(1.1); }
@@ -667,8 +1050,53 @@
             75% { transform: translate(-30%, 25%) scale(0.85); }
         }
 
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .theme-toggle i {
+            font-size: 1.2rem;
+        }
+
         /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .featured-tools-container .tool-card {
+                flex: 0 0 calc(33.33% - 20px);
+            }
+            
+            .cta-section {
+                padding: 40px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 500px;
+                padding: 100px 0;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -677,8 +1105,12 @@
                 font-size: 1rem;
             }
             
-            .tools-grid, .tools-scroll, .categories-grid {
-                grid-template-columns: 1fr;
+            .featured-tools-container .tool-card {
+                flex: 0 0 calc(50% - 20px);
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
             
             .footer-grid {
@@ -690,8 +1122,963 @@
                 gap: 15px;
                 text-align: center;
             }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .cta-section {
+                padding: 30px 20px;
+            }
         }
-    </style>
+
+        @media (max-width: 480px) {
+            .featured-tools-container .tool-card {
+                flex: 0 0 100%;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px;
+            }
+        }
+        /* Marquee Styles */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: rgba(123, 92, 246, 0.1);
+    border-radius: var(--border-radius);
+    padding: 15px 0;
+    border: 1px solid rgba(123, 92, 246, 0.2);
+}
+
+body.light-theme .marquee-container {
+    background: rgba(123, 92, 246, 0.05);
+    border: 1px solid rgba(123, 92, 246, 0.1);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    color: var(--text-primary);
+    font-weight: 500;
+    white-space: nowrap;
+    position: relative;
+}
+
+.marquee-item::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.marquee-icon {
+    margin-right: 12px;
+    font-size: 1.2em;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Pause on hover */
+.marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+/* Gradient fade edges */
+.marquee-container::before,
+.marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--dark-bg), transparent);
+}
+
+.marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--dark-bg), transparent);
+}
+
+body.light-theme .marquee-container::before,
+body.light-theme .marquee-container::after {
+    background: linear-gradient(to right, var(--dark-bg), transparent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .marquee-item {
+        padding: 0 25px;
+        font-size: 0.9em;
+    }
+    
+    .marquee-icon {
+        margin-right: 8px;
+    }
+    
+    .marquee-container::before,
+    .marquee-container::after {
+        width: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .marquee-item {
+        padding: 0 15px;
+    }
+    
+    .marquee-track {
+        animation-duration: 30s;
+    }
+}
+
+/* Full-width CTA Section */
+.cta-section-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+}
+
+.cta-section {
+    position: relative;
+    display: flex;
+    min-height: 400px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    overflow: hidden;
+}
+
+.cta-section .container {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+.cta-content {
+    flex: 1;
+    max-width: 600px;
+    position: relative;
+    z-index: 3;
+    padding: 40px;
+}
+
+.cta-visual {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    min-height: 300px;
+    z-index: 2;
+}
+/* Add these styles to your CSS section */
+
+/* CTA Badge */
+.cta-badge {
+    display: inline-block;
+    background-color: white;
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Glow Button Effect */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.1) 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0.1) 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-glow:hover::before {
+    opacity: 1;
+}
+
+/* Hover Effect Button */
+.btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-circle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.btn-hover-effect:hover .hover-circle {
+    transform: scale(10);
+    opacity: 0;
+}
+
+/* CTA Visual Elements */
+.cta-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+        rgba(255,255,255,0.8) 0%, 
+        rgba(255,255,255,0) 70%);
+    opacity: 0.3;
+}
+
+.cta-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cta-dots .dot {
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+}
+
+.cta-dots .dot:nth-child(1) {
+    width: 5px;
+    height: 5px;
+    top: 20%;
+    left: 10%;
+}
+
+.cta-dots .dot:nth-child(2) {
+    width: 3px;
+    height: 3px;
+    top: 60%;
+    left: 80%;
+}
+
+.cta-dots .dot:nth-child(3) {
+    width: 4px;
+    height: 4px;
+    top: 40%;
+    left: 30%;
+}
+
+/* CTA Features */
+.cta-features {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.cta-feature .feature-icon {
+    font-size: 1.2rem;
+}
+
+/* Button Arrow */
+.btn-arrow {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-glow:hover .btn-arrow {
+    transform: translateX(3px);
+}
+
+/* Adjust orb positions for full-width */
+.cta-orb-1 {
+    width: 400px;
+    height: 400px;
+    top: -150px;
+    right: -150px;
+}
+
+.cta-orb-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    right: 150px;
+}
+
+.cta-orb-3 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    right: 250px;
+}
+
+/* Adjust sparkle positions */
+.cta-sparkle:nth-child(1) {
+    top: 30%;
+    left: 65%;
+}
+
+.cta-sparkle:nth-child(2) {
+    top: 60%;
+    left: 75%;
+}
+
+.cta-sparkle:nth-child(3) {
+    top: 45%;
+    left: 70%;
+}
+
+.cta-pulse {
+    top: 40%;
+    left: 75%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .cta-section .container {
+        padding: 60px 20px;
+    }
+    
+    .cta-visual {
+        width: 60%;
+        opacity: 0.6;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta-section {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .cta-section .container {
+        padding: 50px 20px;
+        text-align: center;
+    }
+    
+    .cta-content {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .cta-features {
+        justify-content: center;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .cta-visual {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        opacity: 0.4;
+    }
+    
+    .cta-orb-1,
+    .cta-orb-2,
+    .cta-orb-3 {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-section .container {
+        padding: 40px 15px;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+/* Add these styles to your CSS section */
+
+/* CTA Badge */
+.cta-badge {
+    display: inline-block;
+    background-color: white;
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Glow Button Effect */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.1) 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0.1) 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-glow:hover::before {
+    opacity: 1;
+}
+
+/* Hover Effect Button */
+.btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-circle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.btn-hover-effect:hover .hover-circle {
+    transform: scale(10);
+    opacity: 0;
+}
+
+/* CTA Visual Elements */
+.cta-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+        rgba(255,255,255,0.8) 0%, 
+        rgba(255,255,255,0) 70%);
+    opacity: 0.3;
+}
+
+.cta-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cta-dots .dot {
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+}
+
+.cta-dots .dot:nth-child(1) {
+    width: 5px;
+    height: 5px;
+    top: 20%;
+    left: 10%;
+}
+
+.cta-dots .dot:nth-child(2) {
+    width: 3px;
+    height: 3px;
+    top: 60%;
+    left: 80%;
+}
+
+.cta-dots .dot:nth-child(3) {
+    width: 4px;
+    height: 4px;
+    top: 40%;
+    left: 30%;
+}
+
+/* CTA Features */
+.cta-features {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.cta-feature .feature-icon {
+    font-size: 1.2rem;
+}
+
+/* Button Arrow */
+.btn-arrow {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-glow:hover .btn-arrow {
+    transform: translateX(3px);
+}
+/* Add these styles to your CSS */
+.cta-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    z-index: 1;
+    animation: float 15s ease-in-out infinite;
+}
+
+.cta-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(123, 92, 246, 0.8) 0%, transparent 70%);
+}
+
+.cta-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(56, 182, 255, 0.6) 0%, transparent 70%);
+    animation-delay: 3s;
+}
+
+.cta-orb-3 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+    animation-delay: 6s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(20px, -20px); }
+    50% { transform: translate(-20px, 10px); }
+    75% { transform: translate(10px, 20px); }
+}
+/* Tooltip styles */
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.8) transparent transparent transparent;
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+}
+/* === Glowing Border Animation === */
+.tool-card {
+    position: relative;
+    overflow: hidden;
+    border: none !important; /* Remove default border */
+    z-index: 1;
+}
+
+/* Main glowing border (hidden by default) */
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary-light),
+        transparent
+    );
+    background-size: 200% 100%;
+    border-radius: var(--border-radius);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: borderGlow 4s linear infinite;
+}
+
+/* Soft outer glow (always visible) */
+.tool-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 15px rgba(123, 92, 246, 0.3);
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Glow effect on hover */
+.tool-card:hover::before {
+    opacity: 0.8;
+}
+
+.tool-card:hover::after {
+    opacity: 1;
+}
+
+/* Light travel animation */
+@keyframes borderGlow {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* Inner fill to hide the backside of the glow */
+.tool-card .card-inner {
+    position: relative;
+    background: var(--dark-primary);
+    border-radius: var(--border-radius);
+    height: 100%;
+    z-index: 1;
+    padding: 20px;
+}
+
+body.light-theme .tool-card .card-inner {
+    background: var(--dark-secondary);
+}
+/* Enhanced Tool Card with Glowing Border Animation */
+.tool-card {
+    --border-radius: 8px;
+    --bg-color: rgba(30, 41, 59, 0.6);
+    position: relative;
+    overflow: hidden;
+    border: none !important;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+body.light-theme .tool-card {
+    --bg-color: rgba(248, 249, 250, 0.9);
+}
+
+/* Main glowing border (hidden by default) */
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary-light),
+        transparent
+    );
+    background-size: 200% 100%;
+    border-radius: var(--border-radius);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: borderGlow 4s linear infinite;
+}
+
+/* Soft outer glow (always visible) */
+.tool-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 15px rgba(123, 92, 246, 0.3);
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Glow effect on hover */
+.tool-card:hover::before {
+    opacity: 0.8;
+}
+
+.tool-card:hover::after {
+    opacity: 1;
+}
+
+/* Light travel animation */
+@keyframes borderGlow {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* Inner fill to hide the backside of the glow */
+.tool-card .card-inner {
+    position: relative;
+    background: var(--dark-primary);
+    border-radius: var(--border-radius);
+    height: 100%;
+    z-index: 1;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+body.light-theme .tool-card .card-inner {
+    background: var(--dark-secondary);
+}
+
+/* Add subtle 3D tilt effect on hover */
+.tool-card:hover {
+    transform: translateY(-5px) perspective(1000px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 15px 30px rgba(123, 92, 246, 0.2);
+}
+/* CTA Section Styles */
+.cta-section-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 60px 0;
+}
+
+.cta-section {
+    display: flex;
+    align-items: center;
+    min-height: 400px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    padding: 60px 0;
+    position: relative;
+}
+
+.cta-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cta-content {
+    flex: 1;
+    max-width: 600px;
+    padding: 40px;
+    color: white;
+}
+
+.cta-visual {
+    flex: 1;
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .cta-section .container {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta-section {
+        flex-direction: column;
+        padding: 40px 0;
+    }
+    
+    .cta-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cta-content, .cta-visual {
+        max-width: 100%;
+        padding: 20px;
+    }
+    
+    .cta-features {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-features {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* Animated Gradient Border Effect */
+.tool-card {
+    position: relative;
+    border-radius: var(--border-radius);
+    background: none !important; /* Remove any existing background */
+    padding: 2px !important; /* Create space for the border */
+    z-index: 1;
+}
+
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        #7b5cf6,
+        #8b6bf7,
+        #6a4ce0,
+        #7b5cf6
+    );
+    background-size: 300% 300%;
+    border-radius: var(--border-radius);
+    z-index: -1;
+    animation: gradientBorder 4s linear infinite;
+    opacity: 0.8;
+}
+
+.tool-card .card-inner {
+    position: relative;
+    background: var(--dark-primary);
+    border-radius: calc(var(--border-radius) - 2px);
+    height: 100%;
+    z-index: 1;
+    padding: 20px;
+}
+
+body.light-theme .tool-card .card-inner {
+    background: var(--dark-secondary);
+}
+
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+</style>
 </head>
 <body>
     <!-- Floating Gradient Shadows -->
@@ -768,6 +2155,7 @@
             </div>
         </section>
 
+        <!-- Featured Tools -->
         <!-- Featured Tools -->
         <section class="section">
             <div class="container section-content">
@@ -870,11 +2258,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="carousel-nav">
-                        <button id="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                        <button id="carousel-next"><i class="fas fa-chevron-right"></i></button>
-                    </div>
                 </div>
             </div>
         </section>
@@ -971,100 +2354,308 @@
             </div>
         </section>
 
-        <!-- Newly Added Tools -->
-        <section class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Newly Added Tools</h2>
-                    <p>Recently added AI tools to our directory</p>
+        <!--  -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Trending AI Tools</h2>
+            <p>Most popular AI tools this week based on user engagement</p>
+        </div>
+        
+        <div class="trending-tools-grid">
+            <!-- Trending Tool 1 -->
+            <div class="trending-tool-card">
+                <div class="trending-tool-glow"></div>
+                <div class="trending-tool-header">
+                    <div class="trending-tool-logo">
+                        <img src="assets/img/chat.webp" alt="ChatGPT Pro">
+                    </div>
+                    <div class="trending-tool-badge">
+                        <i class="fas fa-fire"></i> Hot
+                    </div>
+                </div>
+                <div class="trending-tool-content">
+                    <h3>ChatGPT Pro</h3>
+                    <span class="trending-tool-category">Chatbots</span>
+                    <div class="trending-tool-description">
+                        Advanced version with plugins and web browsing capabilities.
+                    </div>
+                </div>
+                <div class="trending-tool-footer">
+                    <div class="trending-tool-stats">
+                        <span class="trending-tool-users">
+                            <i class="fas fa-users"></i> 1.2M+
+                        </span>
+                        <span class="trending-tool-rating">
+                            <i class="fas fa-star"></i> 4.9
+                        </span>
+                    </div>
+                    <div class="trending-tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trending Tool 2 -->
+            <div class="trending-tool-card">
+                <div class="trending-tool-glow"></div>
+                <div class="trending-tool-header">
+                    <div class="trending-tool-logo">
+                        <img src="assets/img/mid.webp" alt="Midjourney V6">
+                    </div>
+                    <div class="trending-tool-badge">
+                        <i class="fas fa-bolt"></i> New
+                    </div>
+                </div>
+                <div class="trending-tool-content">
+                    <h3>Midjourney V6</h3>
+                    <span class="trending-tool-category">Image Generation</span>
+                    <div class="trending-tool-description">
+                        Latest version with photorealistic image generation.
+                    </div>
+                </div>
+                <div class="trending-tool-footer">
+                    <div class="trending-tool-stats">
+                        <span class="trending-tool-users">
+                            <i class="fas fa-users"></i> 850K+
+                        </span>
+                        <span class="trending-tool-rating">
+                            <i class="fas fa-star"></i> 4.8
+                        </span>
+                    </div>
+                    <div class="trending-tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trending Tool 3 -->
+            <div class="trending-tool-card">
+                <div class="trending-tool-glow"></div>
+                <div class="trending-tool-header">
+                    <div class="trending-tool-logo">
+                        <img src="assets/img/dall.webp" alt="DALL-E 3">
+                    </div>
+                    <div class="trending-tool-badge">
+                        <i class="fas fa-arrow-up"></i> Rising
+                    </div>
+                </div>
+                <div class="trending-tool-content">
+                    <h3>DALL-E 3</h3>
+                    <span class="trending-tool-category">Image Generation</span>
+                    <div class="trending-tool-description">
+                        Integrated with ChatGPT for enhanced prompt understanding.
+                    </div>
+                </div>
+                <div class="trending-tool-footer">
+                    <div class="trending-tool-stats">
+                        <span class="trending-tool-users">
+                            <i class="fas fa-users"></i> 720K+
+                        </span>
+                        <span class="trending-tool-rating">
+                            <i class="fas fa-star"></i> 4.7
+                        </span>
+                    </div>
+                    <div class="trending-tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newly Added Tools Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Newly Added Tools</h2>
+            <p>Recently added AI tools to our directory</p>
+        </div>
+        
+        <div class="tools-grid">
+            <!-- New Tool 1 - With Glow Effect -->
+            <div class="tool-card" data-tool-id="claude">
+                <div class="card-inner">
+                    <div class="tool-card-header">
+                        <div class="tool-logo">
+                            <img src="assets/img/tools/claude.png" alt="Claude AI">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Claude AI</h3>
+                            <span class="tool-category">Chatbots</span>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        AI assistant focused on helpful, harmless, and honest conversations.
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-pricing freemium">Freemium</span>
+                        <span class="tool-rating">
+                            <i class="fas fa-star"></i> 4.6
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New Tool 2 - With Glow Effect -->
+            <div class="tool-card" data-tool-id="runway">
+                <div class="card-inner">
+                    <div class="tool-card-header">
+                        <div class="tool-logo">
+                            <img src="assets/img/tools/runway.png" alt="Runway ML">
+                        </div>
+                        <div class="tool-info">
+                            <h3>Runway ML</h3>
+                            <span class="tool-category">Video Editing</span>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Creative suite with AI tools for video, image, and more.
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-pricing paid">Paid</span>
+                        <span class="tool-rating">
+                            <i class="fas fa-star"></i> 4.4
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New Tool 3 - With Glow Effect -->
+            <div class="tool-card" data-tool-id="elevenlabs">
+                <div class="card-inner">
+                    <div class="tool-card-header">
+                        <div class="tool-logo">
+                            <img src="assets/img/tools/elevenlabs.png" alt="ElevenLabs">
+                        </div>
+                        <div class="tool-info">
+                            <h3>ElevenLabs</h3>
+                            <span class="tool-category">Audio</span>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Most realistic and versatile AI speech software.
+                    </div>
+                    <div class="tool-meta">
+                        <span class="tool-pricing freemium">Freemium</span>
+                        <span class="tool-rating">
+                            <i class="fas fa-star"></i> 4.7
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Replace your current marquee section with this -->
+<section class="section" style="padding: 20px 0;">
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-item">
+                <span class="marquee-icon">🚀</span>
+                <span>Trending Now: ChatGPT-5 Preview</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-icon">🔥</span>
+                <span>New Release: Midjourney V7 Alpha</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-icon">✨</span>
+                <span>Just Added: 42 New AI Tools This Week</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-icon">🌟</span>
+                <span>Breaking: Google Gemini Ultra Released</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-icon">💡</span>
+                <span>Featured: Claude 3 Dominates Benchmarks</span>
+            </div>
+            <!-- Duplicate items for seamless looping -->
+            <div class="marquee-item">
+                <span class="marquee-icon">🚀</span>
+                <span>Trending Now: ChatGPT-5 Preview</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-icon">🔥</span>
+                <span>New Release: Midjourney V7 Alpha</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-icon">✨</span>
+                <span>Just Added: 42 New AI Tools This Week</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-icon">🌟</span>
+                <span>Breaking: Google Gemini Ultra Released</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-icon">💡</span>
+                <span>Featured: Claude 3 Dominates Benchmarks</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Replace your current CTA section with this -->
+<section class="section cta-section-wrapper" style="padding: 0;">
+    <div class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-badge">NEW</div>
+                <h2>Ready to Showcase Your AI Tool?</h2>
+                <p>Join our exclusive directory and connect with thousands of potential users and customers</p>
+                
+                <div class="cta-features">
+                    <div class="cta-feature" data-tooltip="Get discovered by our 100k+ monthly visitors">
+                        <div class="feature-icon">🚀</div>
+                        <span>Increased Visibility</span>
+                    </div>
+                    <div class="cta-feature" data-tooltip="Track your tool's performance metrics">
+                        <div class="feature-icon">📈</div>
+                        <span>Performance Analytics</span>
+                    </div>
+                    <div class="cta-feature" data-tooltip="Highlight your tool in our featured section">
+                        <div class="feature-icon">💎</div>
+                        <span>Premium Placement</span>
+                    </div>
                 </div>
                 
-                <div class="tools-grid">
-                    <!-- New Tool 1 -->
-                    <div class="tool-card">
-                        <div class="tool-card-header">
-                            <div class="tool-logo">
-                                <img src="images/tools/claude.png" alt="Claude">
-                            </div>
-                            <div class="tool-info">
-                                <h3>Claude AI</h3>
-                                <span class="tool-category">Chatbots</span>
-                            </div>
-                        </div>
-                        <div class="tool-description">
-                            AI assistant focused on helpful, harmless, and honest conversations.
-                        </div>
-                        <div class="tool-meta">
-                            <span class="tool-pricing freemium">Freemium</span>
-                            <span class="tool-rating">
-                                <i class="fas fa-star"></i> 4.6
-                            </span>
-                        </div>
-                    </div>
-                    
-                    <!-- New Tool 2 -->
-                    <div class="tool-card">
-                        <div class="tool-card-header">
-                            <div class="tool-logo">
-                                <img src="images/tools/runway.png" alt="Runway">
-                            </div>
-                            <div class="tool-info">
-                                <h3>Runway ML</h3>
-                                <span class="tool-category">Video Editing</span>
-                            </div>
-                        </div>
-                        <div class="tool-description">
-                            Creative suite with AI tools for video, image, and more.
-                        </div>
-                        <div class="tool-meta">
-                            <span class="tool-pricing paid">Paid</span>
-                            <span class="tool-rating">
-                                <i class="fas fa-star"></i> 4.4
-                            </span>
-                        </div>
-                    </div>
-                    
-                    <!-- New Tool 3 -->
-                    <div class="tool-card">
-                        <div class="tool-card-header">
-                            <div class="tool-logo">
-                                <img src="images/tools/elevenlabs.png" alt="ElevenLabs">
-                            </div>
-                            <div class="tool-info">
-                                <h3>ElevenLabs</h3>
-                                <span class="tool-category">Audio</span>
-                            </div>
-                        </div>
-                        <div class="tool-description">
-                            Most realistic and versatile AI speech software.
-                        </div>
-                        <div class="tool-meta">
-                            <span class="tool-pricing freemium">Freemium</span>
-                            <span class="tool-rating">
-                                <i class="fas fa-star"></i> 4.7
-                            </span>
-                        </div>
-                    </div>
+                <div class="cta-buttons">
+                    <a href="submit-tool.html" class="btn btn-primary btn-glow">
+                        <span>Submit Your Tool</span>
+                        <svg class="btn-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="btn btn-secondary btn-hover-effect">
+                        <span>Learn More</span>
+                        <div class="hover-circle"></div>
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="section">
-            <div class="container">
-                <div class="cta-section">
-                    <div class="cta-content">
-                        <h2>Want to add your AI tool?</h2>
-                        <p>Submit your AI tool to our directory and reach thousands of potential users</p>
-                        <div class="cta-buttons">
-                            <a href="submit-tool.html" class="btn btn-primary">Submit Your Tool</a>
-                            <a href="#" class="btn btn-secondary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        
+        <div class="cta-visual">
+            <div class="cta-orb cta-orb-1"></div>
+            <div class="cta-orb cta-orb-2"></div>
+            <div class="cta-orb cta-orb-3"></div>
+            <div class="cta-shine"></div>
+            <div class="cta-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
-        </section>
-    </main>
+            <div class="cta-decoration">
+                <div class="cta-sparkle"></div>
+                <div class="cta-sparkle"></div>
+                <div class="cta-sparkle"></div>
+                <div class="cta-pulse"></div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -1249,6 +2840,147 @@
                 card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
             });
         });
+                // Auto-scrolling carousel with seamless infinite loop
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.tools-scroll');
+            const cards = document.querySelectorAll('.tool-card');
+            const container = document.querySelector('.featured-tools-container');
+            // Enable smooth transition for the carousel
+            carousel.style.transition = 'transform 0.5s linear';
+            
+            // Clone all cards for seamless looping
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                carousel.appendChild(clone);
+                        // Start CTA animations
+        animateCTAVisuals();
+
+            });
+            
+            let scrollAmount = 0;
+            const cardWidth = cards[0].offsetWidth + 25; // width + gap
+            const scrollSpeed = 1; // pixels per frame (adjust for speed)
+            let paused = false;
+
+            function scrollCarousel() {
+                if (!paused) {
+                    scrollAmount += scrollSpeed;
+                    // When we've scrolled all original cards, reset to start
+                    if (scrollAmount >= cardWidth * cards.length) {
+                        scrollAmount = 0;
+                    }
+                    carousel.style.transform = `translateX(-${scrollAmount}px)`;
+                }
+                requestAnimationFrame(scrollCarousel);
+            }
+            
+            // Start scrolling
+            scrollCarousel();
+            
+            // Pause on hover
+            container.addEventListener('mouseenter', () => {
+                paused = true;
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                paused = false;
+            });
+        });
+        // Add ripple effect to trending tool cards
+document.querySelectorAll('.trending-tool-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple-effect');
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 1000);
+    });
+});
+
+// Add hover tilt effect
+document.querySelectorAll('.trending-tool-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', `${x / rect.width * 100}%`);
+        card.style.setProperty('--mouse-y', `${y / rect.height * 100}%`);
+    });
+});
+// Make marquee speed responsive
+function adjustMarqueeSpeed() {
+    const marqueeTrack = document.querySelector('.marquee-track');
+    if (window.innerWidth < 768) {
+        marqueeTrack.style.animationDuration = '30s';
+    } else {
+        marqueeTrack.style.animationDuration = '40s';
+    }
+}
+
+window.addEventListener('resize', adjustMarqueeSpeed);
+adjustMarqueeSpeed(); // Initialize
+// Add tooltip functionality
+document.querySelectorAll('.cta-feature').forEach(feature => {
+    const tooltipText = feature.getAttribute('data-tooltip');
+    if (tooltipText) {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.textContent = tooltipText;
+        feature.appendChild(tooltip);
+        
+        feature.addEventListener('mouseenter', () => {
+            tooltip.style.opacity = '1';
+            tooltip.style.visibility = 'visible';
+        });
+        
+        feature.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = '0';
+            tooltip.style.visibility = 'hidden';
+        });
+    }
+});
+// Animate CTA orbs and sparkles
+function animateCTAVisuals() {
+    const orbs = document.querySelectorAll('.cta-orb');
+    const sparkles = document.querySelectorAll('.cta-sparkle');
+    
+    // Animate orbs
+    orbs.forEach((orb, index) => {
+        const speed = 0.5 + (index * 0.1);
+        const x = Math.sin(Date.now() * 0.001 * speed) * 20;
+        const y = Math.cos(Date.now() * 0.001 * speed) * 20;
+        orb.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    
+    // Animate sparkles
+    sparkles.forEach((sparkle, index) => {
+        const delay = index * 0.3;
+        sparkle.style.animation = `sparkle 2s ease-in-out ${delay}s infinite`;
+    });
+    
+    requestAnimationFrame(animateCTAVisuals);
+}
+
+// Start animation
+animateCTAVisuals();
+document.querySelectorAll('.tool-card').forEach(card => {
+    const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+    positions.forEach(pos => {
+        const dot = document.createElement('div');
+        dot.classList.add('corner-dot', pos);
+        card.appendChild(dot);
+    });
+});
     </script>
 </body>
 </html>
