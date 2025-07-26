@@ -7,6 +7,403 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Tags Section Styling */
+.tags-container {
+    background-color: var(--dark-tertiary);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-top: 8px;
+}
+
+.tag-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-options label {
+    display: flex;
+    align-items: center;
+    background-color: var(--dark-secondary);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.tag-options label:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.tag-options input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--text-muted);
+    border-radius: 4px;
+    margin-right: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+
+.tag-options input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.tag-options input[type="checkbox"]:checked::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: white;
+    position: absolute;
+    font-size: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tag-options input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
+}
+
+/* Selected tags display */
+.selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--primary-dark);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.tag-pill .remove-tag {
+    margin-left: 6px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.tag-pill .remove-tag:hover {
+    opacity: 1;
+}
+/* File Upload Styling */
+.file-upload {
+    border: 2px dashed var(--dark-tertiary);
+    padding: 30px;
+    text-align: center;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.file-upload:hover {
+    border-color: var(--primary-light);
+    background-color: rgba(123, 92, 246, 0.05);
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-upload i {
+    font-size: 2rem;
+    color: var(--primary-light);
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+.file-upload p {
+    margin: 5px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.file-upload:hover i {
+    transform: translateY(-5px);
+}
+
+.file-preview {
+    margin-top: 15px;
+    display: none;
+}
+
+.file-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--dark-tertiary);
+}
+
+.file-upload.active {
+    border-color: var(--success);
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+.file-upload.active i {
+    color: var(--success);
+}
+/* File Upload Styles */
+.file-upload-container {
+    margin-bottom: 20px;
+}
+
+.file-upload-box {
+    position: relative;
+    border: 2px dashed var(--dark-tertiary);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.file-upload-box:hover {
+    border-color: var(--primary-light);
+    background-color: rgba(123, 92, 246, 0.05);
+}
+
+.file-upload-box input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-area i {
+    font-size: 2rem;
+    color: var(--primary-light);
+    margin-bottom: 10px;
+}
+
+.upload-instruction {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.upload-requirements {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.file-info {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.file-preview {
+    margin-top: 15px;
+    display: none;
+}
+
+.file-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--dark-tertiary);
+}
+
+/* Drag and Drop States */
+.file-upload-box.highlight {
+    border-color: var(--primary-color);
+    background-color: rgba(123, 92, 246, 0.1);
+}
+
+.file-upload-box.error {
+    border-color: var(--danger);
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.file-upload-box.success {
+    border-color: var(--success);
+    background-color: rgba(16, 185, 129, 0.1);
+}
+/* Updated File Upload Styles */
+.file-previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.preview-item {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--dark-tertiary);
+}
+
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--danger);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.preview-item:hover .remove-btn {
+    opacity: 1;
+}
+
+.file-counter {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+.max-files-reached .file-upload-box {
+    opacity: 0.5;
+    pointer-events: none;
+}
+/* Popup Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-container {
+    background-color: var(--dark-secondary);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.popup-overlay.active .popup-container {
+    transform: scale(1);
+}
+
+.popup-icon {
+    margin-bottom: 20px;
+}
+
+.popup-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-light);
+}
+
+.popup-message {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* Checkmark Animation */
+.checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: var(--success);
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 0 auto;
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
+    animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+}
+
+.checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0 0 0 100px rgba(16, 185, 129, 0.1);
+    }
+}
+    </style>
 </head>
 <body>
 <header class="main-header">
@@ -106,41 +503,52 @@
                                     <option value="contact">Contact for Pricing</option>
                                 </select>
                             </div>
-                            
-                            <div class="form-group">
-                                <label>Tags</label>
-                                <div class="tags-container">
-                                    <div class="tag-options">
-                                        <label><input type="checkbox" name="tags" value="text-generation"> Text Generation</label>
-                                        <label><input type="checkbox" name="tags" value="image-generation"> Image Generation</label>
-                                        <label><input type="checkbox" name="tags" value="video-generation"> Video Generation</label>
-                                        <label><input type="checkbox" name="tags" value="code-generation"> Code Generation</label>
-                                        <label><input type="checkbox" name="tags" value="natural-language"> Natural Language</label>
-                                        <label><input type="checkbox" name="tags" value="machine-learning"> Machine Learning</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="screenshot">Screenshot *</label>
-                                <div class="file-upload">
-                                    <input type="file" id="screenshot" accept="image/*" required>
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <p>Click to upload or drag and drop</p>
-                                    <p>PNG, JPG (Max. 5MB)</p>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="logo">Logo</label>
-                                <div class="file-upload">
-                                    <input type="file" id="logo" accept="image/*">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <p>Click to upload or drag and drop</p>
-                                    <p>PNG, JPG (Max. 2MB)</p>
-                                </div>
-                            </div>
-                            
+<div class="form-group">
+    <label>Tags</label>
+    <div class="tags-container">
+        <div class="tag-options">
+            <label><input type="checkbox" name="tags" value="text-generation"> Text Generation</label>
+            <label><input type="checkbox" name="tags" value="image-generation"> Image Generation</label>
+            <label><input type="checkbox" name="tags" value="video-generation"> Video Generation</label>
+            <label><input type="checkbox" name="tags" value="code-generation"> Code Generation</label>
+            <label><input type="checkbox" name="tags" value="natural-language"> Natural Language</label>
+            <label><input type="checkbox" name="tags" value="machine-learning"> Machine Learning</label>
+        </div>
+        <div class="selected-tags" id="selected-tags-display"></div>
+    </div>
+</div>                            
+<!-- Add this inside your form -->
+<!-- Screenshot Upload -->
+<div class="form-group">
+    <label for="screenshots">Screenshots (Max 3) *</label>
+    <div class="file-upload-container" id="screenshot-container">
+        <div class="file-upload-box">
+            <input type="file" id="screenshots" name="screenshots[]" accept="image/*" multiple>
+            <div class="upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p class="upload-instruction">Click to browse or drag & drop</p>
+                <p class="upload-requirements">PNG, JPG (Max. 5MB each)</p>
+            </div>
+        </div>
+        <div class="file-previews" id="screenshot-previews"></div>
+    </div>
+</div>
+
+<!-- Logo Upload -->
+<div class="form-group">
+    <label for="logo">Logo (Max 1)</label>
+    <div class="file-upload-container" id="logo-container">
+        <div class="file-upload-box">
+            <input type="file" id="logo" name="logo" accept="image/*">
+            <div class="upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p class="upload-instruction">Click to browse or drag & drop</p>
+                <p class="upload-requirements">PNG, JPG (Max. 2MB)</p>
+            </div>
+        </div>
+        <div class="file-previews" id="logo-previews"></div>
+    </div>
+</div>                            
                             <div class="form-group">
                                 <label for="company-name">Company Name</label>
                                 <input type="text" id="company-name">
@@ -251,7 +659,228 @@
             </div>
         </div>
     </footer>
+    <div class="popup-overlay" id="success-popup">
+    <div class="popup-container">
+        <div class="popup-icon">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+        <h3 class="popup-title">Successfully Submitted!</h3>
+        <p class="popup-message">Your tool has been submitted for review.</p>
+        <button class="btn btn-primary popup-close">OK</button>
+    </div>
+</div>
 
     <script src="assets/js/main.js"></script>
+    <script>
+// File Upload Manager
+const uploadManager = {
+    screenshots: {
+        maxFiles: 3,
+        currentFiles: 0,
+        container: document.getElementById('screenshot-container'),
+        previews: document.getElementById('screenshot-previews'),
+        input: document.querySelector('#screenshot-container input[type="file"]')
+    },
+    logo: {
+        maxFiles: 1,
+        currentFiles: 0,
+        container: document.getElementById('logo-container'),
+        previews: document.getElementById('logo-previews'),
+        input: document.querySelector('#logo-container input[type="file"]')
+    },
+
+    init() {
+        this.setupUpload('screenshots');
+        this.setupUpload('logo');
+    },
+
+    setupUpload(type) {
+        const config = this[type];
+        
+        config.input.addEventListener('change', (e) => {
+            if (config.currentFiles >= config.maxFiles) return;
+            
+            const files = Array.from(e.target.files).slice(0, config.maxFiles - config.currentFiles);
+            
+            files.forEach(file => {
+                if (this.validateFile(file, type)) {
+                    this.addFilePreview(file, type);
+                    config.currentFiles++;
+                }
+            });
+
+            this.updateUI(type);
+        });
+
+        // Drag and drop setup
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            config.container.addEventListener(eventName, this.preventDefaults, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            config.container.addEventListener(eventName, () => this.highlight(config.container), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            config.container.addEventListener(eventName, () => this.unhighlight(config.container), false);
+        });
+
+        config.container.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            config.input.files = dt.files;
+            const event = new Event('change');
+            config.input.dispatchEvent(event);
+        });
+    },
+
+    validateFile(file, type) {
+        const maxSize = type === 'screenshots' ? 5 : 2; // MB
+        const maxSizeBytes = maxSize * 1024 * 1024;
+
+        if (!file.type.match('image.*')) {
+            alert(`Please select an image file for ${type}`);
+            return false;
+        }
+
+        if (file.size > maxSizeBytes) {
+            alert(`File exceeds ${maxSize}MB limit for ${type}`);
+            return false;
+        }
+
+        return true;
+    },
+
+    addFilePreview(file, type) {
+        const config = this[type];
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const previewItem = document.createElement('div');
+            previewItem.className = 'preview-item';
+            
+            previewItem.innerHTML = `
+                <img src="${e.target.result}" alt="${file.name}">
+                <div class="remove-btn" data-filename="${file.name}">
+                    <i class="fas fa-times"></i>
+                </div>
+            `;
+            
+            previewItem.querySelector('.remove-btn').addEventListener('click', () => {
+                this.removeFile(file.name, type);
+            });
+            
+            config.previews.appendChild(previewItem);
+            this.updateUI(type);
+        };
+
+        reader.readAsDataURL(file);
+    },
+
+    removeFile(filename, type) {
+        const config = this[type];
+        const previewItems = config.previews.querySelectorAll('.preview-item');
+        
+        previewItems.forEach(item => {
+            if (item.querySelector('.remove-btn').dataset.filename === filename) {
+                item.remove();
+                config.currentFiles--;
+            }
+        });
+
+        // Reset input to allow re-uploading the same file
+        config.input.value = '';
+        this.updateUI(type);
+    },
+
+    updateUI(type) {
+        const config = this[type];
+        const counter = config.container.querySelector('.file-counter') || document.createElement('div');
+        
+        counter.className = 'file-counter';
+        counter.textContent = `${config.currentFiles}/${config.maxFiles} files`;
+        
+        if (!config.container.contains(counter)) {
+            config.container.appendChild(counter);
+        }
+
+        if (config.currentFiles >= config.maxFiles) {
+            config.container.classList.add('max-files-reached');
+        } else {
+            config.container.classList.remove('max-files-reached');
+        }
+    },
+
+    preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    },
+
+    highlight(element) {
+        element.classList.add('highlight');
+    },
+
+    unhighlight(element) {
+        element.classList.remove('highlight');
+    }
+};
+
+// Initialize when DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    uploadManager.init();
+    
+    // Form reset handler
+    document.querySelector('form').addEventListener('reset', () => {
+        uploadManager.screenshots.previews.innerHTML = '';
+        uploadManager.screenshots.currentFiles = 0;
+        uploadManager.logo.previews.innerHTML = '';
+        uploadManager.logo.currentFiles = 0;
+        uploadManager.updateUI('screenshots');
+        uploadManager.updateUI('logo');
+    });
+});
+// Show success popup
+function showSuccessPopup() {
+    const popup = document.getElementById('success-popup');
+    popup.classList.add('active');
+    
+    // Close popup when OK button clicked
+    document.querySelector('.popup-close').addEventListener('click', () => {
+        popup.classList.remove('active');
+    });
+    
+    // Close popup when clicking outside
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.classList.remove('active');
+        }
+    });
+}
+
+// Update your form submission handler
+document.getElementById('tool-submission-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+    
+    // Simulate API call (replace with actual submission)
+    setTimeout(() => {
+        // Reset form
+        this.reset();
+        uploadManager.reset(); // If using the upload manager
+        
+        // Show success popup
+        showSuccessPopup();
+        
+        // Reset button
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Tool';
+    }, 1500);
+});
+</script>
 </body>
 </html>

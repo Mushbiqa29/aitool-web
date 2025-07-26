@@ -903,7 +903,107 @@ body.light-theme .hero {
 .mobile-search {
   background-color: var(--dark-secondary);
 }
+/* Sidebar Dropdown Styles */
+.sidebar-dropdown {
+    margin-bottom: 15px;
+    position: relative;
+}
 
+.sidebar-dropdown-toggle {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--dark-tertiary);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.sidebar-dropdown-toggle:hover {
+    background-color: var(--primary-dark);
+}
+
+.sidebar-dropdown-toggle i:first-child {
+    margin-right: 10px;
+}
+
+.sidebar-dropdown-toggle .fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.sidebar-dropdown.active .sidebar-dropdown-toggle .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.sidebar-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: var(--dark-secondary);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.sidebar-dropdown.active .sidebar-dropdown-content {
+    max-height: 500px;
+    padding: 10px;
+    border: 1px solid var(--dark-tertiary);
+    border-top: none;
+}
+
+/* Keep existing filter styles */
+.filter-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.filter-label:hover {
+    background-color: var(--dark-tertiary);
+}
+.sidebar-dropdown-toggle {
+    position: relative;
+    padding-right: 30px; /* Make space for chevron */
+}
+
+.selected-options {
+    margin-left: 8px;
+    font-size: 0.9em;
+    color: var(--primary-light);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 120px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.filter-title {
+    margin-right: 8px;
+}
+.selected-options {
+    margin-left: 8px;
+    font-size: 0.9em;
+    color: var(--primary-light);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 120px;
+    display: inline-block;
+    vertical-align: middle;
+}
     </style>
 </head>
 <body>
@@ -972,137 +1072,145 @@ body.light-theme .hero {
             <div class="container">
                 <div class="category-page">
                     <!-- Sidebar Filters -->
-                    <aside class="category-sidebar">
-                        <div class="filter-section">
-                            <h3>Filters <button type="button" class="reset-filters">
-                                <i class="fas fa-sync-alt"></i> Reset
-                            </button></h3>
-                            
-                            <div class="filter-options">
-                                <h4><i class="fas fa-tags"></i> Category</h4>
-                                <ul class="filter-list">
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-category="generative-ai">
-                                            <span>Generative AI</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-category="chatbots">
-                                            <span>Chatbots</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-category="image-generation">
-                                            <span>Image Generation</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-category="video-editing">
-                                            <span>Video Editing</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-category="audio">
-                                            <span>Audio Tools</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div class="filter-options">
-                                <h4><i class="fas fa-tag"></i> Pricing</h4>
-                                <ul class="filter-list">
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-pricing="free">
-                                            <span>Free</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-pricing="freemium">
-                                            <span>Freemium</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-pricing="paid">
-                                            <span>Paid</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div class="filter-options">
-                                <h4><i class="fas fa-star"></i> Rating</h4>
-                                <ul class="filter-list">
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-rating="5">
-                                            <span>★★★★★</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-rating="4">
-                                            <span>★★★★☆</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="filter-label">
-                                            <input type="checkbox" data-rating="3">
-                                            <span>★★★☆☆</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </aside>
+<aside class="category-sidebar">
+    <div class="filter-section">
+        <h3>Filters <button type="button" class="reset-filters">
+            <i class="fas fa-sync-alt"></i> Reset
+        </button></h3>
+        
+        <!-- Category Dropdown -->
+        <div class="sidebar-dropdown">
+            <button class="sidebar-dropdown-toggle">
+                <i class="fas fa-tags"></i>
+                <span>Categories</span>
+                <span class="selected-options"></span>
+
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="sidebar-dropdown-content">
+                <ul class="filter-list">
+                    <li><label class="filter-label"><input type="checkbox" data-category="generative-ai"> Generative AI</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="chatbots"> Chatbots</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="image-generation"> Image Generation</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="video-editing"> Video Editing</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="audio"> Audio Tools</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="writing"> Writing</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="productivity"> Productivity</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="education"> Education</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="business"> Business AI</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="coding"> Coding</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-category="assistant"> Assistant</label></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pricing Dropdown -->
+        <div class="sidebar-dropdown">
+            <button class="sidebar-dropdown-toggle">
+                <i class="fas fa-tag"></i>
+                <span>Pricing</span>
+                        <span class="selected-options"></span>
+
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="sidebar-dropdown-content">
+                <ul class="filter-list">
+                    <li><label class="filter-label"><input type="checkbox" data-pricing="free"> Free</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-pricing="freemium"> Freemium</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-pricing="paid"> Paid</label></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Rating Dropdown -->
+        <div class="sidebar-dropdown">
+            <button class="sidebar-dropdown-toggle">
+                <i class="fas fa-star"></i>
+                <span>Rating</span>
+                        <span class="selected-options"></span>
+
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="sidebar-dropdown-content">
+                <ul class="filter-list">
+                    <li><label class="filter-label"><input type="checkbox" data-rating="5"> ★★★★★ (5.0 only)</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-rating="4"> ★★★★☆ (4.0-4.9)</label></li>
+                    <li><label class="filter-label"><input type="checkbox" data-rating="3"> ★★★☆☆ (3.0-3.9)</label></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</aside>
                     
                     <!-- Mobile Filters -->
                     <div class="mobile-filters-container">
                         <!-- Category Filter -->
-                        <div class="filter-dropdown-box" data-filter-type="category">
-                            <button class="filter-dropdown-toggle" data-target="category-dropdown-mobile">
-                                <div class="filter-header">
-                                    <i class="fas fa-tags"></i>
-                                    <span class="filter-title">Category</span>
-                                </div>
-                                <div class="filter-selection">All</div>
-                            </button>
-                            <ul id="category-dropdown-mobile" class="filter-dropdown-menu">
-                                <li class="filter-dropdown-item">
-                                    <label>
-                                        <input type="checkbox" data-category="generative-ai"> Generative AI
-                                    </label>
-                                </li>
-                                <li class="filter-dropdown-item">
-                                    <label>
-                                        <input type="checkbox" data-category="chatbots"> Chatbots
-                                    </label>
-                                </li>
-                                <li class="filter-dropdown-item">
-                                    <label>
-                                        <input type="checkbox" data-category="image-generation"> Image Generation
-                                    </label>
-                                </li>
-                                <li class="filter-dropdown-item">
-                                    <label>
-                                        <input type="checkbox" data-category="video-editing"> Video Editing
-                                    </label>
-                                </li>
-                                <li class="filter-dropdown-item">
-                                    <label>
-                                        <input type="checkbox" data-category="audio"> Audio Tools
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
+<div class="filter-dropdown-box" data-filter-type="category">
+    <button class="filter-dropdown-toggle" data-target="category-dropdown-mobile">
+        <div class="filter-header">
+            <i class="fas fa-tags"></i>
+            <span class="filter-title">Category</span>
+        </div>
+        <div class="filter-selection">All</div>
+    </button>
+    <ul id="category-dropdown-mobile" class="filter-dropdown-menu">
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="generative-ai"> Generative AI
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="chatbots"> Chatbots
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="image-generation"> Image Generation
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="video-editing"> Video Editing
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="audio"> Audio Tools
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="writing"> Writing
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="productivity"> Productivity
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="education"> Education
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="business"> Business AI
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="coding"> Coding
+            </label>
+        </li>
+        <li class="filter-dropdown-item">
+            <label>
+                <input type="checkbox" data-category="assistant"> Assistant
+            </label>
+        </li>
+    </ul>
+</div>
 
                         <!-- Pricing Filter -->
                         <div class="filter-dropdown-box" data-filter-type="pricing">
@@ -1344,6 +1452,433 @@ body.light-theme .hero {
                                     </span>
                                 </div>
                             </div>
+                            <!-- Tool 7 - Jasper AI -->
+<div class="tool-card" 
+     data-categories="writing,productivity,generative-ai" 
+     data-pricing="paid" 
+     data-rating="4.6"
+     data-date="20210201"
+     onclick="window.location.href='tool-detail.html?tool=jasper'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/jasper.webp" alt="Jasper AI" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Jasper AI</h3>
+            <span class="tool-category">Writing Assistant</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI-powered writing assistant that helps create marketing copy, blog posts, and other content with human-like quality.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="paid">Paid</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.6
+        </span>
+    </div>
+</div>
+
+<!-- Tool 8 - Writesonic -->
+<div class="tool-card" 
+     data-categories="writing,productivity,generative-ai" 
+     data-pricing="freemium" 
+     data-rating="4.4"
+     data-date="20210315"
+     onclick="window.location.href='tool-detail.html?tool=writesonic'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/writesonic.webp" alt="Writesonic" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Writesonic</h3>
+            <span class="tool-category">Content Creation</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI writing tool that generates marketing copy, blog articles, product descriptions, and more in seconds.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.4
+        </span>
+    </div>
+</div>
+<!-- Tool 9 - Khanmigo -->
+<div class="tool-card" 
+     data-categories="education,tutoring,assistant" 
+     data-pricing="freemium" 
+     data-rating="4.7"
+     data-date="20230301"
+     onclick="window.location.href='tool-detail.html?tool=khanmigo'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/khanmigo.webp" alt="Khanmigo" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Khanmigo (Khan Academy)</h3>
+            <span class="tool-category">AI Tutor</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI tutor from Khan Academy that guides students through math, science, and other subjects with personalized learning.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.7
+        </span>
+    </div>
+</div>
+
+<!-- Tool 10 - Socratic by Google -->
+<div class="tool-card" 
+     data-categories="education,homework,assistant" 
+     data-pricing="free" 
+     data-rating="4.5"
+     data-date="20200215"
+     onclick="window.location.href='tool-detail.html?tool=socratic'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/socratic.webp" alt="Socratic by Google" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Socratic by Google</h3>
+            <span class="tool-category">Homework Helper</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        Uses AI to help students understand homework problems by providing explanations, videos, and step-by-step solutions.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="free">Free</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.5
+        </span>
+    </div>
+</div>
+
+<!-- Tool 11 - Quizlet AI -->
+<div class="tool-card" 
+     data-categories="education,productivity,study-tools" 
+     data-pricing="freemium" 
+     data-rating="4.3"
+     data-date="20221010"
+     onclick="window.location.href='tool-detail.html?tool=quizlet'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/quizlet.webp" alt="Quizlet AI" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Quizlet AI</h3>
+            <span class="tool-category">Study Assistant</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        Generates personalized quizzes, flashcards, and study guides from any content using AI-powered learning techniques.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.3
+        </span>
+    </div>
+</div>
+
+<!-- Tool 12 - Elsa Speak -->
+<div class="tool-card" 
+     data-categories="education,language-learning,audio" 
+     data-pricing="freemium" 
+     data-rating="4.6"
+     data-date="20210520"
+     onclick="window.location.href='tool-detail.html?tool=elsa'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/elsa.webp" alt="Elsa Speak" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Elsa Speak</h3>
+            <span class="tool-category">Language Learning</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI-powered English pronunciation coach that helps learners improve their speaking skills with real-time feedback.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.6
+        </span>
+    </div>
+</div>
+<!-- Tool 13 - Fireflies.ai -->
+<div class="tool-card" 
+     data-categories="business,productivity,meetings,assistant" 
+     data-pricing="freemium" 
+     data-rating="4.5"
+     data-date="20210115"
+     onclick="window.location.href='tool-detail.html?tool=fireflies'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/fireflies.webp" alt="Fireflies.ai" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Fireflies.ai</h3>
+            <span class="tool-category">Meeting Assistant</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI meeting assistant that joins calls, records conversations, transcribes meetings, and provides actionable summaries.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.5
+        </span>
+    </div>
+</div>
+
+<!-- Tool 14 - Tome -->
+<div class="tool-card" 
+     data-categories="business,presentations,storytelling,generative-ai" 
+     data-pricing="freemium" 
+     data-rating="4.4"
+     data-date="20220220"
+     onclick="window.location.href='tool-detail.html?tool=tome'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/tome.webp" alt="Tome" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Tome</h3>
+            <span class="tool-category">Presentation Tool</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI-powered storytelling and pitch deck creator that helps craft compelling narratives and presentations automatically.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.4
+        </span>
+    </div>
+</div>
+
+<!-- Tool 15 - Beautiful.ai -->
+<div class="tool-card" 
+     data-categories="business,presentations,design,productivity" 
+     data-pricing="paid" 
+     data-rating="4.6"
+     data-date="20200510"
+     onclick="window.location.href='tool-detail.html?tool=beautifulai'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/beautifulai.webp" alt="Beautiful.ai" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Beautiful.ai</h3>
+            <span class="tool-category">Presentation Design</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        Smart presentation software that uses AI to automatically design slides and maintain consistent styling.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="paid">Paid</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.6
+        </span>
+    </div>
+</div>
+<!-- Tool 13 - Fireflies.ai -->
+<div class="tool-card" 
+     data-categories="business,productivity,meetings,assistant" 
+     data-pricing="freemium" 
+     data-rating="4.5"
+     data-date="20210115"
+     onclick="window.location.href='tool-detail.html?tool=fireflies'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/fireflies.webp" alt="Fireflies.ai" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Fireflies.ai</h3>
+            <span class="tool-category">Meeting Assistant</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI meeting assistant that joins calls, records conversations, transcribes meetings, and provides actionable summaries.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.5
+        </span>
+    </div>
+</div>
+
+<!-- Tool 14 - Tome -->
+<div class="tool-card" 
+     data-categories="business,presentations,storytelling,generative-ai" 
+     data-pricing="freemium" 
+     data-rating="4.4"
+     data-date="20220220"
+     onclick="window.location.href='tool-detail.html?tool=tome'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/tome.webp" alt="Tome" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Tome</h3>
+            <span class="tool-category">Presentation Tool</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI-powered storytelling and pitch deck creator that helps craft compelling narratives and presentations automatically.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.4
+        </span>
+    </div>
+</div>
+
+<!-- Tool 15 - Beautiful.ai -->
+<div class="tool-card" 
+     data-categories="business,presentations,design,productivity" 
+     data-pricing="paid" 
+     data-rating="4.6"
+     data-date="20200510"
+     onclick="window.location.href='tool-detail.html?tool=beautifulai'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/beautifulai.webp" alt="Beautiful.ai" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Beautiful.ai</h3>
+            <span class="tool-category">Presentation Design</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        Smart presentation software that uses AI to automatically design slides and maintain consistent styling.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="paid">Paid</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.6
+        </span>
+    </div>
+</div>
+<!-- Tool 16 - Codeium -->
+<div class="tool-card" 
+     data-categories="coding,developer-tools,code-completion" 
+     data-pricing="free" 
+     data-rating="4.5"
+     data-date="20220215"
+     onclick="window.location.href='tool-detail.html?tool=codeium'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/codeium.webp" alt="Codeium" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Codeium</h3>
+            <span class="tool-category">Code Completion</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        Free AI-powered code completion tool that works across files and supports multiple programming languages.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="free">Free</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.5
+        </span>
+    </div>
+</div>
+
+<!-- Tool 17 - Tabnine -->
+<div class="tool-card" 
+     data-categories="coding,developer-tools,code-completion" 
+     data-pricing="freemium" 
+     data-rating="4.7"
+     data-date="20181101"
+     onclick="window.location.href='tool-detail.html?tool=tabnine'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/tabnine.webp" alt="Tabnine" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Tabnine</h3>
+            <span class="tool-category">AI Autocomplete</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        Full-line and full-function AI code completions trained on millions of programs across all languages.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.7
+        </span>
+    </div>
+</div>
+
+<!-- Tool 18 - Replit Ghostwriter -->
+<div class="tool-card" 
+     data-categories="coding,developer-tools,ide" 
+     data-pricing="paid" 
+     data-rating="4.3"
+     data-date="20220915"
+     onclick="window.location.href='tool-detail.html?tool=ghostwriter'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/ghostwriter.webp" alt="Replit Ghostwriter" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Replit Ghostwriter</h3>
+            <span class="tool-category">AI Pair Programmer</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        AI pair programmer built into Replit's IDE that suggests code, explains concepts, and helps debug.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="paid">Paid</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.3
+        </span>
+    </div>
+</div>
+
+<!-- Tool 19 - Cursor -->
+<div class="tool-card" 
+     data-categories="coding,developer-tools,ide,chat" 
+     data-pricing="freemium" 
+     data-rating="4.6"
+     data-date="20230301"
+     onclick="window.location.href='tool-detail.html?tool=cursor'">
+    <div class="tool-card-header">
+        <div class="tool-logo">
+            <img src="assets/img/cursor.webp" alt="Cursor" loading="lazy">
+        </div>
+        <div class="tool-info">
+            <h3>Cursor</h3>
+            <span class="tool-category">AI-First IDE</span>
+        </div>
+    </div>
+    <div class="tool-description">
+        IDE built for AI-assisted development with chat-based coding, codebase understanding, and smart editing.
+    </div>
+    <div class="tool-meta">
+        <span class="tool-pricing" data-pricing="freemium">Freemium</span>
+        <span class="tool-rating">
+            <i class="fas fa-star"></i> 4.6
+        </span>
+    </div>
+</div>
                         </div>
                         
                         <!-- Pagination -->
@@ -1419,380 +1954,406 @@ body.light-theme .hero {
 
     <script src="assets/js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 1. DOM Elements
-            const elements = {
-                desktop: {
-                    filterSection: document.querySelector('.filter-section'),
-                    resetButton: document.querySelector('.reset-filters'),
-                    filterCheckboxes: document.querySelectorAll('.filter-section input[type="checkbox"]'),
-                    sortSelect: document.getElementById('sort')
-                },
-                mobile: {
-                    container: document.querySelector('.mobile-filters-container'),
-                    dropdownToggles: document.querySelectorAll('.filter-dropdown-toggle'),
-                    resetButton: document.querySelector('.reset-filters-mobile'),
-                    filterCheckboxes: document.querySelectorAll('.filter-dropdown-menu input[type="checkbox"]')
-                },
-                toolCards: document.querySelectorAll('.tool-card'),
-                toolsGrid: document.querySelector('.tools-grid')
-            };
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. DOM Elements
+    const elements = {
+        desktop: {
+            filterSection: document.querySelector('.filter-section'),
+            resetButton: document.querySelector('.reset-filters'),
+            filterCheckboxes: document.querySelectorAll('.filter-section input[type="checkbox"]'),
+            sortSelect: document.getElementById('sort')
+        },
+        mobile: {
+            container: document.querySelector('.mobile-filters-container'),
+            dropdownToggles: document.querySelectorAll('.filter-dropdown-toggle'),
+            resetButton: document.querySelector('.reset-filters-mobile'),
+            filterCheckboxes: document.querySelectorAll('.filter-dropdown-menu input[type="checkbox"]')
+        },
+        toolCards: document.querySelectorAll('.tool-card'),
+        toolsGrid: document.querySelector('.tools-grid'),
+        sidebarDropdowns: document.querySelectorAll('.sidebar-dropdown')
+    };
 
-            // 2. State Management
-            const state = {
-                activeFilters: {
-                    category: [],
-                    pricing: [],
-                    rating: []
-                },
-                sortMethod: 'popular'
-            };
+    // 2. State Management
+    const state = {
+        activeFilters: {
+            category: [],
+            pricing: [],
+            rating: []
+        },
+        sortMethod: 'popular'
+    };
 
-            // 3. Initialization
-            function init() {
-                showAllTools();
-                setupEventListeners();
-                setDefaultFilters();
-                updateFilterSelections();
-                applyFilters();
+    // 3. Initialization
+    function init() {
+        showAllTools();
+        setupEventListeners();
+        setDefaultFilters();
+        updateSelectedOptions();
+        applyFilters();
+    }
+
+    function showAllTools() {
+        elements.toolCards.forEach(card => {
+            card.style.display = 'flex';
+        });
+    }
+
+    function setDefaultFilters() {
+        state.activeFilters = {
+            category: [],
+            pricing: [],
+            rating: []
+        };
+        state.sortMethod = 'popular';
+        
+        if (elements.desktop.sortSelect) {
+            elements.desktop.sortSelect.value = state.sortMethod;
+        }
+        
+        document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
+            .forEach(checkbox => { 
+                checkbox.checked = false; 
+            });
+    }
+
+    // 4. Event Listeners
+    function setupEventListeners() {
+        // Desktop Events
+        if (elements.desktop.resetButton) {
+            elements.desktop.resetButton.addEventListener('click', resetFilters);
+        }
+        
+        if (elements.desktop.sortSelect) {
+            elements.desktop.sortSelect.addEventListener('change', handleSortChange);
+        }
+
+        // Mobile Events
+        if (elements.mobile.container) {
+            elements.mobile.dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', handleMobileDropdownToggle);
+            });
+            
+            if (elements.mobile.resetButton) {
+                elements.mobile.resetButton.addEventListener('click', resetFilters);
             }
+        }
 
-            function showAllTools() {
-                elements.toolCards.forEach(card => {
-                    card.style.display = 'block';
-                });
-            }
+        // Shared Events
+        document.addEventListener('click', handleOutsideClick);
+        document.addEventListener('change', handleFilterChange);
+        window.addEventListener('resize', debounce(handleWindowResize, 250));
 
-            function setDefaultFilters() {
-                state.activeFilters = {
-                    category: [],
-                    pricing: [],
-                    rating: []
-                };
-                state.sortMethod = 'popular';
-                
-                if (elements.desktop.sortSelect) {
-                    elements.desktop.sortSelect.value = state.sortMethod;
-                }
-                
-                // Uncheck all filter checkboxes
-                document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
-                    .forEach(checkbox => { 
-                        checkbox.checked = false; 
-                    });
-            }
-
-            // 4. Event Listeners
-            function setupEventListeners() {
-                // Desktop Events
-                if (elements.desktop.resetButton) {
-                    elements.desktop.resetButton.addEventListener('click', resetFilters);
-                }
-                
-                if (elements.desktop.sortSelect) {
-                    elements.desktop.sortSelect.addEventListener('change', handleSortChange);
-                }
-
-                // Mobile Events
-                if (elements.mobile.container) {
-                    elements.mobile.dropdownToggles.forEach(toggle => {
-                        toggle.addEventListener('click', handleMobileDropdownToggle);
-                    });
-                    
-                    if (elements.mobile.resetButton) {
-                        elements.mobile.resetButton.addEventListener('click', resetFilters);
-                    }
-                }
-
-                // Shared Events
-                document.addEventListener('click', handleOutsideClick);
-                document.addEventListener('change', handleFilterChange);
-                window.addEventListener('resize', debounce(handleWindowResize, 250));
-            }
-
-            // 5. Core Filter Functions
-            function applyFilters() {
-                let visibleCount = 0;
-                
-                elements.toolCards.forEach(card => {
-                    const cardData = {
-                        categories: card.dataset.categories?.split(',').map(c => c.trim()) || [],
-                        pricing: card.dataset.pricing || '',
-                        rating: parseFloat(card.dataset.rating) || 0,
-                        name: card.querySelector('h3').textContent.toLowerCase(),
-                        date: parseInt(card.dataset.date) || 0
-                    };
-
-                    const shouldShow = matchesFilters(cardData);
-                    card.style.display = shouldShow ? 'block' : 'none';
-                    if (shouldShow) visibleCount++;
-                });
-
-                updateVisibleCount(visibleCount);
-                showNoResultsMessage(visibleCount === 0);
-                sortTools();
-            }
-
-            function matchesFilters(cardData) {
-                const { category, pricing, rating } = state.activeFilters;
-                
-                // Category match (check if any selected category exists in card's categories)
-                const categoryMatch = category.length === 0 || 
-                    category.some(selectedCat => cardData.categories.includes(selectedCat));
-                
-                // Pricing match (exact match)
-                const pricingMatch = pricing.length === 0 || 
-                    pricing.includes(cardData.pricing);
-                    
-                // Rating match (card rating >= selected rating)
-                const ratingMatch = rating.length === 0 ||
-                    rating.some(r => Math.round(cardData.rating) >= parseInt(r));
-                
-                return categoryMatch && pricingMatch && ratingMatch;
-            }
-
-            function sortTools() {
-                if (!elements.toolsGrid) return;
-                
-                const visibleCards = Array.from(document.querySelectorAll('.tool-card[style*="display: block"], .tool-card:not([style])'));
-                
-                visibleCards.sort((a, b) => {
-                    const aData = {
-                        rating: parseFloat(a.dataset.rating) || 0,
-                        date: parseInt(a.dataset.date) || 0,
-                        name: a.querySelector('h3').textContent.toLowerCase()
-                    };
-                    const bData = {
-                        rating: parseFloat(b.dataset.rating) || 0,
-                        date: parseInt(b.dataset.date) || 0,
-                        name: b.querySelector('h3').textContent.toLowerCase()
-                    };
-
-                    switch(state.sortMethod) {
-                        case 'rating': return bData.rating - aData.rating;
-                        case 'newest': return bData.date - aData.date;
-                        case 'az': return aData.name.localeCompare(bData.name);
-                        default: return bData.rating - aData.rating; // popular
-                    }
-                });
-                
-                // Re-append cards in sorted order
-                visibleCards.forEach(card => elements.toolsGrid.appendChild(card));
-            }
-
-            // 6. Selection Display
-            function updateFilterSelections() {
-                document.querySelectorAll('.filter-dropdown-box').forEach(filterBox => {
-                    const filterType = filterBox.getAttribute('data-filter-type');
-                    const selectionContainer = filterBox.querySelector('.filter-selection');
-                    const checkedBoxes = filterBox.querySelectorAll(`input[type="checkbox"][data-${filterType}]:checked`);
-                    
-                    selectionContainer.innerHTML = '';
-                    
-                    if (checkedBoxes.length > 0) {
-                        filterBox.classList.add('has-selection');
-                        
-                        checkedBoxes.forEach((checkbox, index) => {
-                            const badge = document.createElement('span');
-                            badge.className = 'selection-badge';
-                            
-                            if (filterType === 'rating') {
-                                const rating = checkbox.dataset.rating;
-                                badge.innerHTML = `${'★'.repeat(rating)}${'☆'.repeat(5-rating)}`;
-                            } else {
-                                badge.textContent = checkbox.parentElement.textContent.trim();
-                            }
-                            
-                            if (index < checkedBoxes.length - 1) {
-                                const comma = document.createTextNode(', ');
-                                selectionContainer.appendChild(badge);
-                                selectionContainer.appendChild(comma);
-                            } else {
-                                selectionContainer.appendChild(badge);
-                            }
-                        });
-                    } else {
-                        filterBox.classList.remove('has-selection');
-                        selectionContainer.textContent = 'All';
-                    }
-                });
-            }
-
-            function handleMobileDropdownToggle(e) {
-                e.preventDefault();
+        // Sidebar Dropdown Events
+        elements.sidebarDropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.sidebar-dropdown-toggle');
+            toggle.addEventListener('click', function(e) {
                 e.stopPropagation();
-                const targetId = this.getAttribute('data-target');
-                const dropdown = document.getElementById(targetId);
-                
-                document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
-                    if (menu.id !== targetId) {
-                        menu.classList.remove('active');
-                        const otherToggle = document.querySelector(`[data-target="${menu.id}"]`);
-                        if (otherToggle) otherToggle.classList.remove('active');
-                    }
-                });
-                
                 dropdown.classList.toggle('active');
-                this.classList.toggle('active');
-            }
-
-            function resetFilters(e) {
-                if (e) e.preventDefault();
                 
-                document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
-                    .forEach(checkbox => { checkbox.checked = false; });
-                
-                setDefaultFilters();
-                
-                if (window.innerWidth <= 768) {
-                    document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
-                        menu.classList.remove('active');
-                    });
-                    document.querySelectorAll('.filter-dropdown-toggle').forEach(toggle => {
-                        toggle.classList.remove('active');
-                    });
-                }
-                
-                showAllTools();
-                applyFilters();
-                updateFilterSelections();
-            }
-
-            function handleFilterChange(e) {
-                if (e.target.matches('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')) {
-                    const filterType = e.target.dataset.category ? 'category' : 
-                                     e.target.dataset.pricing ? 'pricing' : 
-                                     e.target.dataset.rating ? 'rating' : null;
-                    
-                    if (!filterType) return;
-                    
-                    const filterValue = e.target.dataset[filterType];
-                    
-                    if (e.target.checked) {
-                        state.activeFilters[filterType].push(filterValue);
-                    } else {
-                        state.activeFilters[filterType] = state.activeFilters[filterType].filter(
-                            val => val !== filterValue
-                        );
+                // Close other dropdowns
+                elements.sidebarDropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        otherDropdown.classList.remove('active');
                     }
-                    
-                    syncFilters(e.target);
-                    applyFilters();
-                    updateFilterSelections();
-                }
-            }
-
-            function syncFilters(sourceElement) {
-                const isMobile = sourceElement.closest('.mobile-filters-container');
-                const filterType = sourceElement.dataset.category ? 'category' : 
-                                 sourceElement.dataset.pricing ? 'pricing' : 
-                                 sourceElement.dataset.rating ? 'rating' : null;
-                
-                if (!filterType) return;
-                
-                const filterValue = sourceElement.dataset[filterType];
-                const isChecked = sourceElement.checked;
-                
-                const otherVersionSelector = isMobile ? 
-                    `.category-sidebar input[data-${filterType}="${filterValue}"]` : 
-                    `.mobile-filters-container input[data-${filterType}="${filterValue}"]`;
-                    
-                document.querySelectorAll(otherVersionSelector).forEach(el => {
-                    el.checked = isChecked;
                 });
-            }
+            });
+        });
+    }
 
-            function handleSortChange(e) {
-                state.sortMethod = e.target.value;
-                applyFilters();
-            }
+    // 5. Core Filter Functions
+    function applyFilters() {
+        let visibleCount = 0;
+        
+        elements.toolCards.forEach(card => {
+            const cardData = {
+                categories: card.dataset.categories?.split(',').map(c => c.trim()) || [],
+                pricing: card.dataset.pricing || '',
+                rating: parseFloat(card.dataset.rating) || 0,
+                name: card.querySelector('h3').textContent.toLowerCase(),
+                date: parseInt(card.dataset.date) || 0
+            };
 
-            function handleOutsideClick(e) {
-                if (window.innerWidth <= 768 && 
-                    !e.target.closest('.filter-dropdown-box') &&
-                    !e.target.closest('.mobile-filters-container')) {
-                    document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
-                        menu.classList.remove('active');
-                    });
-                    document.querySelectorAll('.filter-dropdown-toggle').forEach(toggle => {
-                        toggle.classList.remove('active');
-                    });
-                }
-            }
-
-            function handleWindowResize() {
-                if (window.innerWidth > 768) {
-                    if (elements.mobile.container) {
-                        elements.mobile.container.style.display = 'none';
-                    }
-                    if (elements.desktop.filterSection) {
-                        elements.desktop.filterSection.style.display = 'block';
-                    }
-                } else {
-                    if (elements.desktop.filterSection) {
-                        elements.desktop.filterSection.style.display = 'none';
-                    }
-                    if (elements.mobile.container) {
-                        elements.mobile.container.style.display = 'flex';
-                    }
-                }
-            }
-
-            // 8. Helper Functions
-            function updateVisibleCount(visible) {
-                let countElement = document.querySelector('.filtered-count');
-                if (!countElement) {
-                    countElement = document.createElement('div');
-                    countElement.className = 'filtered-count';
-                    document.querySelector('.sort-options')?.prepend(countElement);
-                }
-                countElement.textContent = `Showing ${visible} of ${elements.toolCards.length} tools`;
-            }
-
-            function showNoResultsMessage(show) {
-                if (!elements.toolsGrid) return;
-                
-                let message = document.querySelector('.no-results-message');
-                
-                if (show) {
-                    if (!message) {
-                        message = document.createElement('div');
-                        message.className = 'no-results-message';
-                        message.innerHTML = `
-                            <i class="fas fa-search"></i>
-                            <p>No tools match your filters</p>
-                            <button class="btn-text" onclick="resetFilters()">
-                                Reset filters
-                            </button>
-                        `;
-                        elements.toolsGrid.appendChild(message);
-                    }
-                    message.classList.add('show');
-                } else if (message) {
-                    message.classList.remove('show');
-                }
-            }
-
-            function debounce(func, wait) {
-                let timeout;
-                return function() {
-                    const context = this, args = arguments;
-                    clearTimeout(timeout);
-                    timeout = setTimeout(() => {
-                        func.apply(context, args);
-                    }, wait);
-                };
-            }
-
-            // Initialize the application
-            init();
+            const shouldShow = matchesFilters(cardData);
+            card.style.display = shouldShow ? 'flex' : 'none';
+            if (shouldShow) visibleCount++;
         });
 
-        // Global reset function
-        function resetFilters() {
-            const event = new Event('click');
-            document.querySelector('.reset-filters, .reset-filters-mobile')?.dispatchEvent(event);
+        updateVisibleCount(visibleCount);
+        showNoResultsMessage(visibleCount === 0);
+        sortTools();
+    }
+
+    function matchesFilters(cardData) {
+        const { category, pricing, rating } = state.activeFilters;
+        
+        // Category match
+        const categoryMatch = category.length === 0 || 
+            category.some(selectedCat => cardData.categories.includes(selectedCat));
+        
+        // Pricing match
+        const pricingMatch = pricing.length === 0 || 
+            pricing.includes(cardData.pricing);
+            
+        // Rating match
+        const ratingMatch = rating.length === 0 ||
+            rating.some(selectedRating => {
+                const toolRating = parseFloat(cardData.rating);
+                const selected = parseInt(selectedRating);
+                return toolRating >= selected && toolRating < selected + 1;
+            });
+        
+        return categoryMatch && pricingMatch && ratingMatch;
+    }
+
+    function sortTools() {
+        if (!elements.toolsGrid) return;
+        
+        const visibleCards = Array.from(document.querySelectorAll('.tool-card[style*="display: flex"], .tool-card:not([style])'));
+        
+        visibleCards.sort((a, b) => {
+            const aData = {
+                rating: parseFloat(a.dataset.rating) || 0,
+                date: parseInt(a.dataset.date) || 0,
+                name: a.querySelector('h3').textContent.toLowerCase()
+            };
+            const bData = {
+                rating: parseFloat(b.dataset.rating) || 0,
+                date: parseInt(b.dataset.date) || 0,
+                name: b.querySelector('h3').textContent.toLowerCase()
+            };
+
+            switch(state.sortMethod) {
+                case 'rating': return bData.rating - aData.rating;
+                case 'newest': return bData.date - aData.date;
+                case 'az': return aData.name.localeCompare(bData.name);
+                default: return bData.rating - aData.rating; // popular
+            }
+        });
+        
+        // Re-append cards in sorted order
+        visibleCards.forEach(card => elements.toolsGrid.appendChild(card));
+    }
+
+    // 6. Selection Display
+    function updateSelectedOptions() {
+        elements.sidebarDropdowns.forEach(dropdown => {
+            const checkboxes = dropdown.querySelectorAll('input[type="checkbox"]:checked');
+            const selectedOptions = dropdown.querySelector('.selected-options');
+            
+            if (checkboxes.length === 0) {
+                selectedOptions.textContent = '';
+                return;
+            }
+
+            // Determine filter type
+            const firstCheckbox = checkboxes[0];
+            let filterType = '';
+            if (firstCheckbox.dataset.category) filterType = 'category';
+            else if (firstCheckbox.dataset.pricing) filterType = 'pricing';
+            else if (firstCheckbox.dataset.rating) filterType = 'rating';
+
+            if (filterType === 'rating') {
+                // Format ratings as stars
+                const ratings = Array.from(checkboxes).map(cb => {
+                    const rating = parseInt(cb.dataset.rating);
+                    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+                });
+                selectedOptions.textContent = ratings.join(', ');
+            } else {
+                // For categories and pricing
+                const labels = Array.from(checkboxes).map(cb => {
+                    return cb.nextElementSibling.textContent.trim();
+                });
+                selectedOptions.textContent = labels.length > 2 
+                    ? `${labels.length} selected` 
+                    : labels.join(', ');
+            }
+        });
+    }
+
+    function handleMobileDropdownToggle(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetId = this.getAttribute('data-target');
+        const dropdown = document.getElementById(targetId);
+        
+        document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
+            if (menu.id !== targetId) {
+                menu.classList.remove('active');
+                const otherToggle = document.querySelector(`[data-target="${menu.id}"]`);
+                if (otherToggle) otherToggle.classList.remove('active');
+            }
+        });
+        
+        dropdown.classList.toggle('active');
+        this.classList.toggle('active');
+    }
+
+    function resetFilters(e) {
+        if (e) e.preventDefault();
+        
+        document.querySelectorAll('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"]')
+            .forEach(checkbox => { checkbox.checked = false; });
+        
+        setDefaultFilters();
+        
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
+                menu.classList.remove('active');
+            });
+            document.querySelectorAll('.filter-dropdown-toggle').forEach(toggle => {
+                toggle.classList.remove('active');
+            });
         }
-    </script>
+        
+        showAllTools();
+        applyFilters();
+        updateSelectedOptions();
+    }
+
+    function handleFilterChange(e) {
+        if (e.target.matches('.filter-section input[type="checkbox"], .filter-dropdown-menu input[type="checkbox"], .sidebar-dropdown-content input[type="checkbox"]')) {
+            const filterType = e.target.dataset.category ? 'category' : 
+                             e.target.dataset.pricing ? 'pricing' : 
+                             e.target.dataset.rating ? 'rating' : null;
+            
+            if (!filterType) return;
+            
+            const filterValue = e.target.dataset[filterType];
+            
+            if (e.target.checked) {
+                state.activeFilters[filterType].push(filterValue);
+            } else {
+                state.activeFilters[filterType] = state.activeFilters[filterType].filter(
+                    val => val !== filterValue
+                );
+            }
+            
+            syncFilters(e.target);
+            applyFilters();
+            updateSelectedOptions();
+        }
+    }
+
+    function syncFilters(sourceElement) {
+        const isMobile = sourceElement.closest('.mobile-filters-container');
+        const filterType = sourceElement.dataset.category ? 'category' : 
+                         sourceElement.dataset.pricing ? 'pricing' : 
+                         sourceElement.dataset.rating ? 'rating' : null;
+        
+        if (!filterType) return;
+        
+        const filterValue = sourceElement.dataset[filterType];
+        const isChecked = sourceElement.checked;
+        
+        const otherVersionSelector = isMobile ? 
+            `.category-sidebar input[data-${filterType}="${filterValue}"]` : 
+            `.mobile-filters-container input[data-${filterType}="${filterValue}"]`;
+            
+        document.querySelectorAll(otherVersionSelector).forEach(el => {
+            el.checked = isChecked;
+        });
+    }
+
+    function handleSortChange(e) {
+        state.sortMethod = e.target.value;
+        applyFilters();
+    }
+
+    function handleOutsideClick(e) {
+        if (window.innerWidth <= 768 && 
+            !e.target.closest('.filter-dropdown-box') &&
+            !e.target.closest('.mobile-filters-container')) {
+            document.querySelectorAll('.filter-dropdown-menu').forEach(menu => {
+                menu.classList.remove('active');
+            });
+            document.querySelectorAll('.filter-dropdown-toggle').forEach(toggle => {
+                toggle.classList.remove('active');
+            });
+        }
+        
+        // Close sidebar dropdowns when clicking outside
+        if (!e.target.closest('.sidebar-dropdown')) {
+            elements.sidebarDropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    }
+
+    function handleWindowResize() {
+        if (window.innerWidth > 768) {
+            if (elements.mobile.container) {
+                elements.mobile.container.style.display = 'none';
+            }
+            if (elements.desktop.filterSection) {
+                elements.desktop.filterSection.style.display = 'block';
+            }
+        } else {
+            if (elements.desktop.filterSection) {
+                elements.desktop.filterSection.style.display = 'none';
+            }
+            if (elements.mobile.container) {
+                elements.mobile.container.style.display = 'flex';
+            }
+        }
+    }
+
+    // 8. Helper Functions
+    function updateVisibleCount(visible) {
+        let countElement = document.querySelector('.filtered-count');
+        if (!countElement) {
+            countElement = document.createElement('div');
+            countElement.className = 'filtered-count';
+            document.querySelector('.sort-options')?.prepend(countElement);
+        }
+        countElement.textContent = `Showing ${visible} of ${elements.toolCards.length} tools`;
+    }
+
+    function showNoResultsMessage(show) {
+        if (!elements.toolsGrid) return;
+        
+        let message = document.querySelector('.no-results-message');
+        
+        if (show) {
+            if (!message) {
+                message = document.createElement('div');
+                message.className = 'no-results-message';
+                message.innerHTML = `
+                    <i class="fas fa-search"></i>
+                    <p>No tools match your filters</p>
+                    <button class="btn-text" onclick="resetFilters()">
+                        Reset filters
+                    </button>
+                `;
+                elements.toolsGrid.appendChild(message);
+            }
+            message.classList.add('show');
+        } else if (message) {
+            message.classList.remove('show');
+        }
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function() {
+            const context = this, args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                func.apply(context, args);
+            }, wait);
+        };
+    }
+
+    // Initialize the application
+    init();
+});
+
+// Global reset function
+function resetFilters() {
+    const event = new Event('click');
+    document.querySelector('.reset-filters, .reset-filters-mobile')?.dispatchEvent(event);
+}    
+</script>
 </body>
 </html>

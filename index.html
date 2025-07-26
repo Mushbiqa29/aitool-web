@@ -1774,309 +1774,121 @@ body.light-theme .marquee-container::after {
     0%, 100% { opacity: 0; transform: scale(0.5); }
     50% { opacity: 1; transform: scale(1); }
 }
-/* === Glowing Border Animation === */
-.tool-card {
+/* FUTURISTIC RUNNING BORDER EFFECT */
+.electric-border-card {
+    --glow-primary: #7b5cf6;
+    --glow-secondary: #38b6ff;
     position: relative;
+    border-radius: 12px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 2px; /* Border width */
+    isolation: isolate;
     overflow: hidden;
-    border: none !important; /* Remove default border */
-    z-index: 1;
 }
 
-/* Main glowing border (hidden by default) */
-.tool-card::before {
+/* Running border animation */
+.electric-border-card::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    inset: 0;
     background: linear-gradient(
         90deg,
         transparent,
-        var(--primary-light),
+        var(--glow-primary),
+        var(--glow-secondary),
+        var(--glow-primary),
         transparent
     );
     background-size: 200% 100%;
-    border-radius: var(--border-radius);
+    animation: electricRun 3s linear infinite;
     z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    animation: borderGlow 4s linear infinite;
+    padding: 2px; /* Match parent padding */
+    --webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    --webkit-mask-composite: xor;
+    mask-composite: exclude;
+    border-radius: 12px;
+    filter: blur(0.5px);
 }
 
-/* Soft outer glow (always visible) */
-.tool-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: var(--border-radius);
-    box-shadow: 0 0 15px rgba(123, 92, 246, 0.3);
-    z-index: -2;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+@keyframes electricRun {
+    0% { background-position: 200% 50%; }
+    100% { background-position: -200% 50%; }
 }
 
-/* Glow effect on hover */
-.tool-card:hover::before {
-    opacity: 0.8;
-}
-
-.tool-card:hover::after {
-    opacity: 1;
-}
-
-/* Light travel animation */
-@keyframes borderGlow {
-    0% {
-        background-position: -100% 0;
-    }
-    100% {
-        background-position: 100% 0;
-    }
-}
-
-/* Inner fill to hide the backside of the glow */
-.tool-card .card-inner {
+/* Card inner container */
+.electric-border-inner {
     position: relative;
-    background: var(--dark-primary);
-    border-radius: var(--border-radius);
-    height: 100%;
-    z-index: 1;
-    padding: 20px;
-}
-
-body.light-theme .tool-card .card-inner {
-    background: var(--dark-secondary);
-}
-/* Enhanced Tool Card with Glowing Border Animation */
-.tool-card {
-    --border-radius: 8px;
-    --bg-color: rgba(30, 41, 59, 0.6);
-    position: relative;
-    overflow: hidden;
-    border: none !important;
-    z-index: 1;
-    transition: all 0.5s ease;
-}
-
-body.light-theme .tool-card {
-    --bg-color: rgba(248, 249, 250, 0.9);
-}
-
-/* Main glowing border (hidden by default) */
-.tool-card::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
     background: linear-gradient(
-        90deg,
-        transparent,
-        var(--primary-light),
-        transparent
+        135deg,
+        rgba(30, 41, 59, 0.7),
+        rgba(15, 23, 42, 0.9)
     );
-    background-size: 200% 100%;
-    border-radius: var(--border-radius);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    animation: borderGlow 4s linear infinite;
-}
-
-/* Soft outer glow (always visible) */
-.tool-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: var(--border-radius);
-    box-shadow: 0 0 15px rgba(123, 92, 246, 0.3);
-    z-index: -2;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* Glow effect on hover */
-.tool-card:hover::before {
-    opacity: 0.8;
-}
-
-.tool-card:hover::after {
-    opacity: 1;
-}
-
-/* Light travel animation */
-@keyframes borderGlow {
-    0% {
-        background-position: -100% 0;
-    }
-    100% {
-        background-position: 100% 0;
-    }
-}
-
-/* Inner fill to hide the backside of the glow */
-.tool-card .card-inner {
-    position: relative;
-    background: var(--dark-primary);
-    border-radius: var(--border-radius);
+    border-radius: 10px; /* Slightly smaller than parent */
+    padding: 22px;
     height: 100%;
-    z-index: 1;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-}
-
-body.light-theme .tool-card .card-inner {
-    background: var(--dark-secondary);
-}
-
-/* Add subtle 3D tilt effect on hover */
-.tool-card:hover {
-    transform: translateY(-5px) perspective(1000px) rotateX(2deg) rotateY(2deg);
-    box-shadow: 0 15px 30px rgba(123, 92, 246, 0.2);
-}
-/* CTA Section Styles */
-.cta-section-wrapper {
-    width: 100%;
-    position: relative;
     overflow: hidden;
-    margin: 60px 0;
 }
 
-.cta-section {
+/* Hover effects */
+.electric-border-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(123, 92, 246, 0.3);
+}
+
+.electric-border-card:hover::before {
+    animation-duration: 2s;
+    filter: blur(1px);
+}
+
+/* Content styling (same as before) */
+.electric-header {
     display: flex;
-    align-items: center;
-    min-height: 400px;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
-    padding: 60px 0;
-    position: relative;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-.cta-section .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    z-index: 2;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.cta-content {
-    flex: 1;
-    max-width: 600px;
-    padding: 40px;
-    color: white;
-}
-
-.cta-visual {
-    flex: 1;
-    position: relative;
-    min-height: 300px;
+.electric-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-    .cta-section .container {
-        padding: 40px 20px;
-    }
+.electric-title {
+    font-size: 1.25rem;
+    background: linear-gradient(90deg, #fff, #ddd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 5px;
 }
 
-@media (max-width: 768px) {
-    .cta-section {
-        flex-direction: column;
-        padding: 40px 0;
-    }
-    
-    .cta-section .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .cta-content, .cta-visual {
-        max-width: 100%;
-        padding: 20px;
-    }
-    
-    .cta-features {
-        justify-content: center;
-    }
+.electric-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    background: rgba(123, 92, 246, 0.2);
+    color: var(--glow-primary);
+    padding: 3px 10px;
+    border-radius: 20px;
 }
 
-@media (max-width: 480px) {
-    .cta-content h2 {
-        font-size: 1.8rem;
-    }
-    
-    .cta-features {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-/* Animated Gradient Border Effect */
-.tool-card {
-    position: relative;
-    border-radius: var(--border-radius);
-    background: none !important; /* Remove any existing background */
-    padding: 2px !important; /* Create space for the border */
-    z-index: 1;
+.electric-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
 }
 
-.tool-card::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(
-        45deg,
-        #7b5cf6,
-        #8b6bf7,
-        #6a4ce0,
-        #7b5cf6
-    );
-    background-size: 300% 300%;
-    border-radius: var(--border-radius);
-    z-index: -1;
-    animation: gradientBorder 4s linear infinite;
-    opacity: 0.8;
-}
-
-.tool-card .card-inner {
-    position: relative;
-    background: var(--dark-primary);
-    border-radius: calc(var(--border-radius) - 2px);
-    height: 100%;
-    z-index: 1;
-    padding: 20px;
-}
-
-body.light-theme .tool-card .card-inner {
-    background: var(--dark-secondary);
-}
-
-@keyframes gradientBorder {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+.electric-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
 </head>
@@ -2465,82 +2277,58 @@ body.light-theme .tool-card .card-inner {
     </div>
 </section>
 
-<!-- Newly Added Tools Section -->
+<!-- Premium AI Tools Section -->
 <section class="section">
     <div class="container">
         <div class="section-title">
-            <h2>Newly Added Tools</h2>
-            <p>Recently added AI tools to our directory</p>
+            <h2>Premium AI Tools</h2>
+            <p>Cutting-edge artificial intelligence solutions</p>
         </div>
         
         <div class="tools-grid">
-            <!-- New Tool 1 - With Glow Effect -->
-            <div class="tool-card" data-tool-id="claude">
-                <div class="card-inner">
-                    <div class="tool-card-header">
-                        <div class="tool-logo">
-                            <img src="assets/img/tools/claude.png" alt="Claude AI">
+            <!-- Electric Border Card 1 -->
+            <div class="electric-border-card">
+                <div class="electric-border-inner">
+                    <div class="electric-header">
+                        <div class="electric-logo">
+                            <img src="assets/img/tools/claude.png" alt="Claude AI" width="30">
                         </div>
-                        <div class="tool-info">
-                            <h3>Claude AI</h3>
-                            <span class="tool-category">Chatbots</span>
+                        <div>
+                            <h3 class="electric-title">Claude AI</h3>
+                            <span class="electric-category">Chatbots</span>
                         </div>
                     </div>
-                    <div class="tool-description">
-                        AI assistant focused on helpful, harmless, and honest conversations.
-                    </div>
-                    <div class="tool-meta">
+                    <p class="electric-description">
+                        Next-generation AI assistant with advanced reasoning capabilities.
+                    </p>
+                    <div class="electric-footer">
                         <span class="tool-pricing freemium">Freemium</span>
+                        <span class="tool-rating">
+                            <i class="fas fa-star"></i> 4.8
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Electric Border Card 2 -->
+            <div class="electric-border-card">
+                <div class="electric-border-inner">
+                    <div class="electric-header">
+                        <div class="electric-logo">
+                            <img src="assets/img/tools/runway.png" alt="Runway ML" width="30">
+                        </div>
+                        <div>
+                            <h3 class="electric-title">Runway ML</h3>
+                            <span class="electric-category">Video Editing</span>
+                        </div>
+                    </div>
+                    <p class="electric-description">
+                        Revolutionary AI-powered creative suite for professionals.
+                    </p>
+                    <div class="electric-footer">
+                        <span class="tool-pricing paid">Premium</span>
                         <span class="tool-rating">
                             <i class="fas fa-star"></i> 4.6
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- New Tool 2 - With Glow Effect -->
-            <div class="tool-card" data-tool-id="runway">
-                <div class="card-inner">
-                    <div class="tool-card-header">
-                        <div class="tool-logo">
-                            <img src="assets/img/tools/runway.png" alt="Runway ML">
-                        </div>
-                        <div class="tool-info">
-                            <h3>Runway ML</h3>
-                            <span class="tool-category">Video Editing</span>
-                        </div>
-                    </div>
-                    <div class="tool-description">
-                        Creative suite with AI tools for video, image, and more.
-                    </div>
-                    <div class="tool-meta">
-                        <span class="tool-pricing paid">Paid</span>
-                        <span class="tool-rating">
-                            <i class="fas fa-star"></i> 4.4
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- New Tool 3 - With Glow Effect -->
-            <div class="tool-card" data-tool-id="elevenlabs">
-                <div class="card-inner">
-                    <div class="tool-card-header">
-                        <div class="tool-logo">
-                            <img src="assets/img/tools/elevenlabs.png" alt="ElevenLabs">
-                        </div>
-                        <div class="tool-info">
-                            <h3>ElevenLabs</h3>
-                            <span class="tool-category">Audio</span>
-                        </div>
-                    </div>
-                    <div class="tool-description">
-                        Most realistic and versatile AI speech software.
-                    </div>
-                    <div class="tool-meta">
-                        <span class="tool-pricing freemium">Freemium</span>
-                        <span class="tool-rating">
-                            <i class="fas fa-star"></i> 4.7
                         </span>
                     </div>
                 </div>
@@ -2548,7 +2336,6 @@ body.light-theme .tool-card .card-inner {
         </div>
     </div>
 </section>
-
 <!-- Replace your current marquee section with this -->
 <section class="section" style="padding: 20px 0;">
     <div class="marquee-container">
